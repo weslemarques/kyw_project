@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: kyw_project
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/KYW_PROJECT
+    username: MASTER
+    password: SECRETPASSWORD
+
+server:
+  port: 8080
+
