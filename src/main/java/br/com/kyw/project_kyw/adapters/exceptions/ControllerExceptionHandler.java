@@ -1,4 +1,4 @@
-package br.com.kyw.project_kyw.adapters.excepitons;
+package br.com.kyw.project_kyw.adapters.exceptions;
 
 import br.com.kyw.project_kyw.adapters.exceptions.StandardError;
 import br.com.kyw.project_kyw.adapters.exceptions.validator.ValidatorError;
