@@ -3,12 +3,14 @@ package br.com.kyw.project_kyw.core.entities;
 import br.com.kyw.project_kyw.core.enums.Criticality;
 import br.com.kyw.project_kyw.core.enums.Status;
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @Table(name = "TB_TASKS")
+@EqualsAndHashCode(of = "id")
 public class Task {
 
     @Id

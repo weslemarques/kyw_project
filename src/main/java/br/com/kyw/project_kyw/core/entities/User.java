@@ -2,13 +2,17 @@ package br.com.kyw.project_kyw.core.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Getter
 @Entity
 @Table(name = "TB_USERS")
+@EqualsAndHashCode(of = "id")
 public class User {
 
     @Id
@@ -20,11 +24,11 @@ public class User {
     private String password;
     private String phone;
     @OneToMany
-    private List<Notification> notification;
+    private List<Notification> notification = new ArrayList<>();
 
     @ManyToMany
     @JoinTable( name = "TB_PROJECTS_USERS",joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name ="PROJECT_ID"))
-    private List<Project> projects;
+    private List<Project> projects = new ArrayList<>();
 
     @OneToMany(mappedBy = "attributedTo")
     private List<Task> assignedTasks = new ArrayList<>();
@@ -39,65 +43,39 @@ public class User {
     public User() {
 
     }
+    public void createProject(){
 
-    public UUID getId() {
-        return id;
     }
-
-
-    public String getUsername() {
-        return username;
-    }
-
     public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
+        if(username != null)this.username = username;
     }
 
     public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
+        if(email != null) this.email = email;
     }
 
     public void setPassword(String password) {
-        this.password = password;
-    }
 
-    public String getPhone() {
-        return phone;
+        if(password != null) this.password = password;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
-    public List<Notification> getNotification() {
-        return notification;
+        if(phone != null) this.phone = phone;
     }
 
     public void addNotification(Notification notification) {
-        this.notification.add(notification);
-    }
 
-    public List<Project> getProjects() {
-        return projects;
+        if(notification != null) this.notification.add(notification);
     }
 
     public void addProject(Project project) {
-        this.projects.add(project);
-    }
 
-    public List<Task> getAssignedTasks() {
-        return assignedTasks;
+        if(project != null)this.projects.add(project);
     }
 
     public void addTask(Task assignedTasks) {
-        this.assignedTasks.add(assignedTasks);
+
+        if(assignedTasks != null) this.assignedTasks.add(assignedTasks);
     }
 }
