@@ -1,12 +1,17 @@
 package br.com.kyw.project_kyw.core.entities;
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Getter
 @Entity
 @Table(name = "TB_PROJECTS")
+@EqualsAndHashCode(of = "id")
 public class Project {
 
     @Id
@@ -15,75 +20,42 @@ public class Project {
     private UUID id;
     private String name;
     private String description;
-
     @ManyToMany
-    private List<User> admins;
+    private List<User> admins = new ArrayList<>();
     private String imageUrl;
     private String linkGroup;
     @ManyToMany
-    private List<User> members;
+    private List<User> members = new ArrayList<>();
 
     @OneToMany(mappedBy = "project")
-    private List<Task> tasks;
+    private List<Task> tasks = new ArrayList<>();
 
 
     public Project() {
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<User> getAdmins() {
-        return admins;
     }
 
     public void addAdmin(User userAdmin) {
         this.admins.add(userAdmin);
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public String getLinkGroup() {
-        return linkGroup;
     }
 
     public void setLinkGroup(String linkGroup) {
         this.linkGroup = linkGroup;
     }
 
-    public List<User> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<User> members) {
+    public void addMembers(User member) {
         this.members = members;
-    }
-
-    public List<Task> getTasks() {
-        return tasks;
     }
 
     public void setTasks(List<Task> tasks) {

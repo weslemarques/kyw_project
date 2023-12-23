@@ -4,11 +4,11 @@ import br.com.kyw.project_kyw.application.repositories.ProjectRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProjectService {
+public class ProjectServiceImpl {
 
     private final ProjectRepository projectRepository;
 
-    public ProjectService(ProjectRepository projectRepository) {
+    public ProjectServiceImpl(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
 

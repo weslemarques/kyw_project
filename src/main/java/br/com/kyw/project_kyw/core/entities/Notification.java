@@ -2,12 +2,16 @@ package br.com.kyw.project_kyw.core.entities;
 
 import br.com.kyw.project_kyw.core.enums.TypeNotification;
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 import java.util.Date;
 import java.util.UUID;
 
+@Getter
 @Entity
 @Table(name = "TB_NOTIFICATION")
+@EqualsAndHashCode(of = "id")
 public class Notification {
 
     @Id
@@ -31,37 +35,16 @@ public class Notification {
 
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-
-    public TypeNotification getType() {
-        return type;
-    }
-
     public void setType(TypeNotification type) {
         this.type = type;
-    }
-
-    public String getContent() {
-        return content;
     }
 
     public void setContent(String content) {
         this.content = content;
     }
 
-    public boolean isViewed() {
-        return viewed;
-    }
-
     public void setViewed(boolean viewed) {
         this.viewed = viewed;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
     }
 
     public void setCreatedAt(Date createdAt) {
