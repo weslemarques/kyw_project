@@ -21,7 +21,6 @@ public class ProjectCreateDTO implements Serializable {
     @NotBlank
     private String name;
     private String description;
-    @NotBlank
     private MultipartFile image;
     private List<String> members;
 }
