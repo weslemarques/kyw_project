@@ -1,5 +1,6 @@
 package br.com.kyw.project_kyw.infra.config;
 
+import br.com.kyw.project_kyw.infra.security.FilterTokenJwt;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,10 +10,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig{
+
+    private final FilterTokenJwt filterToken;
+
+    public SecurityConfig(FilterTokenJwt filterToken) {
+        this.filterToken = filterToken;
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -20,7 +28,8 @@ public class SecurityConfig{
         http.csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(
                         session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                ).formLogin(httpSecurityFormLoginConfigurer ->  httpSecurityFormLoginConfigurer.disable());
+                ).formLogin(httpSecurityFormLoginConfigurer ->  httpSecurityFormLoginConfigurer.disable())
+                .addFilterBefore(filterToken, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 

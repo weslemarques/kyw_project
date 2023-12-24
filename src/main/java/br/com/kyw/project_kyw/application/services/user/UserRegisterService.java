@@ -7,6 +7,7 @@ import br.com.kyw.project_kyw.application.repositories.UserRepository;
 import br.com.kyw.project_kyw.application.services.utils.SendNotification;
 import br.com.kyw.project_kyw.core.entities.User;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

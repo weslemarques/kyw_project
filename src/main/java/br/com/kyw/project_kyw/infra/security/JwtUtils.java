@@ -7,7 +7,6 @@ import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
 import java.util.Date;
 
 @Component
@@ -20,9 +19,9 @@ public class JwtUtils {
     private int tokenExpiration;
 
     public String generateJwtToken(User mainUser) {
-        return JWT.create().withIssuer("com.dscatalog")
+        return JWT.create().withIssuer("br.com.kyw")
                 .withSubject(mainUser.getEmail())
-                .withClaim("id", Collections.singletonList(mainUser.getId()))
+                .withClaim("id", mainUser.getId().toString())
                 .withClaim("roles", mainUser.getAuthorities().stream().toList())
                 .withExpiresAt(new Date(new Date().getTime() + tokenExpiration))
                 .sign(Algorithm.HMAC256(jwtSecret));

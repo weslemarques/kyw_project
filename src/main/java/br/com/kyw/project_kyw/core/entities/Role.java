@@ -9,7 +9,6 @@ import java.io.Serial;
 @Entity
 @Table(name = "tb_role")
 @Getter
-@EqualsAndHashCode(of = "id")
 public class Role implements GrantedAuthority {
 
     @Serial

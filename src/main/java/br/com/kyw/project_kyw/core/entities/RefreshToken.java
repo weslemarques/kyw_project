@@ -10,13 +10,13 @@ import java.util.UUID;
 
 @Entity
 @Data
-@Table(name = "refreshToken")
+@Table(name = "tb_refresh_token")
 @Getter
 @AllArgsConstructor
 public class RefreshToken {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @OneToOne

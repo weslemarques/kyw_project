@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Setter
 @UserRegisterValid
 public class UserRegisterDTO implements Serializable {
-    private String username;
+    private String nickname;
     @Email
     private String email;
     private String password;

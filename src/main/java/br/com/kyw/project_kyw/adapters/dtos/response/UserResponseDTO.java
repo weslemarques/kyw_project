@@ -14,7 +14,7 @@ import java.util.UUID;
 public class UserResponseDTO implements Serializable {
 
     private UUID id;
-    private String username;
+    private String nickname;
 
     private String email;
     private String phone;
