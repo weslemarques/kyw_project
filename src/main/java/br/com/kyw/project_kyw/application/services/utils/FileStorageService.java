@@ -1,4 +1,4 @@
-package br.com.kyw.project_kyw.application.services;
+package br.com.kyw.project_kyw.application.services.utils;
 
 import org.springframework.web.multipart.MultipartFile;
 

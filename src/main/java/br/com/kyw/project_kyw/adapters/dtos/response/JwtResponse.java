@@ -17,15 +17,15 @@ public class JwtResponse implements Serializable {
     private String type = "Bearer";
     private String refreshToken;
     private UUID id;
-    private String username;
+    private String nickname;
     private String email;
     private List<String> roles;
 
-    public JwtResponse(String token, String refreshToken, UUID id, String username, String email, List<String> roles) {
+    public JwtResponse(String token, String refreshToken, UUID id, String nickname, String email, List<String> roles) {
         this.token = token;
         this.refreshToken = refreshToken;
         this.id = id;
-        this.username = username;
+        this.nickname = nickname;
         this.email = email;
         this.roles = roles;
     }
@@ -34,7 +34,7 @@ public class JwtResponse implements Serializable {
         this.token = token;
         this.refreshToken = refreshToken;
         this.id = user.getId();
-        this.username = user.getNickname();
+        this.nickname = user.getNickname();
         this.email = user.getEmail();
         this.roles = roles;
     }

@@ -1,6 +1,6 @@
 package br.com.kyw.project_kyw.infra.sender;
 
-import br.com.kyw.project_kyw.application.services.FileStorageService;
+import br.com.kyw.project_kyw.application.services.utils.FileStorageService;
 import br.com.kyw.project_kyw.infra.config.FileStorageConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

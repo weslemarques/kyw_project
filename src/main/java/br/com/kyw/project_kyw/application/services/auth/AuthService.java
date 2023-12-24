@@ -7,11 +7,11 @@ import br.com.kyw.project_kyw.adapters.dtos.response.TokenRefreshResponse;
 import br.com.kyw.project_kyw.application.exceptions.AuthenticationFailed;
 import br.com.kyw.project_kyw.application.services.refreshtoken.RefreshTokenService;
 import br.com.kyw.project_kyw.core.entities.RefreshToken;
-import br.com.kyw.project_kyw.core.entities.Role;
 import br.com.kyw.project_kyw.core.entities.User;
 import br.com.kyw.project_kyw.infra.security.JwtUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,15 +28,13 @@ public class AuthService {
 
     private final RefreshTokenService refreshTokenService;
 
-    public AuthService(AuthenticationManager authenticationManager, JwtUtils jwtUtils, RefreshTokenService refreshTokenService) {
-        this.authenticationManager = authenticationManager;
+    public AuthService(AuthenticationConfiguration authenticationConfiguration, JwtUtils jwtUtils, RefreshTokenService refreshTokenService) throws Exception {
+        this.authenticationManager = authenticationConfiguration.getAuthenticationManager();
         this.jwtUtils = jwtUtils;
         this.refreshTokenService = refreshTokenService;
     }
 
-    //    @Override
     public JwtResponse authentication(UserLoginDTO login) {
-
         Authentication authenticate;
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                 new UsernamePasswordAuthenticationToken(login.getEmail(), login.getPassword());
@@ -47,15 +45,14 @@ public class AuthService {
         }catch (RuntimeException ex){
             throw new AuthenticationFailed("email or password invalid");
         }
-
         var user = (User) authenticate.getPrincipal();
+        System.out.println(authenticate.getName());
         List<String> roles = user.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList();
 
         String token = jwtUtils.generateJwtToken(user);
         String refreshToken = refreshTokenService.createRefreshToken(user.getId()).getToken();
 
         return new JwtResponse(user, token, refreshToken, roles);
-
     }
     public TokenRefreshResponse refreshToken(TokenRefreshRequest request) {
         String refreshToken = request.getRefreshToken();

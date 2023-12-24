@@ -2,20 +2,21 @@ spring:
   application:
     name: kyw_project
 
-file:
-  upload-dir: /Projects/UploadDir
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/KYW_PROJECT
     username: MASTER
     password: SECRETPASSWORD
-  neo4j:
-    security:
-      hostname-verification-enabled: off
 
   jpa:
     hibernate:
       ddl-auto: create
+
+  neo4j:
+    security:
+      hostname-verification-enabled: off
+
+
   servlet:
     multipart:
       enabled: true
@@ -32,3 +33,9 @@ security:
       accessTokenExpirationMs: 3600000
       refreshTokenExpirationMs: 86400000
 
+
+file:
+  upload-dir: /Projects/UploadDir
+
+cors:
+  originPatterns: "*"

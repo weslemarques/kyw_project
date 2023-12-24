@@ -6,8 +6,7 @@ import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
 import br.com.kyw.project_kyw.application.exceptions.UserNotFoundExeception;
 import br.com.kyw.project_kyw.application.repositories.ProjectRepository;
 import br.com.kyw.project_kyw.application.repositories.UserRepository;
-import br.com.kyw.project_kyw.application.services.FileStorageService;
-import br.com.kyw.project_kyw.infra.sender.FileStorageServiceImpl;
+import br.com.kyw.project_kyw.application.services.utils.FileStorageService;
 import br.com.kyw.project_kyw.application.services.utils.SendNotification;
 import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.entities.User;
@@ -52,10 +51,12 @@ public class CreateProjectCase {
     }
     public User getUserAutentication(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-        userRepository
-                .findByEmail(email)
-                .orElseThrow(() -> new UserNotFoundExeception("User Not Found"));
-        return new User("String username","email@gmail.com", "String password"," String phone");
+        if (authentication != null && authentication.isAuthenticated()) {
+            String email = authentication.getName();
+            return userRepository
+                    .findByEmail(email)
+                    .orElseThrow(() -> new UserNotFoundExeception("User Not Found"));
+        }
+        throw new UserNotFoundExeception("User not authentication");
     }
 }
