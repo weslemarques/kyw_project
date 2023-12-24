@@ -18,5 +18,4 @@ public class UserRegisterDTO implements Serializable {
     private String email;
     private String password;
     private String phone;
-
 }

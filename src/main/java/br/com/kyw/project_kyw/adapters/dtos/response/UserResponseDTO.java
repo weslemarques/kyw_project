@@ -20,7 +20,6 @@ public class UserResponseDTO implements Serializable {
     private String phone;
     @Setter(AccessLevel.NONE)
     private List<Notification> notification;
-
     public void addNotification(Notification notification) {
         this.notification.add(notification);
     }
