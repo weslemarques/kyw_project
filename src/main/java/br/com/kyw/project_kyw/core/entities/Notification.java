@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Getter
 @Entity
-@Table(name = "TB_NOTIFICATION")
+@Table(name = "tb_notification")
 @EqualsAndHashCode(of = "id")
 public class Notification {
 

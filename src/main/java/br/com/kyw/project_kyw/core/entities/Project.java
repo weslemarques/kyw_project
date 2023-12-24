@@ -4,23 +4,24 @@ import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 @Getter
 @Entity
-@Table(name = "TB_PROJECTS")
+@Table(name = "tb_projects")
 @EqualsAndHashCode(of = "id")
 public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private UUID id;
     private String name;
     private String description;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<User> admins = new ArrayList<>();
     private String imageUrl;
     private String linkGroup;
@@ -29,8 +30,7 @@ public class Project {
 
     @OneToMany(mappedBy = "project")
     private List<Task> tasks = new ArrayList<>();
-
-
+    private Instant createAt = Instant.now();
     public Project() {
     }
 
@@ -41,6 +41,7 @@ public class Project {
     public void setDescription(String description) {
         this.description = description;
     }
+
 
     public void addAdmin(User userAdmin) {
         this.admins.add(userAdmin);
@@ -60,5 +61,9 @@ public class Project {
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public boolean isAdmin(User user){
+       return admins.contains(user);
     }
 }
