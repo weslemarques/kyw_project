@@ -3,12 +3,13 @@ package br.com.kyw.project_kyw.adapters.controllers;
 import br.com.kyw.project_kyw.adapters.dtos.request.UserRegisterDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.UserResponseDTO;
 import br.com.kyw.project_kyw.application.services.user.UserRegisterService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("/users")
@@ -21,9 +22,14 @@ public class UserController {
         this.userRegisterService = userRegisterService;
     }
 
-    @PostMapping
-    public UserResponseDTO save( @RequestBody @Validated UserRegisterDTO userRegister){
-       return userRegisterService.registerUser(userRegister);
+    @PostMapping("/register")
+    public ResponseEntity<UserResponseDTO> save(@RequestBody @Validated UserRegisterDTO userRegister){
+        var userPersist = userRegisterService.registerUser(userRegister);
+       return ResponseEntity.created(ServletUriComponentsBuilder
+               .fromCurrentRequest()
+               .path("/{id}")
+               .buildAndExpand(userPersist)
+               .toUri()).body(userPersist);
     }
 
 }
