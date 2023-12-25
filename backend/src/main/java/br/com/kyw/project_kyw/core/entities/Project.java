@@ -31,6 +31,7 @@ public class Project {
     @OneToMany(mappedBy = "project")
     private List<Task> tasks = new ArrayList<>();
     private Instant createAt = Instant.now();
+    private boolean deleted;
     public Project() {
     }
 
@@ -65,5 +66,9 @@ public class Project {
 
     public boolean isAdmin(User user){
        return admins.contains(user);
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

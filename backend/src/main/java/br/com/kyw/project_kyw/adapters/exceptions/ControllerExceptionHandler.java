@@ -1,7 +1,7 @@
 package br.com.kyw.project_kyw.adapters.exceptions;
 
-import br.com.kyw.project_kyw.adapters.exceptions.StandardError;
 import br.com.kyw.project_kyw.adapters.exceptions.validator.ValidatorError;
+import br.com.kyw.project_kyw.application.exceptions.AuthenticationFailed;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
 import java.time.Instant;
 
 @ControllerAdvice
@@ -34,6 +33,22 @@ public class ControllerExceptionHandler {
             err.addError(f.getField(), f.getDefaultMessage());
         }
 
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(AuthenticationFailed.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ResponseEntity<StandardError> authenticationFailed(
+            AuthenticationFailed e,
+            HttpServletRequest request) {
+        HttpStatus status = HttpStatus.FORBIDDEN;
+        StandardError err = new StandardError();
+
+        err.setTimestamp(Instant.now());
+        err.setStatus(status.value());
+        err.setError("Authentication Failed");
+        err.setMessage(e.getMessage());
+        err.setPath(request.getRequestURI());
         return ResponseEntity.status(status).body(err);
     }
 }

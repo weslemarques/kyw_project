@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature (wesle) - filter for jwt">
+      <change afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2ZfqnTqtNRX82ZLxC59uYGnZwKV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/BackEnd/kyw_project/backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="br.com.kyw.project_kyw.adapters.dtos.request" />
+      <recent name="br.com.kyw.project_kyw.adapters.dtos.response" />
+      <recent name="br.com.kyw.project_kyw.application.exceptions" />
+      <recent name="br.com.kyw.project_kyw.core.enums" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\BackEnd\kyw_project\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.com.kyw.project_kyw.core.repositories" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ProjectKywApplication">
+    <configuration name="ProjectKywApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="project_kyw" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.com.kyw.project_kyw.ProjectKywApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="compose.yaml.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="db" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.compose.yaml.db: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="" />
+      <created>1702823650367</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702823650367</updated>
+      <workItem from="1702823651412" duration="3265000" />
+      <workItem from="1702849881515" duration="201000" />
+      <workItem from="1702945843362" duration="12000" />
+      <workItem from="1702992600296" duration="597000" />
+      <workItem from="1703195854719" duration="11818000" />
+      <workItem from="1703250046592" duration="3000" />
+      <workItem from="1703250059277" duration="1207000" />
+      <workItem from="1703253901959" duration="89000" />
+      <workItem from="1703257146973" duration="2900000" />
+      <workItem from="1703262116960" duration="3355000" />
+      <workItem from="1703281535023" duration="6905000" />
+      <workItem from="1703335162721" duration="18473000" />
+      <workItem from="1703371435415" duration="8065000" />
+      <workItem from="1703422390170" duration="6281000" />
+      <workItem from="1703480208957" duration="82000" />
+      <workItem from="1703480327773" duration="78000" />
+    </task>
+    <task id="LOCAL-00001" summary="creating repository of entities">
+      <option name="closed" value="true" />
+      <created>1703207372840</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703207372840</updated>
+    </task>
+    <task id="LOCAL-00002" summary="creating enums">
+      <option name="closed" value="true" />
+      <created>1703207396951</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703207396951</updated>
+    </task>
+    <task id="LOCAL-00003" summary="refactoring the entities">
+      <option name="closed" value="true" />
+      <created>1703207443590</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703207443590</updated>
+    </task>
+    <task id="LOCAL-00004" summary="configuring settings">
+      <option name="closed" value="true" />
+      <created>1703207469264</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703207469264</updated>
+    </task>
+    <task id="LOCAL-00005" summary="created UserNotFoundExeception.java">
+      <option name="closed" value="true" />
+      <created>1703207492833</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1703207492833</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactoring code">
+      <option name="closed" value="true" />
+      <created>1703207540864</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1703207540864</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feature - create project">
+      <option name="closed" value="true" />
+      <created>1703207571288</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1703207571288</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feature - validation user register">
+      <option name="closed" value="true" />
+      <created>1703289667977</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1703289667977</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feature - create project service">
+      <option name="closed" value="true" />
+      <created>1703289685593</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1703289685593</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix - preparing entities">
+      <option name="closed" value="true" />
+      <created>1703289729542</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1703289729542</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feature - handling validation exceptions">
+      <option name="closed" value="true" />
+      <created>1703289766428</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1703289766428</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feature - handling validation exceptions">
+      <option name="closed" value="true" />
+      <created>1703289955345</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1703289955345</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat(wesle): Add function storage img">
+      <option name="closed" value="true" />
+      <created>1703376969622</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1703376969622</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat(wesle): Add news DTOs">
+      <option name="closed" value="true" />
+      <created>1703377006765</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1703377006765</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feat(wesle): separating environments">
+      <option name="closed" value="true" />
+      <created>1703377038566</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1703377038566</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat(wesle): add function register user">
+      <option name="closed" value="true" />
+      <created>1703377084409</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1703377084409</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fix (wesle): RESOLVED IMAGE BUG">
+      <option name="closed" value="true" />
+      <created>1703377139180</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1703377139180</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat (wesle): add function auth">
+      <option name="closed" value="true" />
+      <created>1703377161604</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1703377161604</updated>
+    </task>
+    <task id="LOCAL-00019" summary="feat (wesle): add function auth">
+      <option name="closed" value="true" />
+      <created>1703377174883</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1703377174883</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fix (wesle) - authentication bug">
+      <option name="closed" value="true" />
+      <created>1703426960483</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1703426960483</updated>
+    </task>
+    <task id="LOCAL-00021" summary="feature (wesle) - filter for jwt">
+      <option name="closed" value="true" />
+      <created>1703426994850</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1703426994850</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="creating repository of entities" />
+    <MESSAGE value="creating enums" />
+    <MESSAGE value="refactoring the entities" />
+    <MESSAGE value="configuring settings" />
+    <MESSAGE value="created UserNotFoundExeception.java" />
+    <MESSAGE value="refactoring code" />
+    <MESSAGE value="feature - create project" />
+    <MESSAGE value="feature - validation user register" />
+    <MESSAGE value="feature - create project service" />
+    <MESSAGE value="fix - preparing entities" />
+    <MESSAGE value="feature - handling validation exceptions" />
+    <MESSAGE value="feat(wesle): Add function storage img" />
+    <MESSAGE value="feat(wesle): Add news DTOs" />
+    <MESSAGE value="feat(wesle): separating environments" />
+    <MESSAGE value="feat(wesle): add function register user" />
+    <MESSAGE value="fix (wesle): RESOLVED IMAGE BUG" />
+    <MESSAGE value="feat (wesle): add function auth" />
+    <MESSAGE value="fix (wesle) - authentication bug" />
+    <MESSAGE value="feature (wesle) - filter for jwt" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature (wesle) - filter for jwt" />
+  </component>
+</project>
