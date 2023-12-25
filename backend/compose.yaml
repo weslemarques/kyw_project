@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=KYW_PROJECT'
+      - 'POSTGRES_PASSWORD=SECRETPASSWORD'
+      - 'POSTGRES_USER=MASTER'
+    ports:
+      - '5432:5432'

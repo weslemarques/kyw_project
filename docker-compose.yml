@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: MASTER
+      POSTGRES_PASSWORD: Teste3345#
+      POSTGRES_DB: KYW_PROJECT
+    networks:
+      - kyw-network
+
+  app:
+    depends_on:
+      - db
+
+    image: reinan07/kyw
+    restart: always
+    build: ./backend
+    working_dir: /app
+    environment:
+      APP_PROFILE: omg
+      DB_URL: jdbc:postgresql://db:5432/KYW_PROJECT
+      DB_USERNAME: MASTER
+      DB_PASSWORD: Teste3345#
+      ORIGINS: "*"
+      SECRET_KEY: rm'!@N=Ke!~p8VTA2ZRK~nMDQX5Uvm!m'D&]{@Vr?G;2?XhbC:Qa#9#eMLN\}x3?JR3.2zr~v)gYF^8\:8>:XfB:Ww75N/emt9Yj[bQMNCWwW\J?N,nvH.<2\.r~w]*e~vgak)
+    ports:
+      - "8080:8080"
+
+    networks:
+      - kyw-network
+
+networks:
+  kyw-network:
+    driver: bridge
