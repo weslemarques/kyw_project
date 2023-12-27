@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature (wesle) - filter for jwt">
-      <change afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/compose.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +48,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Projects/BackEnd/kyw_project/backend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -138,6 +139,9 @@
       <workItem from="1703422390170" duration="6281000" />
       <workItem from="1703480208957" duration="82000" />
       <workItem from="1703480327773" duration="78000" />
+      <workItem from="1703546007744" duration="10000" />
+      <workItem from="1703546024336" duration="3000" />
+      <workItem from="1703643952882" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository of entities">
       <option name="closed" value="true" />
