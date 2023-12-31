@@ -33,6 +33,8 @@ public class Task {
     @ManyToOne
     private User attributedTo;
 
+    private boolean pin;
+
 
     public Task(Status status, Criticality criticality, String description, String attachments, Instant createAt, Date completedAt, Project project, User attributed) {
         this.status = status;
@@ -83,5 +85,9 @@ public class Task {
 
     public void setAttributed(User attributed) {
         this.attributedTo = attributed;
+    }
+
+    public void setPin(boolean pin) {
+        this.pin = pin;
     }
 }
