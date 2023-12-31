@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 
 @Getter
@@ -23,4 +24,5 @@ public class ProjectCreateDTO implements Serializable {
     private String description;
     private MultipartFile image;
     private List<String> members;
+    private UUID userAdmin;
 }
