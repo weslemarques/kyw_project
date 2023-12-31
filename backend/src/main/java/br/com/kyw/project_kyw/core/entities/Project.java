@@ -21,12 +21,13 @@ public class Project {
     private UUID id;
     private String name;
     private String description;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany( mappedBy = "projects",cascade = CascadeType.ALL)
     private List<User> admins = new ArrayList<>();
     private String imageUrl;
     private String linkGroup;
-    @ManyToMany
+    @ManyToMany(mappedBy = "projects",cascade = CascadeType.ALL)
     private List<User> members = new ArrayList<>();
+    private boolean pin;
 
     @OneToMany(mappedBy = "project")
     private List<Task> tasks = new ArrayList<>();
@@ -57,7 +58,7 @@ public class Project {
     }
 
     public void addMembers(User member) {
-        this.members = members;
+        this.members.add(member);
     }
 
     public void setTasks(List<Task> tasks) {
@@ -70,5 +71,9 @@ public class Project {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public void setPin(boolean pin) {
+        this.pin = pin;
     }
 }
