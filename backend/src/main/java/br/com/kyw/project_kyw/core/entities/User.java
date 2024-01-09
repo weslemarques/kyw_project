@@ -31,11 +31,7 @@ public class User implements UserDetails {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
-
-    @ManyToMany
-    @JoinTable( name = "tb_projects_users",joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name ="project_id"))
-    private List<Project> projects = new ArrayList<>();
+    private final Set<Role> roles = new HashSet<>();
 
     @OneToMany(mappedBy = "attributedTo")
     private List<Task> assignedTasks = new ArrayList<>();
@@ -76,11 +72,6 @@ public class User implements UserDetails {
     public void addNotification(Notification notification) {
         if(notification != null) this.notification.add(notification);
     }
-
-    public void addProject(Project project) {
-        if(project != null)this.projects.add(project);
-    }
-
     public void addTask(Task assignedTasks) {
         if(assignedTasks != null) this.assignedTasks.add(assignedTasks);
     }
