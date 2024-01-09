@@ -79,6 +79,9 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <sourceDirectory>backend/src/main/java</sourceDirectory>
+        <outputDirectory>backend/target/classes</outputDirectory>
+
     </build>
 
 </project>
