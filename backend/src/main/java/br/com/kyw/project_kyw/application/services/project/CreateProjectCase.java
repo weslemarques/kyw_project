@@ -62,4 +62,10 @@ public class CreateProjectCase {
         return mapper.map(projectEntity, ProjectResponseDTO.class);
     }
 
+
+
+    private User getUserLogged(){
+        return null;
+    }
+
 }

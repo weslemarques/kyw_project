@@ -30,7 +30,8 @@ public class Project {
     private List<Task> tasks = new ArrayList<>();
     private Instant createAt = Instant.now();
     private boolean deleted;
-
+    @OneToOne
+    private ProjectRole projectRole;
     public Project() {
     }
 
