@@ -4,26 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature (wesle) - filter for jwt">
+    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature (wesle) creating project creation logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/dtos/request/UserRegisterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/dtos/request/UserRegisterDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/repositories/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/repositories/ProjectRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/project/CreateProjectCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/project/CreateProjectCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/project/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/project/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/task/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/task/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/user/UserRegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/user/UserRegisterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/user/validation/UserRegisterValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/user/validation/UserRegisterValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/core/entities/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/core/entities/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/core/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/core/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/infra/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/infra/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/infra/security/FilterTokenJwt.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/infra/security/FilterTokenJwt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/TaskController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +159,8 @@
       <workItem from="1703979565733" duration="16000" />
       <workItem from="1703979685827" duration="1065000" />
       <workItem from="1704062524210" duration="10000" />
-      <workItem from="1704840290592" duration="1423000" />
+      <workItem from="1704840290592" duration="1740000" />
+      <workItem from="1705022575686" duration="204000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository of entities">
       <option name="closed" value="true" />
@@ -346,7 +330,47 @@
       <option name="project" value="LOCAL" />
       <updated>1703426994850</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="fix (wesle) - auth users">
+      <option name="closed" value="true" />
+      <created>1704841898594</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1704841898594</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fix (wesle) - auth users">
+      <option name="closed" value="true" />
+      <created>1704841911786</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1704841911786</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fix (wesle) - refactoring configs">
+      <option name="closed" value="true" />
+      <created>1704841937211</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1704841937211</updated>
+    </task>
+    <task id="LOCAL-00025" summary="feature (wesle) - create logic project">
+      <option name="closed" value="true" />
+      <created>1704841984576</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1704841984576</updated>
+    </task>
+    <task id="LOCAL-00026" summary="feature (wesle) creating project creation logic">
+      <option name="closed" value="true" />
+      <created>1704842023809</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1704842023809</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,6 +396,10 @@
     <MESSAGE value="feat (wesle): add function auth" />
     <MESSAGE value="fix (wesle) - authentication bug" />
     <MESSAGE value="feature (wesle) - filter for jwt" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature (wesle) - filter for jwt" />
+    <MESSAGE value="fix (wesle) - auth users" />
+    <MESSAGE value="fix (wesle) - refactoring configs" />
+    <MESSAGE value="feature (wesle) - create logic project" />
+    <MESSAGE value="feature (wesle) creating project creation logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature (wesle) creating project creation logic" />
   </component>
 </project>
