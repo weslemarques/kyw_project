@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature (wesle) - filter for jwt">
+    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature (wesle) creating project creation logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/dtos/request/ProjectCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/dtos/request/ProjectCreateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/repositories/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/repositories/ProjectRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/project/CreateProjectCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/project/CreateProjectCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/project/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/project/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/core/entities/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/core/entities/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/core/entities/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/core/entities/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/TaskController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,31 +39,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "dev",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/Projects/BackEnd/kyw_project",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.scopes",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/BackEnd/kyw_project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.scopes&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="br.com.kyw.project_kyw.adapters.dtos.request" />
@@ -81,6 +73,9 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\BackEnd\kyw_project\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\BackEnd\kyw_project" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="br.com.kyw.project_kyw.core.repositories" />
@@ -163,6 +158,9 @@
       <workItem from="1703947626643" duration="2000" />
       <workItem from="1703979565733" duration="16000" />
       <workItem from="1703979685827" duration="1065000" />
+      <workItem from="1704062524210" duration="10000" />
+      <workItem from="1704840290592" duration="1740000" />
+      <workItem from="1705022575686" duration="204000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository of entities">
       <option name="closed" value="true" />
@@ -332,7 +330,47 @@
       <option name="project" value="LOCAL" />
       <updated>1703426994850</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="fix (wesle) - auth users">
+      <option name="closed" value="true" />
+      <created>1704841898594</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1704841898594</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fix (wesle) - auth users">
+      <option name="closed" value="true" />
+      <created>1704841911786</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1704841911786</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fix (wesle) - refactoring configs">
+      <option name="closed" value="true" />
+      <created>1704841937211</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1704841937211</updated>
+    </task>
+    <task id="LOCAL-00025" summary="feature (wesle) - create logic project">
+      <option name="closed" value="true" />
+      <created>1704841984576</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1704841984576</updated>
+    </task>
+    <task id="LOCAL-00026" summary="feature (wesle) creating project creation logic">
+      <option name="closed" value="true" />
+      <created>1704842023809</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1704842023809</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,6 +396,10 @@
     <MESSAGE value="feat (wesle): add function auth" />
     <MESSAGE value="fix (wesle) - authentication bug" />
     <MESSAGE value="feature (wesle) - filter for jwt" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature (wesle) - filter for jwt" />
+    <MESSAGE value="fix (wesle) - auth users" />
+    <MESSAGE value="fix (wesle) - refactoring configs" />
+    <MESSAGE value="feature (wesle) - create logic project" />
+    <MESSAGE value="feature (wesle) creating project creation logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature (wesle) creating project creation logic" />
   </component>
 </project>

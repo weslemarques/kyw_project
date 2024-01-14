@@ -25,7 +25,7 @@ public class UserRegisterValidator implements ConstraintValidator<UserRegisterVa
 
         boolean emailExists = repository.existsByEmail(userRegisterDTO.getEmail());
         boolean phoneExists = repository.existsByPhone(userRegisterDTO.getPhone());
-        boolean usernameExists = repository.existsByNickname(userRegisterDTO.getNickname());
+        boolean nicknameExists = repository.existsByNickname(userRegisterDTO.getNickname());
 
         if (emailExists) {
             list.add(new FieldMessage("email", "Email already exists"));
@@ -33,8 +33,8 @@ public class UserRegisterValidator implements ConstraintValidator<UserRegisterVa
         if (phoneExists) {
             list.add(new FieldMessage("phone", "Phone already exists"));
         }
-        if (usernameExists) {
-            list.add(new FieldMessage("username", "Username already exists"));
+        if (nicknameExists) {
+            list.add(new FieldMessage("nickname", "Username already exists"));
         }
 
         for (FieldMessage e : list) {

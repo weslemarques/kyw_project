@@ -21,18 +21,17 @@ public class Project {
     private UUID id;
     private String name;
     private String description;
-    @ManyToMany( mappedBy = "projects",cascade = CascadeType.ALL)
-    private List<User> admins = new ArrayList<>();
+    @ManyToOne
+    private User creator;
     private String imageUrl;
     private String linkGroup;
-    @ManyToMany(mappedBy = "projects",cascade = CascadeType.ALL)
-    private List<User> members = new ArrayList<>();
     private boolean pin;
-
     @OneToMany(mappedBy = "project")
     private List<Task> tasks = new ArrayList<>();
     private Instant createAt = Instant.now();
     private boolean deleted;
+    @OneToOne
+    private ProjectRole projectRole;
     public Project() {
     }
 
@@ -44,11 +43,6 @@ public class Project {
         this.description = description;
     }
 
-
-    public void addAdmin(User userAdmin) {
-        this.admins.add(userAdmin);
-    }
-
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -57,17 +51,10 @@ public class Project {
         this.linkGroup = linkGroup;
     }
 
-    public void addMembers(User member) {
-        this.members.add(member);
-    }
-
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
 
-    public boolean isAdmin(User user){
-       return admins.contains(user);
-    }
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
@@ -76,4 +63,9 @@ public class Project {
     public void setPin(boolean pin) {
         this.pin = pin;
     }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }
+
 }

@@ -13,11 +13,11 @@ import java.util.UUID;
 
 public interface ProjectRepository extends JpaRepository<Project, UUID> {
 
-    @Query("SELECT DISTINCT p FROM Project p " +
-            "LEFT JOIN p.admins admin " +
-                       "LEFT JOIN p.members member" +
-                      " WHERE admin.id = :userId OR member.id = :userId")
-    List<Project> findAllByUserId(UUID userId);
+//    @Query("SELECT DISTINCT p FROM Project p " +
+//            "LEFT JOIN p.admins admin " +
+//                       "LEFT JOIN p.members member" +
+//                      " WHERE admin.id = :userId OR member.id = :userId")
+//    List<Project> findAllByUserId(UUID userId);
 
 //    @Transactional
 //    @Modifying

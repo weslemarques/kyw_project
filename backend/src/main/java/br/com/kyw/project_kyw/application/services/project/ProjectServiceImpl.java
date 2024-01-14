@@ -5,10 +5,7 @@ import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
 import br.com.kyw.project_kyw.application.exceptions.UserNotFoundExeception;
 import br.com.kyw.project_kyw.application.repositories.ProjectRepository;
 import br.com.kyw.project_kyw.application.repositories.UserRepository;
-import br.com.kyw.project_kyw.core.entities.Project;
-import br.com.kyw.project_kyw.core.entities.User;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,19 +38,5 @@ public class ProjectServiceImpl {
        return mapper.map(user, ProjectResponseDTO.class);
     }
 
-    public List<ProjectResponseDTO> findAllProjectByUser(UUID id) {
-        var listProject = projectRepository.findAllByUserId(id);
-        return listProject.stream().map(p -> mapper.map(p, ProjectResponseDTO.class)).toList();
-    }
-    public void exitProject(UUID projectId, UUID userId){
-       User user = userRepository.findById(userId)
-               .orElseThrow(() -> new UserNotFoundExeception("User not found"));
-       Project project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new UserNotFoundExeception("Project not found"));
-        user.getProjects().remove(project);
-        project.getMembers().remove(user);
-        userRepository.save(user);
-        projectRepository.save(project);
-    }
 
 }

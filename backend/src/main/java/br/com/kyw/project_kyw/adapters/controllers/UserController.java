@@ -1,8 +1,11 @@
 package br.com.kyw.project_kyw.adapters.controllers;
 
+import br.com.kyw.project_kyw.adapters.dtos.request.UserExitProjectDTO;
 import br.com.kyw.project_kyw.adapters.dtos.request.UserRegisterDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.UserResponseDTO;
 import br.com.kyw.project_kyw.application.services.user.UserRegisterService;
+import br.com.kyw.project_kyw.application.services.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +20,11 @@ public class UserController {
 
 
     private final UserRegisterService userRegisterService;
+    private final UserService userService;
 
-    public UserController(UserRegisterService userRegisterService) {
+    public UserController(UserRegisterService userRegisterService, UserService userService) {
         this.userRegisterService = userRegisterService;
+        this.userService = userService;
     }
 
     @PostMapping("/register")
@@ -31,5 +36,13 @@ public class UserController {
                .buildAndExpand(userPersist)
                .toUri()).body(userPersist);
     }
+
+    @PostMapping("/exit")
+
+    public ResponseEntity<Void> exitProject(@RequestBody UserExitProjectDTO exitProjectDTO){
+        userService.exitProject(exitProjectDTO.projectId(), exitProjectDTO.userId());
+        return ResponseEntity.ok().build();
+    }
+
 
 }

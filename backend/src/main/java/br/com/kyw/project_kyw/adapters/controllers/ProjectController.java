@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/project")
+@RequestMapping("/projects")
 public class ProjectController {
 
     private final CreateProjectCase createProjectCase;
@@ -28,7 +28,7 @@ public class ProjectController {
         this.projectService = projectService;
     }
 
-    @PostMapping("/{userId}")
+    @PostMapping
     public ResponseEntity<ProjectResponseDTO> save(@ModelAttribute @Validated ProjectCreateDTO createProject){
         var projectPersit = createProjectCase.createProject(createProject);
         URI location = ServletUriComponentsBuilder
@@ -45,20 +45,4 @@ public class ProjectController {
         var userUpdate = projectService.update(projectUpdate, id);
         return ResponseEntity.ok(userUpdate);
     }
-
-
-    @GetMapping("/{id}")
-    public ResponseEntity<List<ProjectResponseDTO>> findAllProjectByUser(@PathVariable UUID id){
-        List<ProjectResponseDTO> listOfProject =  projectService.findAllProjectByUser(id);
-
-        return ResponseEntity.ok(listOfProject);
-    }
-
-    @PostMapping("/exit")
-    public void exitProject(@RequestBody Map<String, UUID> request){
-        projectService.exitProject(request.get("projectId"), request.get("userId"));
-    }
-
-
-
 }
