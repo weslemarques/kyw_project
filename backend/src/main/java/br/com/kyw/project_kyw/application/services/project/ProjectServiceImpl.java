@@ -38,9 +38,5 @@ public class ProjectServiceImpl {
        return mapper.map(user, ProjectResponseDTO.class);
     }
 
-//    public List<ProjectResponseDTO> findAllProjectByUser(UUID id) {
-//        var listProject = projectRepository.findAllByUserId(id);
-//        return listProject.stream().map(p -> mapper.map(p, ProjectResponseDTO.class)).toList();
-//    }
 
 }
