@@ -5,9 +5,7 @@ import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;
 import br.com.kyw.project_kyw.application.services.task.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -23,6 +21,7 @@ public class TaskController {
         this.taskService = taskService;
     }
 
+    @PostMapping
     public ResponseEntity<TaskResponse> create(@RequestBody TaskRequest taskRequest, @ RequestBody UUID id){
         var taskresponse = taskService.create(taskRequest, id);
         URI location = ServletUriComponentsBuilder
@@ -32,6 +31,11 @@ public class TaskController {
                 .toUri();
         return ResponseEntity.created(location).body(taskresponse);
     }
+    @GetMapping("/{taskId}")
+    public ResponseEntity<TaskResponse> getTaskById(@PathVariable UUID taskId){
+        return null;
+    }
+
 
 
 }
