@@ -7,6 +7,7 @@
     <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature (wesle) creating project creation logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/task/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/task/TaskService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +79,7 @@
       <recent name="D:\Projects\BackEnd\kyw_project" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.com.kyw.project_kyw.application.exceptions" />
       <recent name="br.com.kyw.project_kyw.core.repositories" />
     </key>
   </component>
@@ -160,7 +162,12 @@
       <workItem from="1703979685827" duration="1065000" />
       <workItem from="1704062524210" duration="10000" />
       <workItem from="1704840290592" duration="1740000" />
-      <workItem from="1705022575686" duration="204000" />
+      <workItem from="1705022575686" duration="227000" />
+      <workItem from="1705101103933" duration="722000" />
+      <workItem from="1705201372512" duration="81000" />
+      <workItem from="1705355695776" duration="660000" />
+      <workItem from="1705758160870" duration="238000" />
+      <workItem from="1709251734139" duration="638000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository of entities">
       <option name="closed" value="true" />
@@ -370,7 +377,31 @@
       <option name="project" value="LOCAL" />
       <updated>1704842023809</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="feature (wesle) creating project creation logic">
+      <option name="closed" value="true" />
+      <created>1705022793902</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1705022793902</updated>
+    </task>
+    <task id="LOCAL-00028" summary="feature (wesle) creating project creation logic">
+      <option name="closed" value="true" />
+      <created>1705101820126</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1705101820126</updated>
+    </task>
+    <task id="LOCAL-00029" summary="fix (wesle) clean code">
+      <option name="closed" value="true" />
+      <created>1705201439507</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1705201439507</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,6 +431,7 @@
     <MESSAGE value="fix (wesle) - refactoring configs" />
     <MESSAGE value="feature (wesle) - create logic project" />
     <MESSAGE value="feature (wesle) creating project creation logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature (wesle) creating project creation logic" />
+    <MESSAGE value="fix (wesle) clean code" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix (wesle) clean code" />
   </component>
 </project>
