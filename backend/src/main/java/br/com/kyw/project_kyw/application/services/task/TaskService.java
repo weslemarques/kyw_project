@@ -8,8 +8,11 @@ import br.com.kyw.project_kyw.application.repositories.TaskRepository;
 import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.entities.Task;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -37,6 +40,11 @@ public class TaskService {
         var userOptional = taskRepository.findById(taskId)
                 .orElseThrow(() -> new ResourceNotFound("Task not Found"));
         return mapper.map(userOptional, TaskResponse.class);
+    }
+
+    public List<TaskResponse> getAll(Pageable pageable){
+        var listTask = taskRepository.findAll(pageable);
+        return listTask.map(task -> mapper.map(task, TaskResponse.class)).toList();
     }
 
 
