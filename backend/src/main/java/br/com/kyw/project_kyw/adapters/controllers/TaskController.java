@@ -3,12 +3,13 @@ package br.com.kyw.project_kyw.adapters.controllers;
 import br.com.kyw.project_kyw.adapters.dtos.request.TaskRequest;
 import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;
 import br.com.kyw.project_kyw.application.services.task.TaskService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -35,6 +36,11 @@ public class TaskController {
     public ResponseEntity<TaskResponse> getTaskById(@PathVariable UUID taskId){
         return null;
     }
+    @GetMapping
+    public ResponseEntity<List<TaskResponse>> getAll(Pageable pageable){
+        return ResponseEntity.ok(taskService.getAll(pageable));
+    }
+
 
 
 
