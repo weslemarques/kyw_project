@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature (wesle) creating project creation logic">
+    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature - add get task by id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/TaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/task/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/task/TaskService.java" afterDir="false" />
@@ -167,7 +167,9 @@
       <workItem from="1705201372512" duration="81000" />
       <workItem from="1705355695776" duration="660000" />
       <workItem from="1705758160870" duration="238000" />
-      <workItem from="1709251734139" duration="638000" />
+      <workItem from="1709251734139" duration="975000" />
+      <workItem from="1709252955072" duration="124000" />
+      <workItem from="1709344386781" duration="315000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository of entities">
       <option name="closed" value="true" />
@@ -401,14 +403,29 @@
       <option name="project" value="LOCAL" />
       <updated>1705201439507</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="refactore - code refactore">
+      <option name="closed" value="true" />
+      <created>1709252661827</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1709252661827</updated>
+    </task>
+    <task id="LOCAL-00031" summary="feature - add get task by id">
+      <option name="closed" value="true" />
+      <created>1709252707290</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1709252707290</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="creating repository of entities" />
     <MESSAGE value="creating enums" />
     <MESSAGE value="refactoring the entities" />
     <MESSAGE value="configuring settings" />
@@ -432,6 +449,8 @@
     <MESSAGE value="feature (wesle) - create logic project" />
     <MESSAGE value="feature (wesle) creating project creation logic" />
     <MESSAGE value="fix (wesle) clean code" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix (wesle) clean code" />
+    <MESSAGE value="refactore - code refactore" />
+    <MESSAGE value="feature - add get task by id" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature - add get task by id" />
   </component>
 </project>
