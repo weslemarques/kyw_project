@@ -2,6 +2,7 @@ package br.com.kyw.project_kyw.application.services.project;
 
 import br.com.kyw.project_kyw.adapters.dtos.request.ProjectUpadateDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
+import br.com.kyw.project_kyw.application.exceptions.ResourceNotFound;
 import br.com.kyw.project_kyw.application.exceptions.UserNotFoundExeception;
 import br.com.kyw.project_kyw.application.repositories.ProjectRepository;
 import br.com.kyw.project_kyw.application.repositories.UserRepository;
@@ -39,4 +40,9 @@ public class ProjectServiceImpl {
     }
 
 
+    public ProjectResponseDTO getById(UUID projectId) {
+        var project =  projectRepository.findById(projectId)
+                .orElseThrow(()-> new ResourceNotFound("Project Not Found"));
+        return mapper.map(project, ProjectResponseDTO.class);
+    }
 }

@@ -39,6 +39,12 @@ public class ProjectController {
         return ResponseEntity.created(location).body(projectPersit);
     }
 
+    @GetMapping("/{projectId}")
+    public ResponseEntity<ProjectResponseDTO> getProjectById(@PathVariable UUID projectId){
+        return ResponseEntity.ok(projectService.getById(projectId));
+    }
+
+
 
     @PutMapping("/{id}")
     public ResponseEntity<ProjectResponseDTO> update(@RequestBody ProjectUpadateDTO projectUpdate, @PathVariable UUID id){
