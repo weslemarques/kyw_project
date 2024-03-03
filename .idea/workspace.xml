@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature - add get task by id">
+    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature - add get task pageable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/task/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/task/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/project/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/project/ProjectServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +169,8 @@
       <workItem from="1705758160870" duration="238000" />
       <workItem from="1709251734139" duration="975000" />
       <workItem from="1709252955072" duration="124000" />
-      <workItem from="1709344386781" duration="315000" />
+      <workItem from="1709344386781" duration="346000" />
+      <workItem from="1709431228850" duration="294000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository of entities">
       <option name="closed" value="true" />
@@ -419,14 +420,29 @@
       <option name="project" value="LOCAL" />
       <updated>1709252707290</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="feature - add get task by id">
+      <option name="closed" value="true" />
+      <created>1709344707545</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1709344707545</updated>
+    </task>
+    <task id="LOCAL-00033" summary="feature - add get task pageable">
+      <option name="closed" value="true" />
+      <created>1709344719741</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1709344719741</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="creating enums" />
     <MESSAGE value="refactoring the entities" />
     <MESSAGE value="configuring settings" />
     <MESSAGE value="created UserNotFoundExeception.java" />
@@ -451,6 +467,7 @@
     <MESSAGE value="fix (wesle) clean code" />
     <MESSAGE value="refactore - code refactore" />
     <MESSAGE value="feature - add get task by id" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature - add get task by id" />
+    <MESSAGE value="feature - add get task pageable" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature - add get task pageable" />
   </component>
 </project>
