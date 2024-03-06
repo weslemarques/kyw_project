@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature - add get task pageable">
+    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="feature - add get project by id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/ProjectController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/project/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/project/ProjectServiceImpl.java" afterDir="false" />
@@ -170,7 +170,10 @@
       <workItem from="1709251734139" duration="975000" />
       <workItem from="1709252955072" duration="124000" />
       <workItem from="1709344386781" duration="346000" />
-      <workItem from="1709431228850" duration="294000" />
+      <workItem from="1709431228850" duration="332000" />
+      <workItem from="1709492161140" duration="27000" />
+      <workItem from="1709589012557" duration="444000" />
+      <workItem from="1709684652622" duration="833000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository of entities">
       <option name="closed" value="true" />
@@ -436,14 +439,29 @@
       <option name="project" value="LOCAL" />
       <updated>1709344719741</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="feature - add get project by id">
+      <option name="closed" value="true" />
+      <created>1709431542465</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1709431542465</updated>
+    </task>
+    <task id="LOCAL-00035" summary="feature - add get project by id">
+      <option name="closed" value="true" />
+      <created>1709431552432</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1709431552432</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactoring the entities" />
     <MESSAGE value="configuring settings" />
     <MESSAGE value="created UserNotFoundExeception.java" />
     <MESSAGE value="refactoring code" />
@@ -468,6 +486,7 @@
     <MESSAGE value="refactore - code refactore" />
     <MESSAGE value="feature - add get task by id" />
     <MESSAGE value="feature - add get task pageable" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature - add get task pageable" />
+    <MESSAGE value="feature - add get project by id" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature - add get project by id" />
   </component>
 </project>
