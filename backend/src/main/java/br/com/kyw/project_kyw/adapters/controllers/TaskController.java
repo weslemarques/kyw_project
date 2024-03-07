@@ -34,14 +34,17 @@ public class TaskController {
     }
     @GetMapping("/{taskId}")
     public ResponseEntity<TaskResponse> getTaskById(@PathVariable UUID taskId){
-        return null;
+        return ResponseEntity.ok(taskService.getById(taskId));
     }
     @GetMapping
     public ResponseEntity<List<TaskResponse>> getAll(Pageable pageable){
         return ResponseEntity.ok(taskService.getAll(pageable));
     }
 
-
-
+    @PutMapping
+    public ResponseEntity<TaskResponse> update(@RequestBody TaskRequest taskRequest, @RequestBody UUID id){
+        var taskresponse = taskService.update(taskRequest, id);
+        return ResponseEntity.ok(taskresponse);
+    }
 
 }

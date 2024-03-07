@@ -48,5 +48,9 @@ public class TaskService {
     }
 
 
-
+    public TaskResponse update(TaskRequest taskRequest, UUID id) {
+        var task = taskRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFound("Task Not Found"));
+        return mapper.map(task, TaskResponse.class);
+    }
 }
