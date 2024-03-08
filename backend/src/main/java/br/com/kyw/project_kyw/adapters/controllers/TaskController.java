@@ -41,9 +41,9 @@ public class TaskController {
         return ResponseEntity.ok(taskService.getAll(pageable));
     }
 
-    @PutMapping
-    public ResponseEntity<TaskResponse> update(@RequestBody TaskRequest taskRequest, @RequestBody UUID id){
-        var taskresponse = taskService.update(taskRequest, id);
+    @PutMapping("/{taskId}")
+    public ResponseEntity<TaskResponse> update(@RequestBody TaskRequest taskRequest, @PathVariable UUID taskId){
+        var taskresponse = taskService.update(taskRequest, taskId);
         return ResponseEntity.ok(taskresponse);
     }
 
