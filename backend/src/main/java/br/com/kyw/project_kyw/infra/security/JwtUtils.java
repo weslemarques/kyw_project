@@ -12,11 +12,12 @@ import java.util.Date;
 @Component
 public class JwtUtils {
 
-    @Value("${security.jwt.secret}")
-    private String jwtSecret;
+//    @Value("${security.jwt.secret}")
+    private String jwtSecret = "rrwrwrw";
 
-    @Value("${security.jwt.accessTokenExpirationMs}")
-    private int tokenExpiration;
+//    @Value("${security.jwt.accessTokenExpirationMs}")
+    private int tokenExpiration = 1000;
+
 
     public String generateJwtToken(User mainUser) {
         return JWT.create().withIssuer("br.com.kyw")
