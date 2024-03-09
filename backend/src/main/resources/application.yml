@@ -1,6 +1,8 @@
 spring:
   application:
     name: kyw_project
+
+
   profiles:
     active: ${APP_PROFILE:dev}
 
