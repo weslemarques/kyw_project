@@ -22,7 +22,7 @@ services:
     build: ./backend
     working_dir: /app
     environment:
-      APP_PROFILE: omg
+      APP_PROFILE: dev
       DB_URL: jdbc:postgresql://db:5432/KYW_PROJECT
       DB_USERNAME: MASTER
       DB_PASSWORD: Teste3345#
