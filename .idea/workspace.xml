@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="refactoring - Task - getById - update">
-      <change afterPath="$PROJECT_DIR$/.idea/copyright/dev.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/ProjectUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/application/services/ProjectUserService.java" afterDir="false" />
+    <list default="true" id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="bug - config profile">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/ProjectKywApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/ProjectKywApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/adapters/controllers/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/infra/security/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/kyw/project_kyw/infra/security/JwtUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application-omg.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +31,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\Maven\apache-maven-3.9.5\bin" />
+        <option name="useMavenConfig" value="false" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="enabledProfiles">
+      <list>
+        <option value="native" />
+      </list>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -50,6 +63,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Docker.backend/compose.yaml.postgres: Compose Deployment.executor": "Run",
+    "Maven.project_kyw [install].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -57,9 +72,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ProjectKywApplication.executor": "Profiler#1",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "dev",
     "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Projects/BackEnd/kyw_project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -69,7 +86,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "profiler.calltree.filter",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -92,7 +109,15 @@
       <recent name="br.com.kyw.project_kyw.core.repositories" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.ProjectKywApplication">
+    <configuration name="All in project_kyw" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project_kyw" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProjectKywApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="project_kyw" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="br.com.kyw.project_kyw.ProjectKywApplication" />
@@ -112,20 +137,70 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="backend/compose.yaml.postgres: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="postgres" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="backend/compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.app: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="app" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="db" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.backend/compose.yaml.postgres: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.app: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
+      <item itemvalue="JUnit.All in project_kyw" />
+      <item itemvalue="Spring Boot.ProjectKywApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.ProjectKywApplication" />
+        <item itemvalue="Docker.backend/compose.yaml.postgres: Compose Deployment" />
+        <item itemvalue="JUnit.All in project_kyw" />
+        <item itemvalue="Docker.docker-compose.yml.app: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SpringProfilesService">
-    <option name="activeProfiles">
-      <map>
-        <entry key="project_kyw" value="dev" />
-      </map>
-    </option>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+      </set>
+    </attachedChunks>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5037ec74-8a2c-4b81-a11e-3fc388cbaac6" name="Changes" comment="" />
@@ -177,7 +252,13 @@
       <workItem from="1709940504470" duration="101000" />
       <workItem from="1709940615025" duration="1765000" />
       <workItem from="1709942398065" duration="423000" />
-      <workItem from="1709942837229" duration="243000" />
+      <workItem from="1709942837229" duration="945000" />
+      <workItem from="1710004966493" duration="912000" />
+      <workItem from="1710005968847" duration="1392000" />
+      <workItem from="1710007391621" duration="261000" />
+      <workItem from="1710007664862" duration="616000" />
+      <workItem from="1710008608602" duration="2342000" />
+      <workItem from="1710011019308" duration="1612000" />
     </task>
     <task id="LOCAL-00001" summary="creating repository of entities">
       <option name="closed" value="true" />
@@ -499,14 +580,37 @@
       <option name="project" value="LOCAL" />
       <updated>1709863880491</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="bug - config profile">
+      <option name="closed" value="true" />
+      <created>1709946813578</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1709946813578</updated>
+    </task>
+    <task id="LOCAL-00042" summary="bug - config profile">
+      <option name="closed" value="true" />
+      <created>1709946819755</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1709946819755</updated>
+    </task>
+    <task id="LOCAL-00043" summary="bug - config profile">
+      <option name="closed" value="true" />
+      <created>1709946823430</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1709946823430</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactoring code" />
     <MESSAGE value="feature - create project" />
     <MESSAGE value="feature - validation user register" />
     <MESSAGE value="feature - create project service" />
@@ -531,7 +635,8 @@
     <MESSAGE value="feature - add get project by id" />
     <MESSAGE value="feature - add delete project" />
     <MESSAGE value="refactoring - Task - getById - update" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring - Task - getById - update" />
+    <MESSAGE value="bug - config profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug - config profile" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
