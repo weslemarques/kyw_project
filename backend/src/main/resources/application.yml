@@ -1,13 +1,8 @@
-spring:
-  application:
-    name: kyw_project
-
-
-  profiles:
-    active: ${APP_PROFILE:dev}
-
 server:
   port: 8080
 
-
-
+spring:
+  profiles:
+    active: dev
+  jpa:
+    open-in-view: false
