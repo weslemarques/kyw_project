@@ -5,10 +5,11 @@ import br.com.kyw.project_kyw.adapters.dtos.request.ProjectUpadateDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
 import br.com.kyw.project_kyw.application.services.project.CreateProjectCase;
 import br.com.kyw.project_kyw.application.services.project.ProjectServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -29,7 +30,7 @@ public class ProjectController {
     }
 
     @PostMapping
-    public ResponseEntity<ProjectResponseDTO> save(@ModelAttribute @Validated ProjectCreateDTO createProject){
+    public ResponseEntity<ProjectResponseDTO> save(@Valid @RequestBody ProjectCreateDTO createProject){
         var projectPersit = createProjectCase.createProject(createProject);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
