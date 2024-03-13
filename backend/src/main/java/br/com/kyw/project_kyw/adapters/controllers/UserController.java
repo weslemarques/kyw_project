@@ -6,12 +6,11 @@ import br.com.kyw.project_kyw.adapters.dtos.response.UserResponseDTO;
 import br.com.kyw.project_kyw.application.services.user.UserRegisterService;
 import br.com.kyw.project_kyw.application.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
@@ -42,6 +41,11 @@ public class UserController {
     public ResponseEntity<Void> exitProject(@RequestBody UserExitProjectDTO exitProjectDTO){
         userService.exitProject(exitProjectDTO.projectId(), exitProjectDTO.userId());
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<UserResponseDTO>> getAll(Pageable pageable){
+        return ResponseEntity.ok(userService.getAll(pageable));
     }
 
 
