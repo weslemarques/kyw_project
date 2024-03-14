@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -50,5 +51,11 @@ public class UserService  implements UserDetailsService {
        Page<User> user  = userRepository.findAll(pageable);
        return user.map(u -> mapper.map(u, UserResponseDTO.class));
 
+    }
+
+    public UserResponseDTO getById(UUID userId) {
+       var user = userRepository.findById(userId)
+               .orElseThrow(() -> new UserNotFoundExeception("User not Found"));
+       return mapper.map(user, UserResponseDTO.class);
     }
 }
