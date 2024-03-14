@@ -13,6 +13,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -46,6 +48,11 @@ public class UserController {
     @GetMapping
     public ResponseEntity<Page<UserResponseDTO>> getAll(Pageable pageable){
         return ResponseEntity.ok(userService.getAll(pageable));
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserResponseDTO> getById(@PathVariable UUID userId){
+        return ResponseEntity.ok(userService.getById(userId));
     }
 
 
