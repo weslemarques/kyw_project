@@ -53,4 +53,8 @@ public class TaskService {
                 .orElseThrow(() -> new ResourceNotFound("Task Not Found"));
         return mapper.map(task, TaskResponse.class);
     }
+
+    public void delete(UUID taskId) {
+        taskRepository.deleteById(taskId);
+    }
 }
