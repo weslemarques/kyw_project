@@ -47,4 +47,10 @@ public class TaskController {
         return ResponseEntity.ok(taskresponse);
     }
 
+    @DeleteMapping("/{taskId}")
+    public ResponseEntity<Void> delete(@PathVariable UUID taskId){
+        taskService.delete(taskId);
+        return ResponseEntity.noContent().build();
+    }
+
 }
