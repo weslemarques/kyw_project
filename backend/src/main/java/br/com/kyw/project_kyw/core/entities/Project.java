@@ -6,7 +6,6 @@ import lombok.Getter;
 
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,8 +29,8 @@ public class Project {
     private List<Task> tasks = new ArrayList<>();
     private Instant createAt = Instant.now();
     private boolean deleted;
-    @OneToOne
-    private ProjectRole projectRole;
+    @ManyToOne
+    private List<ProjectRole> projectRole;
     public Project() {
     }
 
