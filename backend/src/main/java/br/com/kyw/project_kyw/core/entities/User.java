@@ -4,6 +4,7 @@ import br.com.kyw.project_kyw.core.enums.State;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -26,6 +27,7 @@ public class User implements UserDetails {
     @OneToMany
     private List<Notification> notification;
 
+    @Setter
     @Enumerated(EnumType.STRING)
     private State state;
 
@@ -46,10 +48,6 @@ public class User implements UserDetails {
     public User() {
         state = State.DISABLE;
         notification = new ArrayList<>();
-    }
-
-    public void setState(State state) {
-        this.state = state;
     }
 
     public void setNickname(String nickname) {
