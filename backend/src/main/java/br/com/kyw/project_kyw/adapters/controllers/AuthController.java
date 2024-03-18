@@ -26,7 +26,6 @@ public class AuthController {
 
     @PostMapping("/signin")
     public ResponseEntity<JwtResponse> authentication(@Valid @RequestBody UserLoginDTO login) {
-
         JwtResponse tokenJwt = authService.authentication(login);
         return ResponseEntity.ok(tokenJwt);
     }
@@ -34,7 +33,6 @@ public class AuthController {
     @PostMapping("/refreshtoken")
     public ResponseEntity<TokenRefreshResponse> refreshToken(@Valid @RequestBody TokenRefreshRequest refreshRequest) {
         TokenRefreshResponse responseToken = authService.refreshToken(refreshRequest);
-
         return ResponseEntity.ok(responseToken);
 
     }

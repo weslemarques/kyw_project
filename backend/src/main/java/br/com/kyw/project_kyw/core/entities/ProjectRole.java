@@ -4,9 +4,11 @@ import br.com.kyw.project_kyw.core.enums.Title;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.UUID;
 
+@Setter
 @Getter
 @Entity
 @Table(name = "tb_project_role")
@@ -36,19 +38,4 @@ public class ProjectRole {
     public ProjectRole() {
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
-    public void setTitle(Title title) {
-        this.title = title;
-    }
 }
