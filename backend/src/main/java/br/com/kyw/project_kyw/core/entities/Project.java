@@ -31,8 +31,8 @@ public class Project {
     private List<Task> tasks = new ArrayList<>();
     private Instant createAt = Instant.now();
     private boolean deleted;
-    @OneToMany
-    private List<ProjectRole> projectRole;
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+    private List<ProjectRole> userRoles = new ArrayList<>();
     public Project() {
     }
 
