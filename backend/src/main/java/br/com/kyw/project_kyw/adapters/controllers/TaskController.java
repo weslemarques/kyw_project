@@ -3,6 +3,7 @@ package br.com.kyw.project_kyw.adapters.controllers;
 import br.com.kyw.project_kyw.adapters.dtos.request.TaskRequest;
 import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;
 import br.com.kyw.project_kyw.application.services.task.TaskService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/tasks")
+@SecurityRequirement(name = "Bearer ")
 public class TaskController {
 
     private final TaskService taskService;

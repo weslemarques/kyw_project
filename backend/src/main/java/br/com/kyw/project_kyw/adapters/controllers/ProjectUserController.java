@@ -12,7 +12,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/projects/{projectId}")
 public class ProjectUserController {
-
     private final ProjectUserService projectUserService;
 
     public ProjectUserController(ProjectUserService projectUserService) {
@@ -24,4 +23,7 @@ public class ProjectUserController {
         projectUserService.addUserToTheProject(projectId, email);
         return ResponseEntity.ok().build();
     }
+
+
+
 }

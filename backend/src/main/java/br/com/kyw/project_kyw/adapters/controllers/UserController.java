@@ -5,6 +5,7 @@ import br.com.kyw.project_kyw.adapters.dtos.request.UserRegisterDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.UserResponseDTO;
 import br.com.kyw.project_kyw.application.services.user.UserRegisterService;
 import br.com.kyw.project_kyw.application.services.user.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
+@SecurityRequirement(name = "Bearer ")
 public class UserController {
 
 

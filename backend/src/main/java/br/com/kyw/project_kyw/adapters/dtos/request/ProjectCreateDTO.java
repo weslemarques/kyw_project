@@ -2,6 +2,7 @@ package br.com.kyw.project_kyw.adapters.dtos.request;
 
 import br.com.kyw.project_kyw.core.entities.User;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +24,7 @@ public class ProjectCreateDTO implements Serializable {
     @NotBlank
     private String name;
     private String description;
-    private MultipartFile image;
     private List<String> members;
+    private  MultipartFile image;
     private UUID userAdmin; // retirar e colocar metodo para obter logado
 }

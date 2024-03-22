@@ -22,8 +22,9 @@ public class ProjectRole {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "group_id")
+
+    @ManyToOne
+    @JoinColumn(name = "project_id")
     private Project project;
 
     @Enumerated(EnumType.STRING)

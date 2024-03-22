@@ -38,6 +38,10 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "attributedTo")
     private List<Task> assignedTasks = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private List<ProjectRole> userRoles = new ArrayList<>();
+
+
     public User(String username, String email, String password, String phone) {
         this.nickname = username;
         this.email = email;
