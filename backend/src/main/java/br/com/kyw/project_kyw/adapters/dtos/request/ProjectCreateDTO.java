@@ -25,5 +25,6 @@ public class ProjectCreateDTO implements Serializable {
     private String name;
     private String description;
     private List<String> members;
+    private  MultipartFile image;
     private UUID userAdmin; // retirar e colocar metodo para obter logado
 }

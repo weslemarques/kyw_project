@@ -1,6 +1,7 @@
 package br.com.kyw.project_kyw.core.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "tb_projects")
 @EqualsAndHashCode(of = "id")
+@AllArgsConstructor
 public class Project {
 
     @Id
@@ -31,8 +33,8 @@ public class Project {
     private List<Task> tasks = new ArrayList<>();
     private Instant createAt = Instant.now();
     private boolean deleted;
-    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
-    private List<ProjectRole> userRoles = new ArrayList<>();
+    @OneToMany(mappedBy = "project")
+    private List<ProjectRole> projectRoles = new ArrayList<>();
     public Project() {
     }
 
