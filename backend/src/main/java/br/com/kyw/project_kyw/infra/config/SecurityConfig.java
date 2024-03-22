@@ -31,9 +31,7 @@ public class SecurityConfig{
                 .sessionManagement(
                         session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 ).authorizeHttpRequests(authorize -> authorize.
-
                         anyRequest().permitAll())
-
                 .headers( header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
                 .addFilterBefore(filterToken, UsernamePasswordAuthenticationFilter.class);
         return http.build();
