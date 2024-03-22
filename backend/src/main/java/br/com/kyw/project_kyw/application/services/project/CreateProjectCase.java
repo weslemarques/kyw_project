@@ -41,12 +41,12 @@ public class CreateProjectCase {
         this.projectRepository = projectRepository;
         this.projectRoleRepository = projectRoleRepository;
     }
-    public ProjectResponseDTO createProject(MultipartFile file, ProjectCreateDTO projectRequest){
+    public ProjectResponseDTO createProject(ProjectCreateDTO projectRequest){
         projectName = projectRequest.getName();
         User userCreator = userRepository.findById(projectRequest.getUserAdmin()).orElseThrow(() -> new UserNotFoundExeception("User not found in create project"));
         Project projectEntity = mapper.map(projectRequest, Project.class);
         projectEntity.setCreator(userCreator);
-        Path pathUrlImage = fileStorageService.storageFile(file);
+        Path pathUrlImage = fileStorageService.storageFile(projectRequest.getImage());
         projectEntity.setImageUrl(pathUrlImage.toUri().getPath());
         projectRequest.getMembers().forEach(email ->  {
             User user  = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundExeception("User not found"));
