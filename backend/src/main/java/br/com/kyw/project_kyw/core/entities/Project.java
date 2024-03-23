@@ -29,12 +29,12 @@ public class Project {
     private String imageUrl;
     private String linkGroup;
     private boolean pin;
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project",fetch = FetchType.EAGER)
     private List<Task> tasks = new ArrayList<>();
     private Instant createAt = Instant.now();
     private boolean deleted;
-    @OneToMany(mappedBy = "project")
-    private List<ProjectRole> projectRoles = new ArrayList<>();
+    @ManyToMany(mappedBy = "projects", fetch = FetchType.EAGER)
+    private List<User> members = new ArrayList<>();
     public Project() {
     }
 
