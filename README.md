@@ -22,7 +22,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Verificação do usuário
 - [x] Implementação do token JWT
 - [x] Refresh Token
-- [ ] Tratamento de erros personalizados
+- [x] Tratamento de erros personalizados
 - [ ] ...
 
 ## 💻 Pré-requisitos
