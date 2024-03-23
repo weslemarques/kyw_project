@@ -31,7 +31,7 @@ jobs:
       run: mvn package
 
     - name: Docker Compose Build
-      working-directory: ./
+      working-directory: ./backend
       run: docker compose build
 
     - name: Push to Docker Hub Container Registry
