@@ -1,8 +1,5 @@
 FROM openjdk:17
 LABEL authors="wesle"
-
-WORKDIR /app
-
 VOLUME /tmp
 EXPOSE 8080
 
