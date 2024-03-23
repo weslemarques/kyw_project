@@ -4,7 +4,7 @@ import br.com.kyw.project_kyw.adapters.dtos.request.TokenRefreshRequest;
 import br.com.kyw.project_kyw.adapters.dtos.request.UserLoginDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.JwtResponse;
 import br.com.kyw.project_kyw.adapters.dtos.response.TokenRefreshResponse;
-import br.com.kyw.project_kyw.application.services.auth.AuthService;
+import br.com.kyw.project_kyw.application.services.AuthService;
 import br.com.kyw.project_kyw.infra.security.JwtUtils;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

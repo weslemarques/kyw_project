@@ -1,11 +1,10 @@
-package br.com.kyw.project_kyw.application.services.auth;
+package br.com.kyw.project_kyw.application.services;
 
 import br.com.kyw.project_kyw.adapters.dtos.request.TokenRefreshRequest;
 import br.com.kyw.project_kyw.adapters.dtos.request.UserLoginDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.JwtResponse;
 import br.com.kyw.project_kyw.adapters.dtos.response.TokenRefreshResponse;
 import br.com.kyw.project_kyw.application.exceptions.AuthenticationFailed;
-import br.com.kyw.project_kyw.application.services.refreshtoken.RefreshTokenService;
 import br.com.kyw.project_kyw.core.entities.RefreshToken;
 import br.com.kyw.project_kyw.core.entities.User;
 import br.com.kyw.project_kyw.infra.security.JwtUtils;

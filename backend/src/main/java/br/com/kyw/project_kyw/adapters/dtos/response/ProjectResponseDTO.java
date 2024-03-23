@@ -31,6 +31,5 @@ public class ProjectResponseDTO implements Serializable {
     private boolean pin;
     private List<Task> tasks;
     private Instant createAt;
-    private List<ProjectRole> projectRoles;
 
 }

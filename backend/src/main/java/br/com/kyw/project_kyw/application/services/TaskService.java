@@ -1,4 +1,4 @@
-package br.com.kyw.project_kyw.application.services.task;
+package br.com.kyw.project_kyw.application.services;
 
 import br.com.kyw.project_kyw.adapters.dtos.request.TaskRequest;
 import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;

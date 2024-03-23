@@ -1,4 +1,4 @@
-package br.com.kyw.project_kyw.application.services.refreshtoken;
+package br.com.kyw.project_kyw.application.services;
 
 import br.com.kyw.project_kyw.application.exceptions.TokenExpiredException;
 import br.com.kyw.project_kyw.application.exceptions.UserNotFoundExeception;

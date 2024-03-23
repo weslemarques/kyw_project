@@ -23,7 +23,4 @@ public class ProjectUserController {
         projectUserService.addUserToTheProject(projectId, email);
         return ResponseEntity.ok().build();
     }
-
-
-
 }

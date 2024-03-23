@@ -2,7 +2,7 @@ package br.com.kyw.project_kyw.adapters.controllers;
 
 import br.com.kyw.project_kyw.adapters.dtos.request.TaskRequest;
 import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;
-import br.com.kyw.project_kyw.application.services.task.TaskService;
+import br.com.kyw.project_kyw.application.services.TaskService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
