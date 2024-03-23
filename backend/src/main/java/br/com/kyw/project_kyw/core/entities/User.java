@@ -24,8 +24,8 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private String phone;
-    @OneToMany
-    private List<Notification> notification;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Notification> notification = new ArrayList<>();
 
     @Setter
     @Enumerated(EnumType.STRING)
@@ -35,23 +35,20 @@ public class User implements UserDetails {
     @JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private final Set<Role> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "attributedTo")
+    @OneToMany(mappedBy = "attributedTo",fetch = FetchType.EAGER)
     private List<Task> assignedTasks = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
-    private List<ProjectRole> userRoles = new ArrayList<>();
-
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "tb_user_project", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
+    private List<Project> projects = new ArrayList<>();
     public User(String username, String email, String password, String phone) {
         this.nickname = username;
         this.email = email;
         this.password = password;
         this.phone = phone;
     }
-
     public User() {
         state = State.DISABLE;
-        notification = new ArrayList<>();
     }
 
     public void setNickname(String nickname) {
