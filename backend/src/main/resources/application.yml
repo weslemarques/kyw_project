@@ -1,8 +1,11 @@
-server:
-  port: 8080
-
 spring:
+  application:
+    name: kyw_project
   profiles:
     active: dev
   jpa:
     open-in-view: false
+
+
+server:
+  port: 8080
