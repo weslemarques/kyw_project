@@ -1,10 +1,10 @@
-FROM openjdk:17
+FROM openjdk:17-alpine
+
+ENV APP_NAME kyw_project
 LABEL authors="wesle"
-
-WORKDIR /app
-
 VOLUME /tmp
+ADD ../target/${APP_NAME}.jar /app/${APP_NAME}.jar
+WORKDIR /app
+CMD java -jar ${APP_NAME}.jar
 EXPOSE 8080
 
-ADD ./target/project_kyw-0.0.1-SNAPSHOT.jar kyw.jar
-ENTRYPOINT ["java", "-jar", "kyw.jar"]
