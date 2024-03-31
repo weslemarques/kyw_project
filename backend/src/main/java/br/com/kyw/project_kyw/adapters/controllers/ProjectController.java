@@ -5,6 +5,7 @@ import br.com.kyw.project_kyw.adapters.dtos.request.ProjectUpadateDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
 import br.com.kyw.project_kyw.application.services.project.CreateProjectCase;
 import br.com.kyw.project_kyw.application.services.project.ProjectServiceImpl;
+import br.com.kyw.project_kyw.core.entities.User;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.models.annotations.OpenAPI31;
 import jakarta.validation.Valid;
@@ -12,6 +13,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -62,7 +67,15 @@ public class ProjectController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Page<ProjectResponseDTO>> getAllPageable(Pageable pageable) {
+        this.getUserAuthenticate();
         return ResponseEntity.ok(projectService.getAll(pageable));
+    }
+
+    private User getUserAuthenticate(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication.getPrincipal().toString());
+        return (User) authentication.getPrincipal();
     }
 }

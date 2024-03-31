@@ -30,7 +30,8 @@ public class SecurityConfig{
         http.csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(
                         session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                ).authorizeHttpRequests(authorize -> authorize.
+                )
+                .authorizeHttpRequests(authorize -> authorize.
                         anyRequest().permitAll())
                 .headers( header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
                 .addFilterBefore(filterToken, UsernamePasswordAuthenticationFilter.class);
