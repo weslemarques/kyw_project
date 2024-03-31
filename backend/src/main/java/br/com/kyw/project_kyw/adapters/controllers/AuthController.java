@@ -6,6 +6,8 @@ import br.com.kyw.project_kyw.adapters.dtos.response.JwtResponse;
 import br.com.kyw.project_kyw.adapters.dtos.response.TokenRefreshResponse;
 import br.com.kyw.project_kyw.application.services.AuthService;
 import br.com.kyw.project_kyw.infra.security.JwtUtils;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
