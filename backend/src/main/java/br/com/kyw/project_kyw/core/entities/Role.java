@@ -5,18 +5,20 @@ import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serial;
+import java.util.UUID;
 
 @Entity
 @Table(name = "tb_role")
 @Getter
+@EqualsAndHashCode(of = "id")
 public class Role implements GrantedAuthority {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
     private String authority;
 
     public Role() {
@@ -27,7 +29,7 @@ public class Role implements GrantedAuthority {
         this.authority = authority;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
