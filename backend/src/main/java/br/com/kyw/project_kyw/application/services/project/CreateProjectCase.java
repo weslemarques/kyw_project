@@ -3,6 +3,7 @@ package br.com.kyw.project_kyw.application.services.project;
 import br.com.kyw.project_kyw.adapters.dtos.emails.Email;
 import br.com.kyw.project_kyw.adapters.dtos.request.ProjectCreateDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
+import br.com.kyw.project_kyw.application.exceptions.ResourceNotFound;
 import br.com.kyw.project_kyw.application.exceptions.UserNotFoundExeception;
 import br.com.kyw.project_kyw.application.repositories.ProjectRepository;
 import br.com.kyw.project_kyw.application.repositories.ProjectRoleRepository;
@@ -14,6 +15,8 @@ import br.com.kyw.project_kyw.core.entities.ProjectRole;
 import br.com.kyw.project_kyw.core.entities.User;
 import br.com.kyw.project_kyw.core.enums.Title;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,10 +45,10 @@ public class CreateProjectCase {
         this.projectRoleRepository = projectRoleRepository;
     }
     public ProjectResponseDTO createProject(ProjectCreateDTO projectRequest){
+        var creator = getUserAuthenticate();
         projectName = projectRequest.getName();
-        User userCreator = userRepository.findById(projectRequest.getUserAdmin()).orElseThrow(() -> new UserNotFoundExeception("User not found in create project"));
         Project projectEntity = mapper.map(projectRequest, Project.class);
-        projectEntity.setCreator(userCreator);
+        projectEntity.setCreator(creator);
         Path pathUrlImage = fileStorageService.storageFile(projectRequest.getImage());
         projectEntity.setImageUrl(pathUrlImage.toUri().getPath());
         projectRequest.getMembers().forEach(email ->  {
@@ -53,15 +56,17 @@ public class CreateProjectCase {
             sendNotification.senderByEmail(new Email(user.getId(), user.getEmail(), subject, text));
         });
         projectEntity = projectRepository.save(projectEntity);
-        ProjectRole roleAdmin = new ProjectRole(userCreator, projectEntity, Title.ADMIN);
+        ProjectRole roleAdmin = new ProjectRole(creator, projectEntity, Title.ADMIN);
         projectRoleRepository.save(roleAdmin);
         return mapper.map(projectEntity, ProjectResponseDTO.class);
     }
 
-
-
-    private User getUserLogged(){
-        return null;
+    private User getUserAuthenticate(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = (String) authentication.getPrincipal();
+        System.out.println(email);
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFound("Not user authenticate"));
     }
 
 }

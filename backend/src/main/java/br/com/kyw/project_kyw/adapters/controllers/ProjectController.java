@@ -67,15 +67,7 @@ public class ProjectController {
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Page<ProjectResponseDTO>> getAllPageable(Pageable pageable) {
-        this.getUserAuthenticate();
         return ResponseEntity.ok(projectService.getAll(pageable));
-    }
-
-    private User getUserAuthenticate(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(authentication.getPrincipal().toString());
-        return (User) authentication.getPrincipal();
     }
 }

@@ -5,6 +5,7 @@ import br.com.kyw.project_kyw.adapters.dtos.request.UserRegisterDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.UserResponseDTO;
 import br.com.kyw.project_kyw.application.repositories.UserRepository;
 import br.com.kyw.project_kyw.application.services.utils.SendNotification;
+import br.com.kyw.project_kyw.core.entities.Role;
 import br.com.kyw.project_kyw.core.entities.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,6 +28,7 @@ public class UserRegisterService {
     public UserResponseDTO registerUser(UserRegisterDTO userRegister){
         User entity = new User();
         mapper.map(userRegister, entity);
+        entity.addRole(new Role("ROLE_USER"));
         entity.setPassword(bCPasswordEncoder.encode(entity.getPassword()));
         entity = userRepository.save(entity);
         sendNotification.senderByEmail(new Email(entity.getId(),entity.getEmail(),"Confirme Email","Confirme o email para ativar sua conta"));
