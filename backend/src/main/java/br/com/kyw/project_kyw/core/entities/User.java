@@ -2,7 +2,6 @@ package br.com.kyw.project_kyw.core.entities;
 
 import br.com.kyw.project_kyw.core.enums.State;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,10 +10,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
 
-
+@Getter
 @Entity
 @Table(name = "tb_users")
-@Data
+@EqualsAndHashCode(of = "id")
 public class User implements UserDetails {
 
     @Id
@@ -32,7 +31,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private State state;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private final Set<Role> roles = new HashSet<>();
 
@@ -71,6 +70,9 @@ public class User implements UserDetails {
 
     public void addNotification(Notification notification) {
         if(notification != null) this.notification.add(notification);
+    }
+    public void addRole(Role role) {
+        if(role != null) this.roles.add(role);
     }
     public void addTask(Task assignedTasks) {
         if(assignedTasks != null) this.assignedTasks.add(assignedTasks);
