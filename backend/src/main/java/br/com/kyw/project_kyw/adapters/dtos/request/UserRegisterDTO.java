@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Setter @Getter
 @UserRegisterValid
+@NoArgsConstructor
 public class UserRegisterDTO implements Serializable {
 
     @NotBlank
