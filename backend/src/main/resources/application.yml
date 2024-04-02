@@ -2,7 +2,7 @@ spring:
   application:
     name: kyw_project
   profiles:
-    active: dev
+    active: test
   jpa:
     open-in-view: false
 

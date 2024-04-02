@@ -63,10 +63,8 @@ public class CreateProjectCase {
 
     private User getUserAuthenticate(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = (String) authentication.getPrincipal();
-        System.out.println(email);
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new ResourceNotFound("Not user authenticate"));
+        return (User) authentication.getPrincipal();
+
     }
 
 }
