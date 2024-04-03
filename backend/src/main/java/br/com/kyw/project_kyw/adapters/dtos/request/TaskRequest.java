@@ -17,6 +17,7 @@ public class TaskRequest implements Serializable {
 
     private Status status;
     private Criticality criticality;
+    private Date deadline;
     private String description;
     private String attachments;
     private Date completedAt;
