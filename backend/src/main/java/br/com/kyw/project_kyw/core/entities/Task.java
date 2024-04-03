@@ -26,6 +26,7 @@ public class Task {
     private String description;
     private String attachments;
     private Instant createAt = Instant.now();
+    private Date deadline;
     private Date completedAt;
     @Getter
     @ManyToOne
