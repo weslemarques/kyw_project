@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -53,6 +54,12 @@ public class TaskController {
     public ResponseEntity<Void> delete(@PathVariable UUID taskId){
         taskService.delete(taskId);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/deadline")
+    public ResponseEntity<List<TaskResponse>> getTasksByDeadline(){
+        var list = taskService.getTaskByDeadline();
+        return ResponseEntity.ok(list);
     }
 
 }

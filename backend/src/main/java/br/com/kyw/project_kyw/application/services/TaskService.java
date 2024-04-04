@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -52,6 +53,11 @@ public class TaskService {
         var task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFound("Task Not Found"));
         return mapper.map(task, TaskResponse.class);
+    }
+    public List<TaskResponse> getTaskByDeadline() {
+        Date today = new Date();
+        var listTask = taskRepository.getByDeadline(today);
+        return listTask.stream().map(t -> mapper.map(t, TaskResponse.class)).toList();
     }
 
     public void delete(UUID taskId) {

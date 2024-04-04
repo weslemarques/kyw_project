@@ -27,6 +27,7 @@ public class ProjectUserService {
                 () -> new ResourceNotFound("User Not Found"));
         Project project = projectRepository.findById(projectId).orElseThrow(
                 () -> new ResourceNotFound("Project Not Found"));
-        projectRepository.saveAndFlush(project);
+        project.addUser(user);
+        projectRepository.save(project);
     }
 }
