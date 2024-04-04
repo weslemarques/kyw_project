@@ -7,9 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Getter
 @Setter
@@ -34,8 +32,13 @@ public class Project {
     private Instant createAt = Instant.now();
     private boolean deleted;
     @ManyToMany(mappedBy = "projects", fetch = FetchType.EAGER)
-    private List<User> members = new ArrayList<>();
+    private Set<User> members = new HashSet<>();
     public Project() {
+    }
+
+    public void addUser(User user) {
+        this.members.add(user);
+        user.addProject(this);
     }
 
 }
