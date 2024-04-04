@@ -64,6 +64,10 @@ public class User implements UserDetails {
         if(password != null) this.password = password;
     }
 
+    public void addProject(Project project){
+        this.projects.add(project);
+    }
+
     public void setPhone(String phone) {
         if(phone != null) this.phone = phone;
     }
