@@ -7,7 +7,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
   servlet:
     multipart:
@@ -27,7 +27,7 @@ security:
 
 
 file:
-  upload-dir: /Projects/UploadDir
+  upload-dir: /UploadDir
 
 cors:
   originPatterns: ${ORIGINS}

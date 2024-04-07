@@ -16,7 +16,7 @@ services:
   app:
     depends_on:
       - db
-    image: test #Mudar para reinan07/kwy
+    image: reinan07/kyw
     restart: always
     build: ./backend
     working_dir: /
