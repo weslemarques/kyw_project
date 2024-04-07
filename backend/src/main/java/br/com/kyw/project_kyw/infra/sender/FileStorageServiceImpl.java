@@ -3,6 +3,7 @@ package br.com.kyw.project_kyw.infra.sender;
 import br.com.kyw.project_kyw.application.services.utils.FileStorageService;
 import br.com.kyw.project_kyw.infra.config.FileStorageConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +15,7 @@ import java.util.Objects;
 
 @Service
 public class FileStorageServiceImpl implements FileStorageService {
+    @Value("${file.upload-dir}")
     private final Path fileStorageLocation;
     @Autowired
     public FileStorageServiceImpl(FileStorageConfig fileStorageConfig) {
