@@ -1,9 +1,7 @@
-FROM openjdk:17-alpine
-ENV APP_NAME kyw_project
+FROM openjdk:17
 LABEL authors="wesle"
 VOLUME /tmp
-COPY ./target/${APP_NAME}.jar /app/${APP_NAME}.jar
-WORKDIR /app
-ENTRYPOINT [ "java", "-jar","${APP_NAME}.jar"]
 EXPOSE 8080
+COPY ./target/project_kyw-0.0.1-SNAPSHOT.jar kyw.jar
+ENTRYPOINT ["java", "-jar", "kyw.jar"]
 
