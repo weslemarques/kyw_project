@@ -15,7 +15,6 @@ import java.util.Objects;
 
 @Service
 public class FileStorageServiceImpl implements FileStorageService {
-    @Value("${file.upload-dir}")
     private final Path fileStorageLocation;
     @Autowired
     public FileStorageServiceImpl(FileStorageConfig fileStorageConfig) {
