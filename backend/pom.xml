@@ -80,30 +80,12 @@
     </dependencies>
 
     <build>
-        <finalName>${project.name}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.2</version>
-                <configuration>
-                    <outputDirectory>${project.basedir}/backend/target</outputDirectory>
-                </configuration>
-            </plugin>
         </plugins>
-        <sourceDirectory>backend/src/main/java</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>backend/src/main/resources</directory>
-                <includes>
-                    <include>**/*.yml</include>
-                </includes>
-            </resource>
-        </resources>
     </build>
 
 </project>
