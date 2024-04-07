@@ -16,11 +16,11 @@ import java.util.Objects;
 @Service
 public class FileStorageServiceImpl implements FileStorageService {
     private final Path fileStorageLocation;
-    @Autowired
+    
     public FileStorageServiceImpl(FileStorageConfig fileStorageConfig) {
-        this.fileStorageLocation = Paths.get(fileStorageConfig.getUploadDir())
-                .toAbsolutePath().normalize();
         try {
+            this.fileStorageLocation = Paths.get(fileStorageConfig.getUploadDir())
+                    .toAbsolutePath().normalize();
             Files.createDirectories(this.fileStorageLocation);
         }catch (Exception e){
             throw new RuntimeException("erro ao criar o diretorio", e);
