@@ -21,9 +21,9 @@ security:
 
 
 file:
-  upload-dir: /Projects/UploadDir
+  upload-dir: /home/runner/work/project_kyw/UploadDir
 
 cors:
-  originPatterns: "localhost:4200"
+  originPatterns: http://localhost:3000,http://localhost:8080
 
 
