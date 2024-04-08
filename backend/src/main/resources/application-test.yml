@@ -1,15 +1,9 @@
 spring:
-  application:
-    name: kyw_project
-
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:test
     username: sa
     password:
-  neo4j:
-    security:
-      hostname-verification-enabled: off
   jpa:
     hibernate:
       ddl-auto: update
@@ -30,7 +24,6 @@ file:
   upload-dir: /Projects/UploadDir
 
 cors:
-  originPatterns: "*"
-server:
-  port: 8080
+  originPatterns: "localhost:4200"
+
 
