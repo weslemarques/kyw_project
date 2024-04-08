@@ -12,7 +12,7 @@ spring:
       hostname-verification-enabled: off
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   servlet:
     multipart:
       enabled: true
