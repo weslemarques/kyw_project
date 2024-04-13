@@ -6,6 +6,7 @@ import lombok.Data;
 import java.util.UUID;
 
 @Entity
+@Table(name = "tb_messages")
 @Data
 public class Message {
     @Id

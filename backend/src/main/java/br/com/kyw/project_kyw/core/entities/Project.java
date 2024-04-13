@@ -24,6 +24,8 @@ public class Project {
     private String description;
     @ManyToOne
     private User creator;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "project")
+    private List<Message> messages = new ArrayList<>();
     private String imageUrl;
     private String linkGroup;
     private boolean pin;
