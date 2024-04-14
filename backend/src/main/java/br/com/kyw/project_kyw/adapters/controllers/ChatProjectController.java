@@ -4,6 +4,7 @@ import br.com.kyw.project_kyw.application.exceptions.ResourceNotFound;
 import br.com.kyw.project_kyw.application.repositories.ProjectRepository;
 import br.com.kyw.project_kyw.core.entities.Message;
 import br.com.kyw.project_kyw.core.entities.Project;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -21,11 +22,12 @@ public class ChatProjectController {
     }
 
     @MessageMapping("/chat/{projectId}")
-    @SendTo("/topic/chat/{projectId}")
+    @SendTo("/project/{projectId}/chat")
     public Message send(@DestinationVariable UUID projectId, Message message) {
         Project project = projectRepository.findById (projectId)
                 .orElseThrow(() -> new ResourceNotFound("Group not found"));
             project.getMessages().add(message);
+            projectRepository.save(project);
         return message;
     }
 }
