@@ -10,6 +10,7 @@ import br.com.kyw.project_kyw.core.entities.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 public class UserRegisterService {
@@ -25,7 +26,7 @@ public class UserRegisterService {
         this.bCPasswordEncoder = bCPasswordEncoder;
         this.sendNotification = sendNotification;
     }
-    public UserResponseDTO registerUser(UserRegisterDTO userRegister){
+    public UserResponseDTO registerUser(@Validated UserRegisterDTO userRegister){
         User entity = new User();
         mapper.map(userRegister, entity);
         entity.addRole(new Role("ROLE_USER"));
