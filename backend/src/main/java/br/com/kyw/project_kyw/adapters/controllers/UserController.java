@@ -6,6 +6,7 @@ import br.com.kyw.project_kyw.adapters.dtos.response.UserResponseDTO;
 import br.com.kyw.project_kyw.application.services.user.UserRegisterService;
 import br.com.kyw.project_kyw.application.services.user.UserService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<UserResponseDTO> save(@RequestBody @Validated UserRegisterDTO userRegister){
+    public ResponseEntity<UserResponseDTO> save(@Valid @RequestBody UserRegisterDTO userRegister){
         var userPersist = userRegisterService.registerUser(userRegister);
        return ResponseEntity.created(ServletUriComponentsBuilder
                .fromCurrentRequest()
