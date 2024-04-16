@@ -61,8 +61,11 @@ public class CreateProjectCase {
         return mapper.map(projectEntity, ProjectResponseDTO.class);
     }
 
-    private User getUserAuthenticate(){
+    private static User getUserAuthenticate(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication == null){
+             throw new ResourceNotFound("User not authenticaded");
+        }
         return (User) authentication.getPrincipal();
 
     }

@@ -60,7 +60,7 @@ public class AuthService {
                 refreshTokenService.findByToken(refreshToken)
                         .map(refreshTokenService::verifyExpiration).orElseThrow(() -> new AuthenticationFailed("Wrong or non-existent token"));
         User user = refreshTokenRequest.getUser();
-        refreshTokenService.detele(refreshTokenRequest);
+        refreshTokenService.delete(refreshTokenRequest);
         String token = jwtUtils.generateJwtToken(user);
 
         RefreshToken newRefreshToken = refreshTokenService.createRefreshToken(user.getId());
