@@ -20,9 +20,8 @@ public class ChatProjectController {
     public ChatProjectController(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
-
-    @MessageMapping("/chat/{projectId}")
-    @SendTo("/project/{projectId}/chat")
+    @MessageMapping("/{projectId}")
+    @SendTo("chat/project/{projectId}")
     public Message send(@DestinationVariable UUID projectId, Message message) {
         Project project = projectRepository.findById (projectId)
                 .orElseThrow(() -> new ResourceNotFound("Group not found"));
