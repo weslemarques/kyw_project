@@ -33,9 +33,8 @@ public class SecurityConfig{
                 .sessionManagement(
                         session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 ).authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**", "/h2").permitAll() // Permitindo os recursos do swagger. (Todos podem acessar).
-                        .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-                        .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll() // Permitindo os recursos do swagger. (Todos podem acessar).
+                        .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console")).permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/signin", "/users/register").permitAll()
                 .anyRequest().authenticated())
                 .headers( header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))

@@ -48,7 +48,7 @@ public class User implements UserDetails {
         this.phone = phone;
     }
     public User() {
-        state = State.DISABLE;
+        state = State.PENDING;
     }
 
     public void setNickname(String nickname) {
