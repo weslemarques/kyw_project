@@ -4,6 +4,7 @@ import br.com.kyw.project_kyw.adapters.dtos.request.TaskRequest;
 import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;
 import br.com.kyw.project_kyw.application.services.TaskService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,7 @@ public class TaskController {
         return ResponseEntity.ok(taskService.getById(taskId));
     }
     @GetMapping
-    public ResponseEntity<List<TaskResponse>> getAll(Pageable pageable){
+    public ResponseEntity<Page<TaskResponse>> getAll(Pageable pageable){
         return ResponseEntity.ok(taskService.getAll(pageable));
     }
 
