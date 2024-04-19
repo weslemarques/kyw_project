@@ -43,14 +43,14 @@ public class TaskService {
         return mapper.map(userOptional, TaskResponse.class);
     }
 
-    public List<TaskResponse> getAll(Pageable pageable){
+    public Page<TaskResponse> getAll(Pageable pageable){
         var listTask = taskRepository.findAll(pageable);
-        return listTask.map(task -> mapper.map(task, TaskResponse.class)).toList();
+        return listTask.map(task -> mapper.map(task, TaskResponse.class));
     }
 
 
-    public TaskResponse update(TaskRequest taskRequest, UUID id) {
-        var task = taskRepository.findById(id)
+    public TaskResponse update(TaskRequest taskRequest, UUID taskId) {
+        var task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new ResourceNotFound("Task Not Found"));
         return mapper.map(task, TaskResponse.class);
     }
