@@ -3,6 +3,7 @@ package br.com.kyw.project_kyw.core.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -17,4 +18,5 @@ public class Message {
     @ManyToOne
     private Project project;
     private String content;
+    private LocalDate sentIn;
 }

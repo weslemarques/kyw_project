@@ -34,8 +34,16 @@ public class RefreshTokenService {
 
     @Transactional
     public RefreshToken createRefreshToken(UUID userId) {
+        var user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundExeception("User not foud"));
+        var rfExisting = refreshTokenRepository.findByUser(user);
+        if(rfExisting.isPresent()){
+            rfExisting.get().setToken(UUID.randomUUID().toString());
+            rfExisting.get().setExpiryDate(Instant.now().plusMillis(refreshTokenExpirationMs));
+            refreshTokenRepository.save(rfExisting.get());
+            return rfExisting.get();
+        }
         RefreshToken refreshToken = new RefreshToken();
-        refreshToken.setUser(userRepository.findById(userId).orElseThrow(() -> new UserNotFoundExeception("Id not foud")));
+        refreshToken.setUser(user);
         refreshToken.setExpiryDate(Instant.now().plusMillis(refreshTokenExpirationMs));
         refreshToken.setToken(UUID.randomUUID().toString());
 
@@ -51,7 +59,7 @@ public class RefreshTokenService {
         return refreshToken;
     }
 
-    public void detele(RefreshToken refreshToken) {
+    public void delete(RefreshToken refreshToken) {
         refreshTokenRepository.delete(refreshToken);
     }
 }

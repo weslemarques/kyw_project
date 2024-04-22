@@ -36,6 +36,10 @@ public class AuthController {
     public ResponseEntity<TokenRefreshResponse> refreshToken(@Valid @RequestBody TokenRefreshRequest refreshRequest) {
         TokenRefreshResponse responseToken = authService.refreshToken(refreshRequest);
         return ResponseEntity.ok(responseToken);
+    }
+
+    @GetMapping("/forgotPassword")
+    public void forgotPassword(){
 
     }
 

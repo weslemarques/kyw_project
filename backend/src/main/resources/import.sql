@@ -1,0 +1,1 @@
+INSERT INTO ´tb_users´ (nickname, email, password, phone, state) VALUES ('Alex', 'alex@gmail.com', '$2a$12$F7aNylOyXpuxUXCCTQFDtOjxfacUZ/i2wol7tfRMVTxV/USSjEmq.', '0000000000', 'DISABLE');
