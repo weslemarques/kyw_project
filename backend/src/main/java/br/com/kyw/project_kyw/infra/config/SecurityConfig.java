@@ -33,7 +33,7 @@ public class SecurityConfig{
                 .sessionManagement(
                         session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 ).authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**", "/chat").permitAll() // Permitindo os recursos do swagger. (Todos podem acessar).
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll() // Permitindo os recursos do swagger. (Todos podem acessar).
                         .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                         .requestMatchers((AntPathRequestMatcher.antMatcher("/h2-console/**"))).permitAll()
                         .requestMatchers("/auth/signin", "/users/register").permitAll()
