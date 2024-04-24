@@ -22,8 +22,8 @@ public class ChatProjectController {
     public ChatProjectController(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
-    @MessageMapping("/c9cbbe06-106c-490c-b974-44d2f6fc01fd")
-    @SendTo("/chat/c9cbbe06-106c-490c-b974-44d2f6fc01fd")
+    @MessageMapping("/chat/{projectId}")
+    @SendTo("/chat/{projectId}")
     public Message send(@DestinationVariable UUID projectId, Message message) {
         Project project = projectRepository.findById (projectId)
                 .orElseThrow(() -> new ResourceNotFound("Group not found"));
@@ -31,6 +31,4 @@ public class ChatProjectController {
             projectRepository.save(project);
         return message;
     }
-
-
 }
