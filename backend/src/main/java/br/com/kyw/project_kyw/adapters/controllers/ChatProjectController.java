@@ -36,9 +36,9 @@ public class ChatProjectController {
         this.mapper = mapper;
     }
     @MessageMapping("/project/{projectId}")
-    @SendTo("/canal/{projectId}")
+    @SendTo("/project/{projectId}")
     public CompletableFuture<MessageResponse> send(@DestinationVariable UUID projectId, MessageRequestDTO messageDto) {
-        System.out.println(messageDto);
+        System.out.println(messageDto + "" + projectId);
         return CompletableFuture.supplyAsync(() -> {
             Project project = projectRepository.findById(projectId)
                     .orElseThrow(() -> new ResourceNotFound("Project not found"));
