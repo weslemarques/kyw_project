@@ -14,11 +14,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
 
 
 @Configuration
@@ -26,7 +21,7 @@ import java.util.Arrays;
 public class SecurityConfig{
 
     private final FilterTokenJwt filterToken;
-    private static final String[] WHITE_LIST_URL = { "/auth/**", "/error", "/chat","/users/register","/"};
+    private static final String[] WHITE_LIST_URL = { "/auth/**", "/error", "/chat","/users/register","/connect","/js/**", "/css/**"};
 
     public SecurityConfig(FilterTokenJwt filterToken) {
         this.filterToken = filterToken;
@@ -43,7 +38,7 @@ public class SecurityConfig{
                         .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                         .requestMatchers((AntPathRequestMatcher.antMatcher("/h2-console/**"))).permitAll()
                         .requestMatchers(WHITE_LIST_URL).permitAll()
-                .anyRequest().permitAll())
+                .anyRequest().authenticated())
                 .headers( header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
                 .addFilterBefore(filterToken, UsernamePasswordAuthenticationFilter.class);
         return http.build();
