@@ -20,7 +20,6 @@ public class JwtUtils {
     @Value("${security.jwt.accessTokenExpirationMs}")
     private int tokenExpiration;
 
-
     public String generateJwtToken(User mainUser) {
         return JWT.create().withIssuer("br.com.kyw")
                 .withSubject(mainUser.getEmail())

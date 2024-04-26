@@ -24,5 +24,4 @@ public class UserResponseDTO implements Serializable {
         this.notification.add(notification);
     }
 
-
 }

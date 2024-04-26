@@ -1,7 +1,7 @@
 package br.com.kyw.project_kyw.application.services.utils;
 
-import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
-import br.com.kyw.project_kyw.adapters.dtos.response.ProjectRoleResponse;
+import br.com.kyw.project_kyw.adapters.dtos.response.*;
+import br.com.kyw.project_kyw.core.entities.Message;
 import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.entities.ProjectRole;
 import org.modelmapper.ModelMapper;
@@ -29,5 +29,14 @@ public class Mapper {
         var project = mapper.map(dto, Project.class);
         project.setTasks(dto.getTasks());
         return project;
+    }
+
+    public MessageResponse entityForDTOMessage(Message message){
+        var messageResponse = mapper.map(message, MessageResponse.class);
+        var userSender  = new UserResponseMessage(message.getSender().getId(), message.getSender().getNickname());
+        messageResponse.setSender(userSender);
+        var project  = new ProjectResponseMessage(message.getProject().getId(), message.getProject().getName());
+        messageResponse.setProject(project);
+        return messageResponse;
     }
 }

@@ -1,5 +1,6 @@
 package br.com.kyw.project_kyw.core.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -24,7 +25,8 @@ public class Project {
     private String description;
     @ManyToOne
     private User creator;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "project")
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Message> messages = new ArrayList<>();
     private String imageUrl;
     private String linkGroup;

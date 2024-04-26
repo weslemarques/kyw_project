@@ -11,16 +11,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig{
 
     private final FilterTokenJwt filterToken;
+    private static final String[] WHITE_LIST_URL = { "/auth/**", "/error", "/chat","/users/register","/connect","/js/**", "/css/**"};
 
     public SecurityConfig(FilterTokenJwt filterToken) {
         this.filterToken = filterToken;
@@ -32,11 +33,11 @@ public class SecurityConfig{
         http.csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(
                         session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                ).authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll() // Permitindo os recursos do swagger. (Todos podem acessar).
+                ).authorizeHttpRequests(request -> request
+                        .requestMatchers ( "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                         .requestMatchers((AntPathRequestMatcher.antMatcher("/h2-console/**"))).permitAll()
-                        .requestMatchers("/auth/signin", "/users/register").permitAll()
+                        .requestMatchers(WHITE_LIST_URL).permitAll()
                 .anyRequest().authenticated())
                 .headers( header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
                 .addFilterBefore(filterToken, UsernamePasswordAuthenticationFilter.class);
@@ -48,5 +49,6 @@ public class SecurityConfig{
             throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
+
 
 }

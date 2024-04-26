@@ -3,20 +3,23 @@ package br.com.kyw.project_kyw.core.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @Table(name = "tb_messages")
 @Data
-public class Message {
+public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @ManyToOne
     private User sender;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id")
     private Project project;
     private String content;
-    private LocalDate sentIn;
+    private Date sentIn = new Date();
+
 }

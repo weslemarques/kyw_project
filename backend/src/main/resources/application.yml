@@ -5,7 +5,9 @@ spring:
     active: ${APP_PROFILE:test}
   jpa:
     open-in-view: false
-
+  security:
+    filter:
+      dispatcher-types: request
 
 server:
   port: 8080
