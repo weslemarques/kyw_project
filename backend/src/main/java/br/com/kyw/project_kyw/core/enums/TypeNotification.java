@@ -5,5 +5,4 @@ public enum TypeNotification {
     CHAT,
     TASK,
     INVITATION
-
 }
