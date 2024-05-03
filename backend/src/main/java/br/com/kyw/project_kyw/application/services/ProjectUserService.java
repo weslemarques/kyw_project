@@ -24,9 +24,9 @@ public class ProjectUserService {
 
     public void addUserToTheProject(UUID projectId, String email) {
         User user = userRepository.findByEmail(email).orElseThrow(
-                () -> new ResourceNotFound("User Not Found"));
+                () -> new ResourceNotFound("Usuário não encontrado"));
         Project project = projectRepository.findById(projectId).orElseThrow(
-                () -> new ResourceNotFound("Project Not Found"));
+                () -> new ResourceNotFound("Projeto não encontrado"));
         project.addUser(user);
         projectRepository.save(project);
     }

@@ -34,7 +34,7 @@ public class RefreshTokenService {
 
     @Transactional
     public RefreshToken createRefreshToken(UUID userId) {
-        var user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundExeception("User not foud"));
+        var user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundExeception("Usuário não encontrado"));
         var rfExisting = refreshTokenRepository.findByUser(user);
         if(rfExisting.isPresent()){
             rfExisting.get().setToken(UUID.randomUUID().toString());
