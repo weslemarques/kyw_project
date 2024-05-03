@@ -42,7 +42,7 @@ public class AuthService {
                     .authenticate(usernamePasswordAuthenticationToken);
             SecurityContextHolder.getContext().setAuthentication(authenticate);
         }catch (RuntimeException ex){
-            throw new AuthenticationFailed("email or password invalid");
+            throw new AuthenticationFailed("email ou senha inválidos");
         }
         var user = (User) authenticate.getPrincipal();
         System.out.println(authenticate.getName());
@@ -58,7 +58,7 @@ public class AuthService {
 
         RefreshToken refreshTokenRequest =
                 refreshTokenService.findByToken(refreshToken)
-                        .map(refreshTokenService::verifyExpiration).orElseThrow(() -> new AuthenticationFailed("Wrong or non-existent token"));
+                        .map(refreshTokenService::verifyExpiration).orElseThrow(() -> new AuthenticationFailed("Token errado ou não existente"));
         User user = refreshTokenRequest.getUser();
         refreshTokenService.delete(refreshTokenRequest);
         String token = jwtUtils.generateJwtToken(user);

@@ -26,7 +26,7 @@ public class ControllerExceptionHandler {
 
         err.setTimestamp(Instant.now());
         err.setStatus(status.value());
-        err.setError("Validation exception");
+        err.setError("Erro na validação");
         err.setMessage(e.getAllErrors().get(0).getDefaultMessage());
         err.setPath(request.getRequestURI());
 
@@ -47,7 +47,7 @@ public class ControllerExceptionHandler {
 
         err.setTimestamp(Instant.now());
         err.setStatus(status.value());
-        err.setError("Authentication Failed");
+        err.setError("Falha na Autenticação");
         err.setMessage(e.getMessage());
         err.setPath(request.getRequestURI());
         return ResponseEntity.status(status).body(err);
@@ -63,7 +63,7 @@ public class ControllerExceptionHandler {
 
         err.setTimestamp(Instant.now());
         err.setStatus(status.value());
-        err.setError("Resource not found");
+        err.setError("Recurso não encontrado");
         err.setMessage(e.getMessage());
         err.setPath(request.getRequestURI());
         return ResponseEntity.status(status).body(err);

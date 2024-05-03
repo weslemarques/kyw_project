@@ -31,7 +31,7 @@ public class ProjectRoleService {
 
     public String getProjectRoleByProjectAndUser(UUID projectId, UUID userId){ //TODO fazer utilizando autenticaçõa
         ProjectRole projectRole = projectRoleRepository.findProjectRoleByProject_IdAndUser_Id(projectId, userId)
-                .orElseThrow(() -> new ResolutionException("user has no role in this project"));
+                .orElseThrow(() -> new ResolutionException("Usuário não tem papel nesse projeto"));
         return projectRole.getTitle().toString();
     }
 

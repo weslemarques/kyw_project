@@ -31,7 +31,7 @@ public class TaskService {
     public TaskResponse create(TaskRequest taskRequest, UUID projetctId){
         Task entity = mapper.map(taskRequest, Task.class);
         Project entityProject = projectRepository.findById(projetctId)
-                .orElseThrow(() -> new ResourceNotFound("Project Not Found"));
+                .orElseThrow(() -> new ResourceNotFound("Projeto não encontrado"));
         entity.setProject(entityProject);
         entity = taskRepository.save(entity);
         return mapper.map(entity, TaskResponse.class);
@@ -39,7 +39,7 @@ public class TaskService {
 
     public TaskResponse getById(UUID taskId){
         var userOptional = taskRepository.findById(taskId)
-                .orElseThrow(() -> new ResourceNotFound("Task not Found"));
+                .orElseThrow(() -> new ResourceNotFound("Tarefa não encontrada"));
         return mapper.map(userOptional, TaskResponse.class);
     }
 
@@ -51,7 +51,7 @@ public class TaskService {
 
     public TaskResponse update(TaskRequest taskRequest, UUID taskId) {
         var task = taskRepository.findById(taskId)
-                .orElseThrow(() -> new ResourceNotFound("Task Not Found"));
+                .orElseThrow(() -> new ResourceNotFound("Tarefa não encontrada"));
         return mapper.map(task, TaskResponse.class);
     }
     public List<TaskResponse> getTaskByDeadline() {

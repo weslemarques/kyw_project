@@ -41,9 +41,9 @@ public class ChatProjectController {
         System.out.println(messageDto + "" + projectId);
         return CompletableFuture.supplyAsync(() -> {
             Project project = projectRepository.findById(projectId)
-                    .orElseThrow(() -> new ResourceNotFound("Project not found"));
+                    .orElseThrow(() -> new ResourceNotFound("Project não encontrado"));
             User user = userRepository.findById(messageDto.sender())
-                    .orElseThrow(() -> new ResourceNotFound("User not found"));
+                    .orElseThrow(() -> new ResourceNotFound("User não encontrado"));
             Message message = new Message();
             message.setProject(project);
             message.setSender(user);
