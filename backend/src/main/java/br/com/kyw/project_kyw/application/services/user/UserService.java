@@ -35,14 +35,14 @@ public class UserService  implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("No user found with email address " + email));
+                .orElseThrow(() -> new UsernameNotFoundException("Sem usuário encontrado do o email " + email));
     }
 
     public void exitProject(UUID projectId, UUID userId){
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new UserNotFoundExeception("User not found"));
+                .orElseThrow(() -> new UserNotFoundExeception("Usuário encontrado"));
         Project project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new UserNotFoundExeception("Project not found"));
+                .orElseThrow(() -> new UserNotFoundExeception("Projeto não encontrado"));
         userRepository.save(user);
     }
 
@@ -55,7 +55,7 @@ public class UserService  implements UserDetailsService {
 
     public UserResponseDTO getById(UUID userId) {
        var user = userRepository.findById(userId)
-               .orElseThrow(() -> new UserNotFoundExeception("User not Found"));
+               .orElseThrow(() -> new UserNotFoundExeception("Usuário não encontrado"));
        return mapper.map(user, UserResponseDTO.class);
     }
 }
