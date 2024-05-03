@@ -25,14 +25,14 @@ public class ProjectServiceImpl {
 
     public void delete(UUID id) {
         var user = projectRepository
-                .findById(id).orElseThrow(() -> new UserNotFoundExeception("User not Found"));
+                .findById(id).orElseThrow(() -> new UserNotFoundExeception("Usuario não encontrado"));
         user.setDeleted(true);
         projectRepository.save(user);
     }
 
     public ProjectResponseDTO update(ProjectUpadateDTO projectUpadateDTO, UUID id) {
         var project = projectRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundExeception("User not Found")); // Para que serve essa verificação?
+                .orElseThrow(() -> new UserNotFoundExeception("Usuario não encontrado")); // Para que serve essa verificação?
         project.setDescription(projectUpadateDTO.getDescription());
         project.setName(projectUpadateDTO.getName());
         project = projectRepository.save(project);
@@ -41,7 +41,7 @@ public class ProjectServiceImpl {
 
     public ProjectResponseDTO getById(UUID projectId) {
         var project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new ResourceNotFound("Project Not Found"));
+                .orElseThrow(() -> new ResourceNotFound("Projeto não encontrado"));
         return mapper.entityForProjectResponse(project);
     }
 

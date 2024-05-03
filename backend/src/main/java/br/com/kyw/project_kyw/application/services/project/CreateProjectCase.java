@@ -52,7 +52,7 @@ public class CreateProjectCase {
         Path pathUrlImage = fileStorageService.storageFile(projectRequest.getImage());
         projectEntity.setImageUrl(pathUrlImage.toUri().getPath());
         projectRequest.getMembers().forEach(email ->  {
-            User user  = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundExeception("User not found"));
+            User user  = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundExeception("Usuário não encontrado"));
             sendNotification.senderByEmail(new Email(user.getId(), user.getEmail(), subject, text));
         });
         projectEntity = projectRepository.save(projectEntity);
@@ -64,7 +64,7 @@ public class CreateProjectCase {
     private static User getUserAuthenticate(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication == null){
-             throw new ResourceNotFound("User not authenticaded");
+             throw new ResourceNotFound("Usuário não autenticado");
         }
         return (User) authentication.getPrincipal();
 
