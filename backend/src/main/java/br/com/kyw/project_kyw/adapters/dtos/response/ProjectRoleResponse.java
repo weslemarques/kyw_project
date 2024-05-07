@@ -11,7 +11,7 @@ import java.util.UUID;
 public class ProjectRoleResponse implements Serializable {
 
     private UUID id;
-    private Project project;
+    private ProjectResponseDTO project;
 
     private Title title;
 }
