@@ -26,6 +26,6 @@ public class TaskResponse implements Serializable {
     private Instant createAt ;
     private Date completedAt;
     private Project project;
-    private User attributedTo;
+    private UserResponseProject attributedTo;
     private boolean pin;
 }
