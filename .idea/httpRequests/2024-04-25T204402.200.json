@@ -1,0 +1,11 @@
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJici5jb20ua3l3Iiwic3ViIjoid2VzbGVAZ21haWwuY29tIiwiaWQiOiI3ZDU3NzcwMC1hZTdhLTQ5MGYtOGQxZi1jNWI4OWY5OTc2NDciLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiZXhwIjoxNzE0MDkyMjQyfQ.M6KQdmjLTmQ8LGCdgxpvQzYsecAww_46c1UBeu-bYF4",
+  "type": "Bearer",
+  "refreshToken": "7d799363-d6b4-44d6-b177-829ec2e5ccc9",
+  "id": "7d577700-ae7a-490f-8d1f-c5b89f997647",
+  "nickname": "wesle",
+  "email": "wesle@gmail.com",
+  "roles": [
+    "ROLE_USER"
+  ]
+}
