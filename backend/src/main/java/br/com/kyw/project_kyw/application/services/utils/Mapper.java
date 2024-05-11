@@ -23,6 +23,8 @@ public class Mapper {
     public ProjectResponseDTO entityForProjectResponse(Project project){
         var projectResponse = mapper.map(project, ProjectResponseDTO.class);
         projectResponse.setTasks(project.getTasks().stream().map(t -> mapper.map(t,TaskResponse.class)).toList());
+        var creator = new UserResponseProject(project.getCreator().getId(), project.getCreator().getNickname());
+        projectResponse.setCreator(creator);
         return projectResponse;
     }
 

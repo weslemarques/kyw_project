@@ -23,8 +23,8 @@ public class ProjectRoleController {
        return ResponseEntity.ok(pageProRole);
     }
     @GetMapping("/{userId}/{projectId}")
-    public ResponseEntity<String> getByProjectAndUserId(@PathVariable UUID projectId,@PathVariable UUID userId){
-        var projectRole = projectRoleService.getProjectRoleByProjectAndUser(projectId, userId);
+    public ResponseEntity<String> getByProjectAndUserId(@PathVariable UUID projectId){
+        var projectRole = projectRoleService.getProjectRoleByProjectAndUser(projectId);
         return ResponseEntity.ok(projectRole);
     }
 }
