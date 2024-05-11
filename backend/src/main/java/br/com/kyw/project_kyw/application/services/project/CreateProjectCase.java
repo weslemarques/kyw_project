@@ -14,6 +14,7 @@ import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.entities.ProjectRole;
 import br.com.kyw.project_kyw.core.entities.User;
 import br.com.kyw.project_kyw.core.enums.Title;
+import br.com.kyw.project_kyw.infra.security.Auth;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -45,29 +46,21 @@ public class CreateProjectCase {
         this.projectRoleRepository = projectRoleRepository;
     }
     public ProjectResponseDTO createProject(ProjectCreateDTO projectRequest){
-        var creator = getUserAuthenticate();
+        User creator = Auth.getUserAuthenticate();
         projectName = projectRequest.getName();
         Project projectEntity = mapper.map(projectRequest, Project.class);
         projectEntity.setCreator(creator);
         Path pathUrlImage = fileStorageService.storageFile(projectRequest.getImage());
         projectEntity.setImageUrl(pathUrlImage.toUri().getPath());
         projectRequest.getMembers().forEach(email ->  {
-            User user  = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundExeception("Usuário não encontrado"));
-            sendNotification.senderByEmail(new Email(user.getId(), user.getEmail(), subject, text));
+            var user  = userRepository.findByEmail(email);
+            user.ifPresent(value ->
+                    sendNotification.senderByEmail(new Email(value.getId(), value.getEmail(), subject, text)));
         });
         projectEntity = projectRepository.save(projectEntity);
         ProjectRole roleAdmin = new ProjectRole(creator, projectEntity, Title.ADMIN);
         projectRoleRepository.save(roleAdmin);
         return mapper.map(projectEntity, ProjectResponseDTO.class);
-    }
-
-    private static User getUserAuthenticate(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication == null){
-             throw new ResourceNotFound("Usuário não autenticado");
-        }
-        return (User) authentication.getPrincipal();
-
     }
 
 }
