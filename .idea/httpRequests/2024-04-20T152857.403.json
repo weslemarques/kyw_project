@@ -1,7 +1,0 @@
-{
-  "timestamp": "2024-04-20T18:28:57.647182500Z",
-  "status": 403,
-  "error": "Authentication Failed",
-  "message": "email or password invalid",
-  "path": "/auth/signin"
-}
