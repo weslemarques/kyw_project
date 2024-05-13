@@ -1,5 +1,6 @@
 package br.com.kyw.project_kyw.adapters.dtos.response;
 
+import br.com.kyw.project_kyw.adapters.dtos.UserIncludeDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,11 +21,10 @@ public class ProjectResponseDTO implements Serializable {
     private UUID id;
     private String name;
     private String description;
-    private UserResponseProject creator;
+    private UserIncludeDTO creator;
     private String imageUrl;
     private String linkGroup;
     private boolean pin;
-    private List<TaskResponse> tasks;
     private Instant createAt;
 
 }

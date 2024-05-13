@@ -2,6 +2,7 @@ package br.com.kyw.project_kyw.adapters.exceptions;
 
 import br.com.kyw.project_kyw.adapters.exceptions.validator.ValidatorError;
 import br.com.kyw.project_kyw.application.exceptions.AuthenticationFailed;
+import br.com.kyw.project_kyw.application.exceptions.AuthorizationException;
 import br.com.kyw.project_kyw.application.exceptions.ResourceNotFound;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -38,11 +39,11 @@ public class ControllerExceptionHandler {
     }
 
     @ExceptionHandler(AuthenticationFailed.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ResponseEntity<StandardError> authenticationFailed(
             AuthenticationFailed e,
             HttpServletRequest request) {
-        HttpStatus status = HttpStatus.FORBIDDEN;
+        HttpStatus status = HttpStatus.UNAUTHORIZED;
         StandardError err = new StandardError();
 
         err.setTimestamp(Instant.now());
@@ -53,10 +54,26 @@ public class ControllerExceptionHandler {
         return ResponseEntity.status(status).body(err);
     }
 
+    @ExceptionHandler(AuthorizationException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ResponseEntity<StandardError> authorizationException(
+            AuthorizationException e,
+            HttpServletRequest request) {
+        HttpStatus status = HttpStatus.FORBIDDEN;
+        StandardError err = new StandardError();
+
+        err.setTimestamp(Instant.now());
+        err.setStatus(status.value());
+        err.setError("Sem Autorização");
+        err.setMessage(e.getMessage());
+        err.setPath(request.getRequestURI());
+        return ResponseEntity.status(status).body(err);
+    }
+
     @ExceptionHandler(ResourceNotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<StandardError> teste(
-            AuthenticationFailed e,
+    public ResponseEntity<StandardError> notFound(
+            ResourceNotFound e,
             HttpServletRequest request) {
         HttpStatus status = HttpStatus.NOT_FOUND;
         StandardError err = new StandardError();

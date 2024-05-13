@@ -37,6 +37,7 @@ public class SecurityConfig{
                         .requestMatchers ( "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                         .requestMatchers((AntPathRequestMatcher.antMatcher("/h2-console/**"))).permitAll()
+                        .requestMatchers("/projects/**").permitAll()
                         .requestMatchers(WHITE_LIST_URL).permitAll()
                 .anyRequest().authenticated())
                 .headers( header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))

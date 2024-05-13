@@ -4,6 +4,7 @@ import br.com.kyw.project_kyw.adapters.dtos.response.ProjectRoleResponse;
 import br.com.kyw.project_kyw.application.repositories.ProjectRoleRepository;
 import br.com.kyw.project_kyw.application.repositories.UserRepository;
 import br.com.kyw.project_kyw.core.entities.ProjectRole;
+import br.com.kyw.project_kyw.infra.security.Auth;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,12 +30,11 @@ public class ProjectRoleService {
         return pageProRole.map(pRole -> mapper.map(pRole, ProjectRoleResponse.class));
     }
 
-    public String getProjectRoleByProjectAndUser(UUID projectId, UUID userId){ //TODO fazer utilizando autenticaçõa
-        ProjectRole projectRole = projectRoleRepository.findProjectRoleByProject_IdAndUser_Id(projectId, userId)
+    public String getProjectRoleByProjectAndUser(UUID projectId){ //TODO fazer utilizando autenticaçõa
+        ProjectRole projectRole = projectRoleRepository.findProjectRoleByProject_IdAndUser_Id(projectId, Auth.getUserAuthenticate().getId())
                 .orElseThrow(() -> new ResolutionException("Usuário não tem papel nesse projeto"));
         return projectRole.getTitle().toString();
     }
-
     public void changeRoleOfAMember(){
 
     }
