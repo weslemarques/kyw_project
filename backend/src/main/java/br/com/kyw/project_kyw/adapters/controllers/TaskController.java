@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,8 +26,8 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<TaskResponse> create(@RequestBody TaskRequest taskRequest, @ RequestBody UUID id){
-        var taskresponse = taskService.create(taskRequest, id);
+    public ResponseEntity<TaskResponse> create(@RequestBody TaskRequest taskRequest, @ RequestBody UUID projectId){
+        var taskresponse = taskService.create(taskRequest, projectId);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
