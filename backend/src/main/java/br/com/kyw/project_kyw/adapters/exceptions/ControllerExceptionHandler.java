@@ -72,8 +72,8 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(ResourceNotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<StandardError> teste(
-            AuthenticationFailed e,
+    public ResponseEntity<StandardError> notFound(
+            ResourceNotFound e,
             HttpServletRequest request) {
         HttpStatus status = HttpStatus.NOT_FOUND;
         StandardError err = new StandardError();
