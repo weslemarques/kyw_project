@@ -7,6 +7,7 @@ import br.com.kyw.project_kyw.application.repositories.ProjectRepository;
 import br.com.kyw.project_kyw.application.repositories.TaskRepository;
 import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.entities.Task;
+import br.com.kyw.project_kyw.core.enums.Status;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,11 +29,12 @@ public class TaskService {
         this.mapper = mapper;
         this.projectRepository = projectRepository;
     }
-    public TaskResponse create(TaskRequest taskRequest, UUID projetctId){
+    public TaskResponse create(TaskRequest taskRequest, UUID projectId){
         Task entity = mapper.map(taskRequest, Task.class);
-        Project entityProject = projectRepository.findById(projetctId)
+        Project entityProject = projectRepository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFound("Projeto não encontrado"));
         entity.setProject(entityProject);
+        entity.setStatus(Status.OPEN);
         entity = taskRepository.save(entity);
         return mapper.map(entity, TaskResponse.class);
     }
