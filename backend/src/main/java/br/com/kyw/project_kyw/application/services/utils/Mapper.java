@@ -2,6 +2,7 @@ package br.com.kyw.project_kyw.application.services.utils;
 
 import br.com.kyw.project_kyw.adapters.dtos.ProjectIncludeDTO;
 import br.com.kyw.project_kyw.adapters.dtos.UserIncludeDTO;
+import br.com.kyw.project_kyw.adapters.dtos.request.ProjectCreateDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.*;
 import br.com.kyw.project_kyw.core.entities.Message;
 import br.com.kyw.project_kyw.core.entities.Project;
@@ -27,7 +28,7 @@ public class Mapper {
         return projectResponse;
     }
 
-    public Project dtoForProjectEntity(ProjectResponseDTO dto){
+    public Project dtoForProjectEntity(ProjectCreateDTO dto){
         var project = mapper.map(dto, Project.class);
         //project.setTasks(dto.getTasks().stream().map(t -> mapper.map(t, Task.class)).toList());
         return project;
