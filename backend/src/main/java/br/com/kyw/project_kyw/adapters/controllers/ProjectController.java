@@ -67,6 +67,7 @@ public class ProjectController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public ResponseEntity<Page<ProjectResponseDTO>> getAllPageable(Pageable pageable) {
         return ResponseEntity.ok(projectService.getAll(pageable));
     }

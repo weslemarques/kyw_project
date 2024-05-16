@@ -19,7 +19,7 @@ public class ProjectRoleController {
     }
     @GetMapping("/{userId}")
     public ResponseEntity<Page<ProjectRoleResponse>> getByUserId(@PathVariable UUID userId, Pageable pageable){
-       var pageProRole = projectRoleService.getProjectRoleByUser(userId, pageable);
+       var pageProRole = projectRoleService.getProjectRoleByUser(pageable);
        return ResponseEntity.ok(pageProRole);
     }
     @GetMapping("/{userId}/{projectId}")
