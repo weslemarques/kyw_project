@@ -8,6 +8,7 @@ import lombok.Getter;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -31,13 +32,13 @@ public class Task {
     @Getter
     @ManyToOne
     private Project project;
-    @ManyToOne
-    private User attributedTo;
+    @ManyToMany
+    private List<User> attributedTo;
 
     private boolean pin;
 
 
-    public Task(Status status, Criticality criticality, String description, String attachments, Instant createAt, Date completedAt, Project project, User attributed) {
+    public Task(Status status, Criticality criticality, String description, String attachments, Instant createAt, Date completedAt, Project project, List<User> attributed) {
         this.status = status;
         this.criticality = criticality;
         this.description = description;
@@ -84,8 +85,8 @@ public class Task {
         this.project = project;
     }
 
-    public void setAttributed(User attributed) {
-        this.attributedTo = attributed;
+    public void addUser(User user) {
+        this.attributedTo.add(user);
     }
 
     public void setPin(boolean pin) {
