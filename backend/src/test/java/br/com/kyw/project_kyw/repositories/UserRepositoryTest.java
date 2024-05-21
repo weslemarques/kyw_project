@@ -3,9 +3,7 @@ package br.com.kyw.project_kyw.repositories;
 import br.com.kyw.project_kyw.application.repositories.UserRepository;
 import br.com.kyw.project_kyw.core.entities.User;
 import br.com.kyw.project_kyw.factory.UserFactory;
-import jdk.jfr.Category;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
