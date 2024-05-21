@@ -5,6 +5,7 @@ import br.com.kyw.project_kyw.core.enums.Status;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.Instant;
 import java.util.Date;
@@ -17,7 +18,6 @@ import java.util.UUID;
 @EqualsAndHashCode(of = "id")
 public class Task {
 
-    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -29,12 +29,12 @@ public class Task {
     private Instant createAt = Instant.now();
     private Date deadline;
     private Date completedAt;
-    @Getter
     @ManyToOne
     private Project project;
     @ManyToMany
     private List<User> attributedTo;
 
+    @Setter
     private boolean pin;
 
 
@@ -54,7 +54,10 @@ public class Task {
     }
 
     public void setStatus(Status status) {
-        this.status = status;
+        if(status != null){
+            this.status = status;
+        }
+
     }
 
     public Criticality isImportant() {
@@ -62,34 +65,43 @@ public class Task {
     }
 
     public void setImportant(Criticality criticality) {
-        criticality = criticality;
+        if(criticality != null){
+            this.criticality = criticality;
+        }
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        if(description != null){
+            this.description = description;
+        }
     }
 
     public void setAttachments(String attachments) {
-        this.attachments = attachments;
+        if(attachments != null){
+            this.attachments = attachments;
+        }
     }
 
     public void setCreateAt(Instant createAt) {
-        this.createAt = createAt;
+        if(createAt != null){
+            this.createAt = createAt;
+        }
     }
 
     public void setCompletedAt(Date completedAt) {
-        this.completedAt = completedAt;
+        if(completedAt != null){
+            this.completedAt = completedAt;
+        }
     }
 
     public void setProject(Project project) {
-        this.project = project;
+        if(project != null){
+            this.project = project;
+        }
     }
 
     public void addUser(User user) {
         this.attributedTo.add(user);
     }
 
-    public void setPin(boolean pin) {
-        this.pin = pin;
-    }
 }
