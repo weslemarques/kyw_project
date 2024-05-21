@@ -35,7 +35,7 @@ public class User implements UserDetails {
     @JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private final Set<Role> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "attributedTo",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "attributedTo",fetch = FetchType.EAGER)
     private List<Task> assignedTasks = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
