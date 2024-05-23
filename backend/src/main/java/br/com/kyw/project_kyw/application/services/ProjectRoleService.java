@@ -5,9 +5,9 @@ import br.com.kyw.project_kyw.application.repositories.ProjectRepository;
 import br.com.kyw.project_kyw.application.repositories.ProjectRoleRepository;
 import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.entities.ProjectRole;
+import br.com.kyw.project_kyw.core.enums.Title;
 import br.com.kyw.project_kyw.infra.security.Auth;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -40,8 +40,10 @@ public class ProjectRoleService {
                 .orElseThrow(() -> new ResolutionException("Usuário não tem papel nesse projeto"));
         return projectRole.getTitle().toString();
     }
-    public void changeRoleOfAMember(){
-
+    public void changeRoleOfAMember(Title newTitle,UUID projectId, UUID userId ){
+        var userRole = projectRoleRepository.findProjectRoleByProject_IdAndUser_Id(projectId,userId).orElseThrow(() -> new ResolutionException("Usuário não tem papel nesse projeto") );
+        userRole.setTitle(newTitle);
+        projectRoleRepository.save(userRole);
     }
     public boolean isCreator(UUID projectId){
         Project project = projectRepository.findById(projectId)

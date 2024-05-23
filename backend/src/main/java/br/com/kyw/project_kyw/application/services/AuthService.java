@@ -45,7 +45,6 @@ public class AuthService {
             throw new AuthenticationFailed("email ou senha inválidos");
         }
         var user = (User) authenticate.getPrincipal();
-        System.out.println(authenticate.getName());
         List<String> roles = user.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList();
 
         String token = jwtUtils.generateJwtToken(user);
