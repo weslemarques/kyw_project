@@ -8,10 +8,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 public class Auth {
     public static User getUserAuthenticate(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication == null){
+        if(!authentication.isAuthenticated()){
             throw new ResourceNotFound("Usuário não autenticado");
         }
-        return (User) authentication.getPrincipal();
+            System.out.println(authentication.getPrincipal());
+            return (User) authentication.getPrincipal();
 
     }
 }

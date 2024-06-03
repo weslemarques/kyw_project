@@ -20,7 +20,6 @@ import java.util.List;
 
 @Service
 public class AuthService {
-
     private final AuthenticationManager authenticationManager;
 
     private final JwtUtils jwtUtils;
