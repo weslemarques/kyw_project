@@ -48,13 +48,13 @@ public class ProjectController {
         return ResponseEntity.ok(projectService.getById(projectId));
     }
 
-    @PutMapping("/{id}")   // TO DO - regra de só poder atualizar se for o ADMIN do projeto
+    @PutMapping("/{id}")
     public ResponseEntity<ProjectResponseDTO> update(@RequestBody ProjectUpadateDTO projectUpdate, @PathVariable UUID id) {
         var userUpdate = projectService.update(projectUpdate, id);
         return ResponseEntity.ok(userUpdate);
     }
 
-    @DeleteMapping("/{projectId}")  // TO DO - regra de só poder apagar se for o ADMIN do projeto
+    @DeleteMapping("/{projectId}")
     public ResponseEntity<Void> delete(@PathVariable UUID projectId) {
         projectService.delete(projectId);
         return ResponseEntity.noContent().build();
