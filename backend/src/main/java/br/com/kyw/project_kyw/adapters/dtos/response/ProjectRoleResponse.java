@@ -1,6 +1,5 @@
 package br.com.kyw.project_kyw.adapters.dtos.response;
 
-import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.enums.Title;
 import lombok.Data;
 
