@@ -11,6 +11,6 @@ public interface MessageRepository extends JpaRepository<Message, UUID> {
 
     Page<Message> findAllByOrderBySentInAsc(Pageable pageable);
 
-    Page<Message> findAllByOrderBySentInDesc(Pageable pageable);
+    Page<Message> findAllByProject_Id(Pageable pageable, UUID projectId);
 
 }

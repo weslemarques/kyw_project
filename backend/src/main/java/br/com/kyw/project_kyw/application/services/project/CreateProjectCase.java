@@ -17,6 +17,7 @@ import br.com.kyw.project_kyw.infra.security.Auth;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.Path;
+import java.util.List;
 
 @Component
 public class CreateProjectCase {
@@ -47,16 +48,26 @@ public class CreateProjectCase {
         Path pathUrlImage = fileStorageService.storageFile(projectRequest.getImage());
         projectEntity.setImageUrl(pathUrlImage.toUri().getPath());
         projectEntity.setCreator(creator);
-        projectRequest.getMembers().forEach(email ->  {
-            var user  = userRepository.findByEmail(email);
-            user.ifPresent(value ->
-                    sendNotification.senderByEmail(new Email(value.getId(), value.getEmail(), subject, text)));
-        });
         projectEntity = projectRepository.save(projectEntity);
+        saveMembers(projectRequest.getMembers(), projectEntity);
+
 
         ProjectRole roleAdmin = new ProjectRole(creator, projectEntity, Title.ADMIN);
         projectRoleRepository.save(roleAdmin);
         return mapper.entityForProjectResponse(projectEntity);
+    }
+
+    public void saveMembers(List<String> memberEmails, Project projectEntity){
+        memberEmails.forEach(email ->  {
+            var user  = userRepository.findByEmail(email);
+            user.ifPresent(value -> {
+                sendNotification
+                        .senderByEmail(new Email(value.getId(), value.getEmail(), subject, text));
+                    projectRoleRepository.save(new ProjectRole(value, projectEntity, Title.MEMBER));
+                    }
+
+            );
+        });
     }
 
 }
