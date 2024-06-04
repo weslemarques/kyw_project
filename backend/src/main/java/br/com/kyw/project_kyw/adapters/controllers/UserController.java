@@ -39,10 +39,9 @@ public class UserController {
                .toUri()).body(userPersist);
     }
 
-    @PostMapping("/exit")
-
-    public ResponseEntity<Void> exitProject(@RequestBody UserExitProjectDTO exitProjectDTO){
-        userService.exitProject(exitProjectDTO.projectId(), exitProjectDTO.userId());
+    @PostMapping("/exit/{projectId}")
+    public ResponseEntity<Void> exitProject(@PathVariable UUID projectId){
+        userService.exitProject(projectId);
         return ResponseEntity.noContent().build();
     }
 
@@ -56,6 +55,9 @@ public class UserController {
         return ResponseEntity.ok(userService.getById(userId));
     }
 
-
+    @PatchMapping
+    public ResponseEntity<UserResponseDTO> updateNickname(@RequestParam String nickname){
+        return ResponseEntity.ok(userService.updateNicknameUser(nickname));
+    }
 
 }
