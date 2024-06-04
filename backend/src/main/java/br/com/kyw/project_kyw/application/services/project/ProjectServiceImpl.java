@@ -53,6 +53,9 @@ public class ProjectServiceImpl {
         if(accessProjectLevel.canAcessProject(projectId)){
             var project = projectRepository.findById(projectId)
                     .orElseThrow(() -> new ResourceNotFound("Projeto não encontrado"));
+            if(project.isDeleted()){
+                throw new ResourceNotFound("Projeto não encontrado");
+            }
             return mapper.entityForProjectResponse(project);
         }
         throw new AuthorizationException("Você não tem autorização para acessar esse projeto");
@@ -62,4 +65,6 @@ public class ProjectServiceImpl {
         var listProject = projectRepository.findAll(pageable);
         return listProject.map(mapper::entityForProjectResponse);
     }
+
+
 }
