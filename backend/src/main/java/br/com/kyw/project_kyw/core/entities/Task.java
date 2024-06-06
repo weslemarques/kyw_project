@@ -21,6 +21,8 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+
+    private String title;
     @Enumerated(EnumType.STRING)
     private Status status;
     private Criticality criticality;
@@ -51,6 +53,12 @@ public class Task {
 
     public Task() {
 
+    }
+
+    public void setDeadline(Date deadline) {
+        if(project != null){
+            this.deadline = deadline;
+        }
     }
 
     public void setStatus(Status status) {
@@ -97,6 +105,12 @@ public class Task {
     public void setProject(Project project) {
         if(project != null){
             this.project = project;
+        }
+    }
+
+    public void setTitle(String title) {
+        if(project != null){
+            this.title = title;
         }
     }
 
