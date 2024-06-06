@@ -45,8 +45,10 @@ public class CreateProjectCase {
         User creator = Auth.getUserAuthenticate();
         projectName = projectRequest.getName();
         Project projectEntity = mapper.dtoForProjectEntity(projectRequest);
-        Path pathUrlImage = fileStorageService.storageFile(projectRequest.getImage());
-        projectEntity.setImageUrl(pathUrlImage.toUri().getPath());
+        if(projectRequest.getImage() != null){
+            Path pathUrlImage = fileStorageService.storageFile(projectRequest.getImage(), "project");
+            projectEntity.setImageUrl(pathUrlImage.toUri().getPath());
+        }
         projectEntity.setCreator(creator);
         projectEntity = projectRepository.save(projectEntity);
         saveMembers(projectRequest.getMembers(), projectEntity);
