@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -59,5 +60,7 @@ public class UserController {
     public ResponseEntity<UserResponseDTO> updateNickname(@RequestParam String nickname){
         return ResponseEntity.ok(userService.updateNicknameUser(nickname));
     }
+
+
 
 }
