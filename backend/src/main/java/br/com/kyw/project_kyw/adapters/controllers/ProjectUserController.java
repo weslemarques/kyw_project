@@ -1,13 +1,12 @@
 package br.com.kyw.project_kyw.adapters.controllers;
 
+import br.com.kyw.project_kyw.adapters.dtos.response.UserResponseDTO;
 import br.com.kyw.project_kyw.application.services.ProjectUserService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -33,7 +32,10 @@ public class ProjectUserController {
         return ResponseEntity.noContent().build();
     }
 
-
+    @GetMapping("/{projectId}")
+    public ResponseEntity<List<UserResponseDTO>> getAllUsersByProject(@PathVariable UUID projectId){
+        return ResponseEntity.ok(projectUserService.getUsersByProject(projectId));
+    }
 
 
 }
