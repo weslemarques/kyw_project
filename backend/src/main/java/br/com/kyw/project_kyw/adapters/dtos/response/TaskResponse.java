@@ -6,6 +6,7 @@ import br.com.kyw.project_kyw.core.enums.Criticality;
 import br.com.kyw.project_kyw.core.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.util.UUID;
 
 @Getter@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class TaskResponse implements Serializable {
 
     private UUID id;
