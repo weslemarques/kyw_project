@@ -22,6 +22,7 @@ public class User implements UserDetails {
     private String nickname;
 
     private String email;
+    private String avatarUrl;
     private String password;
     private String phone;
     @OneToMany(fetch = FetchType.EAGER)
@@ -62,6 +63,11 @@ public class User implements UserDetails {
     public void setPassword(String password) {
 
         if(password != null) this.password = password;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+
+        if(avatarUrl != null) this.avatarUrl = avatarUrl;
     }
 
     public void addProject(Project project){

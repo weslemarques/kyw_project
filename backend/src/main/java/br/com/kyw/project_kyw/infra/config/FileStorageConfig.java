@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Setter
 public class FileStorageConfig {
 
-    private String uploadDir;
+    private String imageProject;
+    private String imageUserAvatar;
 
 }

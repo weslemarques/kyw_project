@@ -23,7 +23,8 @@ security:
 
 
 file:
-  upload-dir: /Projects/UploadDir
+  image-project: /Projects/images/projects
+  image-user-avatar: /Projects/images/avatars
 
 cors:
   originPatterns: "*"

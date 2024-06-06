@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +22,7 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    private String title;
     @Enumerated(EnumType.STRING)
     private Status status;
     private Criticality criticality;
@@ -32,7 +34,7 @@ public class Task {
     @ManyToOne
     private Project project;
     @ManyToMany
-    private List<User> attributedTo;
+    private List<User> attributedTo = new ArrayList<>();
 
     @Setter
     private boolean pin;
@@ -53,11 +55,16 @@ public class Task {
 
     }
 
+    public void setDeadline(Date deadline) {
+        if(project != null){
+            this.deadline = deadline;
+        }
+    }
+
     public void setStatus(Status status) {
         if(status != null){
             this.status = status;
         }
-
     }
 
     public Criticality isImportant() {
@@ -97,6 +104,12 @@ public class Task {
     public void setProject(Project project) {
         if(project != null){
             this.project = project;
+        }
+    }
+
+    public void setTitle(String title) {
+        if(project != null){
+            this.title = title;
         }
     }
 

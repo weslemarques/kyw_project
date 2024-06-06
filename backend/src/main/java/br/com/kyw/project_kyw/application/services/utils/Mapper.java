@@ -3,10 +3,14 @@ package br.com.kyw.project_kyw.application.services.utils;
 import br.com.kyw.project_kyw.adapters.dtos.ProjectIncludeDTO;
 import br.com.kyw.project_kyw.adapters.dtos.UserIncludeDTO;
 import br.com.kyw.project_kyw.adapters.dtos.request.ProjectCreateDTO;
+import br.com.kyw.project_kyw.adapters.dtos.request.TaskRequest;
 import br.com.kyw.project_kyw.adapters.dtos.response.MessageResponse;
 import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
+import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;
 import br.com.kyw.project_kyw.core.entities.Message;
 import br.com.kyw.project_kyw.core.entities.Project;
+import br.com.kyw.project_kyw.core.entities.Task;
+import br.com.kyw.project_kyw.core.enums.Status;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -40,4 +44,18 @@ public class Mapper {
         return messageResponse;
     }
 
+    public Task taskDTOForEntity(TaskRequest taskRequest) {
+        var task = mapper.map(taskRequest, Task.class);
+        task.setStatus(Status.OPEN);
+        return task;
+
+    }
+
+    public TaskResponse taskEntityForDTO(Task entity) {
+        var task = mapper.map(entity, TaskResponse.class);
+        entity.getAttributedTo().forEach(user ->{
+            task.setAttributedTo(new UserIncludeDTO(user.getId(), user.getNickname()));
+        });
+        return task;
+    }
 }

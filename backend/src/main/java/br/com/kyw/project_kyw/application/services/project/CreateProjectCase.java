@@ -45,25 +45,27 @@ public class CreateProjectCase {
         User creator = Auth.getUserAuthenticate();
         projectName = projectRequest.getName();
         Project projectEntity = mapper.dtoForProjectEntity(projectRequest);
-        Path pathUrlImage = fileStorageService.storageFile(projectRequest.getImage());
-        projectEntity.setImageUrl(pathUrlImage.toUri().getPath());
+        if(projectRequest.getImage() != null){
+            Path pathUrlImage = fileStorageService.storageFile(projectRequest.getImage(), "project");
+            projectEntity.setImageUrl(pathUrlImage.toUri().getPath());
+        }
         projectEntity.setCreator(creator);
         projectEntity = projectRepository.save(projectEntity);
         saveMembers(projectRequest.getMembers(), projectEntity);
-
-
-        ProjectRole roleAdmin = new ProjectRole(creator, projectEntity, Title.ADMIN);
+        projectEntity.getMembers().add(creator);
+        ProjectRole roleAdmin = new ProjectRole(creator, projectEntity, Title.CREATOR);
         projectRoleRepository.save(roleAdmin);
         return mapper.entityForProjectResponse(projectEntity);
     }
 
     public void saveMembers(List<String> memberEmails, Project projectEntity){
         memberEmails.forEach(email ->  {
-            var user  = userRepository.findByEmail(email);
-            user.ifPresent(value -> {
+            var userOptional  = userRepository.findByEmail(email);
+            userOptional.ifPresent(user -> {
                 sendNotification
-                        .senderByEmail(new Email(value.getId(), value.getEmail(), subject, text));
-                    projectRoleRepository.save(new ProjectRole(value, projectEntity, Title.MEMBER));
+                        .senderByEmail(new Email(user.getId(), user.getEmail(), subject, text));
+                    projectEntity.getMembers().add(user);
+                    projectRoleRepository.save(new ProjectRole(user, projectEntity, Title.MEMBER));
                     }
 
             );

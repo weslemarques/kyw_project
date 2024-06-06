@@ -28,7 +28,7 @@ public class ProjectRoleController {
        var pageProRole = projectRoleService.getProjectRoleByUser(pageable);
        return ResponseEntity.ok(pageProRole);
     }
-    @GetMapping("/{userId}/{projectId}")
+    @GetMapping("/{projectId}")
     public ResponseEntity<String> getByProjectAndUserId(@PathVariable UUID projectId){
         var projectRole = projectRoleService.getProjectRoleByProjectAndUser(projectId);
         return ResponseEntity.ok(projectRole);

@@ -26,8 +26,8 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<TaskResponse> create(@RequestBody TaskRequest taskRequest, @ RequestBody UUID projectId){
-        var taskresponse = taskService.create(taskRequest, projectId);
+    public ResponseEntity<TaskResponse> create(@RequestBody TaskRequest taskRequest){
+        var taskresponse = taskService.create(taskRequest, taskRequest.getProjectId());
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")

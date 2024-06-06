@@ -3,14 +3,10 @@ package br.com.kyw.project_kyw.adapters.controllers;
 import br.com.kyw.project_kyw.adapters.dtos.response.MessageResponse;
 import br.com.kyw.project_kyw.application.services.MessageService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -23,7 +19,10 @@ public class MessageController {
         this.messageService = messageService;
     }
     @GetMapping("/project/{projectId}")
-    public ResponseEntity<Page<MessageResponse>> getMessagesDesc(Pageable pageable, @PathVariable UUID projectId){
-        return ResponseEntity.ok(messageService.getMessagesByProjectSentInDesc(pageable, projectId));
+    public ResponseEntity<List<MessageResponse>> getMessagesDesc(@PathVariable UUID projectId, @RequestParam(defaultValue = "10") int limit,
+                                                                 @RequestParam(defaultValue = "0") int page, @RequestParam String sort){
+        return ResponseEntity.ok(messageService.getMessagesByProjectSentIn(projectId, limit,page, sort));
     }
+
+
 }

@@ -27,7 +27,8 @@ security:
 
 
 file:
-  upload-dir: /UploadDir
+  image-project: /images/projects
+  image-user-avatar: /images/avatars
 
 cors:
   originPatterns: ${ORIGINS}
