@@ -20,5 +20,6 @@ public class UserResponseDTO implements Serializable {
     private String phone;
     @Setter(AccessLevel.NONE)
     private List<Notification> notification;
+    private String avatarUrl;
 
 }

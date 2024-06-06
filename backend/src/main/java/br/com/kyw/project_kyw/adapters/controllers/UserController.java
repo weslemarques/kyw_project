@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -30,8 +31,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<UserResponseDTO> save(@Valid @RequestBody UserRegisterDTO userRegister){
+    @PostMapping( value = "/register" ,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<UserResponseDTO> save(@Valid @ModelAttribute UserRegisterDTO userRegister){
         var userPersist = userRegisterService.registerUser(userRegister);
        return ResponseEntity.created(ServletUriComponentsBuilder
                .fromCurrentRequest()
