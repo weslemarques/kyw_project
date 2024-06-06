@@ -35,7 +35,7 @@ public class Project {
     private List<Task> tasks = new ArrayList<>();
     private Instant createAt = Instant.now();
     private boolean deleted;
-    @ManyToMany(mappedBy = "projects", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "projects", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Set<User> members = new HashSet<>();
     public Project() {
     }
