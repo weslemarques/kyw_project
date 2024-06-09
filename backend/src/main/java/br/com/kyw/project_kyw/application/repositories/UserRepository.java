@@ -18,6 +18,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     boolean existsByEmail(String email);
     boolean existsByPhone(String phone);
     boolean existsByNickname(String nickname);
-    @Query("SELECT p FROM Project p LEFT JOIN FETCH p.members m WHERE p.id = :projectId")
-    Project findAllUserByProject(UUID projectId);
+    @Query("SELECT u FROM User u LEFT JOIN FETCH u.projects p WHERE u.id = :userId")
+    User findAllProjectsByUserId(UUID userId);
 }
