@@ -11,8 +11,6 @@ public class Auth {
         if(!authentication.isAuthenticated()){
             throw new ResourceNotFound("Usuário não autenticado");
         }
-            System.out.println(authentication.getPrincipal());
             return (User) authentication.getPrincipal();
-
     }
 }

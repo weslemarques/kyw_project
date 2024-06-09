@@ -35,12 +35,12 @@ public class Project {
     private List<Task> tasks = new ArrayList<>();
     private Instant createAt = Instant.now();
     private boolean deleted;
-    @ManyToMany(mappedBy = "projects", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "projects", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<User> members = new HashSet<>();
     public Project() {
     }
 
-    public void addUser(User user) {
+    public void addMember(User user) {
         this.members.add(user);
         user.addProject(this);
     }
