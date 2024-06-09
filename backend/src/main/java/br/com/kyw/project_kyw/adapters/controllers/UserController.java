@@ -2,7 +2,10 @@ package br.com.kyw.project_kyw.adapters.controllers;
 
 import br.com.kyw.project_kyw.adapters.dtos.request.UserExitProjectDTO;
 import br.com.kyw.project_kyw.adapters.dtos.request.UserRegisterDTO;
+import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.UserResponseDTO;
+import br.com.kyw.project_kyw.adapters.dtos.response.UserWithProjectsDTO;
+import br.com.kyw.project_kyw.application.services.project.ProjectServiceImpl;
 import br.com.kyw.project_kyw.application.services.user.UserRegisterService;
 import br.com.kyw.project_kyw.application.services.user.UserService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -25,10 +28,12 @@ public class UserController {
 
     private final UserRegisterService userRegisterService;
     private final UserService userService;
+    private final ProjectServiceImpl projectService;
 
-    public UserController(UserRegisterService userRegisterService, UserService userService) {
+    public UserController(UserRegisterService userRegisterService, UserService userService, ProjectServiceImpl projectService) {
         this.userRegisterService = userRegisterService;
         this.userService = userService;
+        this.projectService = projectService;
     }
 
     @PostMapping( value = "/register" ,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -62,6 +67,9 @@ public class UserController {
         return ResponseEntity.ok(userService.updateNicknameUser(nickname));
     }
 
-
+    @GetMapping("/projects")
+    public ResponseEntity<UserWithProjectsDTO> getProjectByUser() {
+        return ResponseEntity.ok(userService.getAllProjectsByUser());
+    }
 
 }
