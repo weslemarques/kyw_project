@@ -39,7 +39,7 @@ public class User implements UserDetails {
     @ManyToMany(mappedBy = "attributedTo",fetch = FetchType.EAGER)
     private List<Task> assignedTasks = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_user_project", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
     private List<Project> projects = new ArrayList<>();
 
