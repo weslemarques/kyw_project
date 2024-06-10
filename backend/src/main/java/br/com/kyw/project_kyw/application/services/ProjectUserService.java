@@ -39,7 +39,7 @@ public class ProjectUserService {
         Project project = projectRepository.findById(projectId).orElseThrow(
                 () -> new ResourceNotFound("Projeto não encontrado"));
         projectRoleRepository.save(new ProjectRole(user, project, Title.MEMBER));
-        project.addUser(user);
+        project.addMember(user);
         projectRepository.save(project);
     }
 
@@ -56,7 +56,7 @@ public class ProjectUserService {
 
     @Transactional
     public List<UserResponseDTO> getUsersByProject(UUID projectId){
-        var project = userRepository.findAllUserByProject(projectId);
+        var project = projectRepository.findMembersByProjectId(projectId);
         System.out.println(project.getMembers());
         return project.getMembers().stream().map(member -> mapper.map(member, UserResponseDTO.class)).toList();
     }

@@ -3,6 +3,7 @@ package br.com.kyw.project_kyw.adapters.controllers;
 import br.com.kyw.project_kyw.adapters.dtos.request.ProjectCreateDTO;
 import br.com.kyw.project_kyw.adapters.dtos.request.ProjectUpadateDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
+import br.com.kyw.project_kyw.adapters.dtos.response.ProjectWithMembersDTO;
 import br.com.kyw.project_kyw.application.services.project.CreateProjectCase;
 import br.com.kyw.project_kyw.application.services.project.ProjectServiceImpl;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -48,6 +49,7 @@ public class ProjectController {
         return ResponseEntity.ok(projectService.getById(projectId));
     }
 
+
     @PutMapping("/{id}")
     public ResponseEntity<ProjectResponseDTO> update(@RequestBody ProjectUpadateDTO projectUpdate, @PathVariable UUID id) {
         var userUpdate = projectService.update(projectUpdate, id);
@@ -64,5 +66,10 @@ public class ProjectController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public ResponseEntity<Page<ProjectResponseDTO>> getAllPageable(Pageable pageable) {
         return ResponseEntity.ok(projectService.getAll(pageable));
+    }
+
+    @GetMapping("/{projectId}/members")
+    public ResponseEntity<ProjectWithMembersDTO> getAllMembersByUser(@PathVariable UUID projectId) {
+        return ResponseEntity.ok(projectService.getAllMembersByUser(projectId));
     }
 }

@@ -6,6 +6,7 @@ import br.com.kyw.project_kyw.adapters.dtos.request.ProjectCreateDTO;
 import br.com.kyw.project_kyw.adapters.dtos.request.TaskRequest;
 import br.com.kyw.project_kyw.adapters.dtos.response.MessageResponse;
 import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
+import br.com.kyw.project_kyw.adapters.dtos.response.ProjectWithMembersDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;
 import br.com.kyw.project_kyw.core.entities.Message;
 import br.com.kyw.project_kyw.core.entities.Project;
@@ -17,8 +18,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Mapper {
 
-    final
-    ModelMapper mapper;
+    final ModelMapper mapper;
 
     public Mapper(ModelMapper mapper) {
         this.mapper = mapper;
@@ -26,7 +26,7 @@ public class Mapper {
 
     public ProjectResponseDTO entityForProjectResponse(Project project){
         var projectResponse = mapper.map(project, ProjectResponseDTO.class);
-        var creator = new UserIncludeDTO(project.getCreator().getId(), project.getCreator().getNickname());
+        var creator = new UserIncludeDTO(project.getCreator().getId(), project.getCreator().getNickname(),project.getCreator().getAvatarUrl());
         projectResponse.setCreator(creator);
         return projectResponse;
     }
@@ -37,7 +37,7 @@ public class Mapper {
 
     public MessageResponse entityForDTOMessage(Message message){
         var messageResponse = mapper.map(message, MessageResponse.class);
-        var userSender  = new UserIncludeDTO(message.getSender().getId(), message.getSender().getNickname());
+        var userSender  = new UserIncludeDTO(message.getSender().getId(), message.getSender().getNickname(), message.getSender().getAvatarUrl());
         messageResponse.setSender(userSender);
         var project  = new ProjectIncludeDTO(message.getProject().getId(), message.getProject().getName());
         messageResponse.setProject(project);
@@ -54,8 +54,22 @@ public class Mapper {
     public TaskResponse taskEntityForDTO(Task entity) {
         var task = mapper.map(entity, TaskResponse.class);
         entity.getAttributedTo().forEach(user ->{
-            task.setAttributedTo(new UserIncludeDTO(user.getId(), user.getNickname()));
+            task.setAttributedTo(new UserIncludeDTO(user.getId(), user.getNickname(), user.getAvatarUrl()));
         });
         return task;
+    }
+
+
+    public ProjectWithMembersDTO projectForResponseWithMembers(Project project) {
+        var projectResponse = mapper.map(project, ProjectWithMembersDTO.class);
+        project.getMembers().forEach(member -> {
+            var user = new UserIncludeDTO(member.getId(), member.getNickname(), member.getAvatarUrl());
+            projectResponse.getMembers().add(user);
+        });
+        projectResponse.getMembers().removeIf(member -> member.userId() == null); // TODO: remove this
+
+        var creator = new UserIncludeDTO(project.getCreator().getId(), project.getCreator().getNickname(),project.getCreator().getAvatarUrl());
+        projectResponse.setCreator(creator);
+        return projectResponse;
     }
 }

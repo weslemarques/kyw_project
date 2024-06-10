@@ -2,6 +2,7 @@ package br.com.kyw.project_kyw.application.services.project;
 
 import br.com.kyw.project_kyw.adapters.dtos.request.ProjectUpadateDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
+import br.com.kyw.project_kyw.adapters.dtos.response.ProjectWithMembersDTO;
 import br.com.kyw.project_kyw.application.acess.AccessProjectLevel;
 import br.com.kyw.project_kyw.application.exceptions.AuthorizationException;
 import br.com.kyw.project_kyw.application.exceptions.ResourceNotFound;
@@ -20,14 +21,14 @@ public class ProjectServiceImpl {
     private final Mapper mapper;
     private final AccessProjectLevel accessProjectLevel;
 
-    public ProjectServiceImpl(ProjectRepository projectRepository, Mapper mapper, AccessProjectLevel accessProjectLevel) {
+    public ProjectServiceImpl(ProjectRepository projectRepository, Mapper mapper,AccessProjectLevel accessProjectLevel) {
         this.projectRepository = projectRepository;
         this.mapper = mapper;
         this.accessProjectLevel = accessProjectLevel;
     }
 
     public void delete(UUID projectId) {
-        if(accessProjectLevel.isCreator(projectId)){
+        if (accessProjectLevel.isCreator(projectId)) {
             var user = projectRepository
                     .findById(projectId).orElseThrow(() -> new UserNotFoundExeception("Usuario não encontrado"));
             user.setDeleted(true);
@@ -38,7 +39,7 @@ public class ProjectServiceImpl {
     }
 
     public ProjectResponseDTO update(ProjectUpadateDTO projectUpadateDTO, UUID projectId) {
-        if(accessProjectLevel.isCreatorOrAdmin(projectId)){
+        if (accessProjectLevel.isCreatorOrAdmin(projectId)) {
             var project = projectRepository.findById(projectId)
                     .orElseThrow(() -> new UserNotFoundExeception("Usuario não encontrado"));
             project.setDescription(projectUpadateDTO.getDescription());
@@ -50,10 +51,10 @@ public class ProjectServiceImpl {
     }
 
     public ProjectResponseDTO getById(UUID projectId) {
-        if(accessProjectLevel.canAcessProject(projectId)){
+        if (accessProjectLevel.canAcessProject(projectId)) {
             var project = projectRepository.findById(projectId)
                     .orElseThrow(() -> new ResourceNotFound("Projeto não encontrado"));
-            if(project.isDeleted()){
+            if (project.isDeleted()) {
                 throw new ResourceNotFound("Projeto não encontrado");
             }
             return mapper.entityForProjectResponse(project);
@@ -66,5 +67,9 @@ public class ProjectServiceImpl {
         return listProject.map(mapper::entityForProjectResponse);
     }
 
-
+    public ProjectWithMembersDTO getAllMembersByUser(UUID projectId) {
+        var project = projectRepository.findMembersByProjectId(projectId);
+        return mapper.projectForResponseWithMembers(project);
+    }
 }
+

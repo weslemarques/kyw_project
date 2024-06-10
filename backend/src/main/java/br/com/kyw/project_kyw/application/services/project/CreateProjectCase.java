@@ -14,6 +14,7 @@ import br.com.kyw.project_kyw.core.entities.ProjectRole;
 import br.com.kyw.project_kyw.core.entities.User;
 import br.com.kyw.project_kyw.core.enums.Title;
 import br.com.kyw.project_kyw.infra.security.Auth;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.Path;
@@ -41,9 +42,10 @@ public class CreateProjectCase {
         this.projectRepository = projectRepository;
         this.projectRoleRepository = projectRoleRepository;
     }
+
+    @Transactional
     public ProjectResponseDTO createProject(ProjectCreateDTO projectRequest){
         User creator = Auth.getUserAuthenticate();
-        projectName = projectRequest.getName();
         Project projectEntity = mapper.dtoForProjectEntity(projectRequest);
         if(projectRequest.getImage() != null){
             Path pathUrlImage = fileStorageService.storageFile(projectRequest.getImage(), "project");
@@ -51,25 +53,28 @@ public class CreateProjectCase {
         }
         projectEntity.setCreator(creator);
         projectEntity = projectRepository.save(projectEntity);
-        saveMembers(projectRequest.getMembers(), projectEntity);
-        projectEntity.getMembers().add(creator);
+        projectEntity = saveMembers(projectRequest.getMembers(), projectEntity);
+        projectEntity.addMember(creator);
         ProjectRole roleAdmin = new ProjectRole(creator, projectEntity, Title.CREATOR);
         projectRoleRepository.save(roleAdmin);
+        projectRepository.save(projectEntity);
         return mapper.entityForProjectResponse(projectEntity);
     }
 
-    public void saveMembers(List<String> memberEmails, Project projectEntity){
+    @Transactional
+    public Project saveMembers(List<String> memberEmails, Project projectEntity){
         memberEmails.forEach(email ->  {
             var userOptional  = userRepository.findByEmail(email);
             userOptional.ifPresent(user -> {
                 sendNotification
                         .senderByEmail(new Email(user.getId(), user.getEmail(), subject, text));
-                    projectEntity.getMembers().add(user);
+                    projectEntity.addMember(user);
                     projectRoleRepository.save(new ProjectRole(user, projectEntity, Title.MEMBER));
                     }
-
             );
         });
+
+        return projectEntity;
     }
 
 }
