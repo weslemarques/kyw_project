@@ -53,7 +53,7 @@ public class Mapper {
 
     public TaskResponse taskEntityForDTO(Task entity) {
         var task = mapper.map(entity, TaskResponse.class);
-        entity.getAttributedTo().forEach(user ->{
+        entity.getAttributedTo().forEach(user -> {
             task.setAttributedTo(new UserIncludeDTO(user.getId(), user.getNickname(), user.getAvatarUrl()));
         });
         return task;
