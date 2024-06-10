@@ -33,7 +33,7 @@ public class Task {
     private Date completedAt;
     @ManyToOne
     private Project project;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<User> attributedTo = new ArrayList<>();
 
     @Setter
