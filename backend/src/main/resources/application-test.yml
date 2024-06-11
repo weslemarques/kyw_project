@@ -30,4 +30,6 @@ file:
 cors:
   originPatterns: "*"
 
-
+app:
+  base:
+    path: http://localhost:8080
