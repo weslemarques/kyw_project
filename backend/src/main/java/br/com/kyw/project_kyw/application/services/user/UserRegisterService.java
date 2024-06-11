@@ -36,8 +36,8 @@ public class UserRegisterService {
         User entity = new User();
         mapper.map(userRegister, entity);
         if(userRegister.getImage() != null){
-            Path pathUrlImage = fileStorageService.storageFile(userRegister.getImage(),"avatar");
-            entity.setAvatarUrl(pathUrlImage.toUri().getPath());
+            String pathUrlImage = fileStorageService.storageFile(userRegister.getImage(),"avatar");
+            entity.setAvatarUrl(pathUrlImage);
         }
         entity.addRole(new Role("ROLE_USER"));
         entity.setPassword(bCPasswordEncoder.encode(entity.getPassword()));
