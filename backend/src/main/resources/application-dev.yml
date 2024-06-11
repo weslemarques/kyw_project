@@ -23,8 +23,8 @@ security:
 
 
 file:
-  image-project: /Projects/images/projects
-  image-user-avatar: /Projects/images/avatars
+  image-project: /images/projects
+  image-user-avatar: /images/avatars
 
 cors:
   originPatterns: "*"
