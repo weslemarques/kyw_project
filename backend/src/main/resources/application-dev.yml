@@ -32,4 +32,4 @@ cors:
 
 app:
   base:
-    path: ${APP_URL:http://localhost:8080/}
+    path: ${APP_URL:http://localhost:8080}

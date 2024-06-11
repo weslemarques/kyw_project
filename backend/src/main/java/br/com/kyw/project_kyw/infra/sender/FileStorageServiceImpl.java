@@ -17,7 +17,7 @@ import java.util.Objects;
 public class FileStorageServiceImpl implements FileStorageService {
     private final FileStorageConfig fileStorageConfig;
     @Value("${app.base.path}")
-    private String baseUrlApp = "";
+    private String baseUrlApp;
     public FileStorageServiceImpl(FileStorageConfig fileStorageConfig) {
         this.fileStorageConfig = fileStorageConfig;
 
@@ -30,8 +30,12 @@ public class FileStorageServiceImpl implements FileStorageService {
                 throw new RuntimeException("errr ao armazenar o arquivo, contem invalida path");
             }
             Path targetLocation = fileStorageLocation.resolve(fileName);
+
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
-        return targetLocation.toUri().toString().replace("file:///D:/",baseUrlApp);
+            var urlImage = targetLocation.toUri().toString();
+            int indice = urlImage.indexOf("/images");
+            String conteudoAntes = urlImage.substring(0, indice);
+            return urlImage.replace(conteudoAntes,baseUrlApp);
         }catch (Exception e){
             throw new RuntimeException("errr ao armazenar o arquivo", e);
         }
