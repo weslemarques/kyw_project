@@ -17,7 +17,7 @@ import java.util.Objects;
 public class FileStorageServiceImpl implements FileStorageService {
     private final FileStorageConfig fileStorageConfig;
     @Value("${app.base.path}")
-    private String baseUrlApp;
+    private String baseUrlApp = "";
     public FileStorageServiceImpl(FileStorageConfig fileStorageConfig) {
         this.fileStorageConfig = fileStorageConfig;
 

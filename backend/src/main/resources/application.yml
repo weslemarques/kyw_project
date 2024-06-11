@@ -2,7 +2,7 @@ spring:
   application:
     name: kyw_project
   profiles:
-    active: ${APP_PROFILE:test}
+    active: ${APP_PROFILE:dev}
   jpa:
     open-in-view: false
   security:
