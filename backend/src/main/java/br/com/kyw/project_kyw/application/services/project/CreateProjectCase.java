@@ -17,7 +17,6 @@ import br.com.kyw.project_kyw.infra.security.Auth;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
-import java.nio.file.Path;
 import java.util.List;
 
 @Component
