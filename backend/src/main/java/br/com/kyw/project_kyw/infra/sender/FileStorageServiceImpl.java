@@ -2,6 +2,7 @@ package br.com.kyw.project_kyw.infra.sender;
 
 import br.com.kyw.project_kyw.application.services.utils.FileStorageService;
 import br.com.kyw.project_kyw.infra.config.FileStorageConfig;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,11 +16,13 @@ import java.util.Objects;
 @Service
 public class FileStorageServiceImpl implements FileStorageService {
     private final FileStorageConfig fileStorageConfig;
+    @Value("${app.base.path}")
+    private String baseUrlApp;
     public FileStorageServiceImpl(FileStorageConfig fileStorageConfig) {
         this.fileStorageConfig = fileStorageConfig;
 
     }
-    public Path storageFile(MultipartFile file, String type){
+    public String storageFile(MultipartFile file, String type){
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
         Path fileStorageLocation = getFileStorageLocation(type);
         try {
@@ -28,7 +31,7 @@ public class FileStorageServiceImpl implements FileStorageService {
             }
             Path targetLocation = fileStorageLocation.resolve(fileName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
-            return  targetLocation;
+        return targetLocation.toUri().toString().replace("file:///D:/",baseUrlApp);
         }catch (Exception e){
             throw new RuntimeException("errr ao armazenar o arquivo", e);
         }
@@ -54,7 +57,5 @@ public class FileStorageServiceImpl implements FileStorageService {
             throw new RuntimeException("erro ao criar o diretorio", e);
         }
     }
-
-
 
 }
