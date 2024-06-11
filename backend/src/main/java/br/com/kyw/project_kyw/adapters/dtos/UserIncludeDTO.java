@@ -1,6 +1,5 @@
 package br.com.kyw.project_kyw.adapters.dtos;
 
-import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
