@@ -1,5 +1,6 @@
 package br.com.kyw.project_kyw.adapters.dtos.response;
 
+import br.com.kyw.project_kyw.adapters.dtos.base.ProjectBaseDTO;
 import br.com.kyw.project_kyw.core.enums.Title;
 import lombok.Data;
 
@@ -10,7 +11,6 @@ import java.util.UUID;
 public class ProjectRoleResponse implements Serializable {
 
     private UUID id;
-    private ProjectResponseDTO project;
-
+    private ProjectBaseDTO project;
     private Title title;
 }
