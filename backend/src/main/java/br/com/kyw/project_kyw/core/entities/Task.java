@@ -33,7 +33,7 @@ public class Task {
     private Date completedAt;
     @ManyToOne
     private Project project;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "assignedTasks", cascade = CascadeType.MERGE)
     private List<User> attributedTo = new ArrayList<>();
 
     @Setter
@@ -114,7 +114,10 @@ public class Task {
     }
 
     public void addUser(User user) {
+        if (user != null) {
         this.attributedTo.add(user);
+        user.addTask(this);
+        }
     }
 
 }

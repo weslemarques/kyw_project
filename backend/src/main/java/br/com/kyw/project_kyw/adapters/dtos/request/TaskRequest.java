@@ -2,6 +2,7 @@ package br.com.kyw.project_kyw.adapters.dtos.request;
 
 import br.com.kyw.project_kyw.adapters.dtos.UserIncludeDTO;
 import br.com.kyw.project_kyw.core.enums.Criticality;
+import br.com.kyw.project_kyw.core.enums.Status;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +27,7 @@ public class TaskRequest implements Serializable {
     private String attachments;
     private UUID projectId;
     private Date completedAt;
-    private List<UserIncludeDTO> attributedTo;
+    private List<UUID> attributedTo;
+    private Status status;
 
 }
