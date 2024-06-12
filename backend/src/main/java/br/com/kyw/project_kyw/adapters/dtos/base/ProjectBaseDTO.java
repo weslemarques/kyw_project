@@ -1,21 +1,14 @@
-package br.com.kyw.project_kyw.adapters.dtos.response;
+package br.com.kyw.project_kyw.adapters.dtos.base;
 
 import br.com.kyw.project_kyw.adapters.dtos.UserIncludeDTO;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.UUID;
 
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class ProjectResponseDTO implements Serializable {
+@Data
+public class ProjectBaseDTO implements Serializable {
 
     private UUID id;
     private String name;
@@ -25,5 +18,4 @@ public class ProjectResponseDTO implements Serializable {
     private String linkGroup;
     private boolean pin;
     private Instant createAt;
-
 }

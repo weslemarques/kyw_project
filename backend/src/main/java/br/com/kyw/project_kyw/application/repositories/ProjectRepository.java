@@ -1,6 +1,7 @@
 package br.com.kyw.project_kyw.application.repositories;
 
 import br.com.kyw.project_kyw.core.entities.Project;
+import br.com.kyw.project_kyw.core.entities.Task;
 import br.com.kyw.project_kyw.core.entities.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,9 @@ import java.util.UUID;
 
 public interface ProjectRepository extends JpaRepository<Project, UUID> {
 
-    @Query("SELECT p FROM Project p LEFT JOIN FETCH p.members m WHERE p.id = :projectId")
-    Project findMembersByProjectId(UUID projectId);
+    @Query("SELECT p.members FROM Project p WHERE p.id = :projectId")
+    List<User> findMembersByProjectId(UUID projectId);
+
+    @Query("SELECT p.tasks FROM Project p WHERE p.id = :projectId")
+    List<Task> findTasksByProjectId(UUID projectId);
 }
