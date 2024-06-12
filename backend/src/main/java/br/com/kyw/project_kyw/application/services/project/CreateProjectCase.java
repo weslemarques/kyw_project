@@ -1,8 +1,8 @@
 package br.com.kyw.project_kyw.application.services.project;
 
+import br.com.kyw.project_kyw.adapters.dtos.base.ProjectBaseDTO;
 import br.com.kyw.project_kyw.adapters.dtos.emails.Email;
 import br.com.kyw.project_kyw.adapters.dtos.request.ProjectCreateDTO;
-import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
 import br.com.kyw.project_kyw.application.repositories.ProjectRepository;
 import br.com.kyw.project_kyw.application.repositories.ProjectRoleRepository;
 import br.com.kyw.project_kyw.application.repositories.UserRepository;
@@ -43,7 +43,7 @@ public class CreateProjectCase {
     }
 
     @Transactional
-    public ProjectResponseDTO createProject(ProjectCreateDTO projectRequest){
+    public ProjectBaseDTO createProject(ProjectCreateDTO projectRequest){
         User creator = Auth.getUserAuthenticate();
         Project projectEntity = mapper.dtoForProjectEntity(projectRequest);
         if(projectRequest.getImage() != null){

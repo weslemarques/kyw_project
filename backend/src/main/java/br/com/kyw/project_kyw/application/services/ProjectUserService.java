@@ -56,8 +56,7 @@ public class ProjectUserService {
 
     @Transactional
     public List<UserResponseDTO> getUsersByProject(UUID projectId){
-        var project = projectRepository.findMembersByProjectId(projectId);
-        System.out.println(project.getMembers());
-        return project.getMembers().stream().map(member -> mapper.map(member, UserResponseDTO.class)).toList();
+        var members = projectRepository.findMembersByProjectId(projectId);
+        return members.stream().map(member -> mapper.map(member, UserResponseDTO.class)).toList();
     }
 }

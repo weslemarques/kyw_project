@@ -1,9 +1,10 @@
 package br.com.kyw.project_kyw.adapters.controllers;
 
+import br.com.kyw.project_kyw.adapters.dtos.UserIncludeDTO;
+import br.com.kyw.project_kyw.adapters.dtos.base.ProjectBaseDTO;
 import br.com.kyw.project_kyw.adapters.dtos.request.ProjectCreateDTO;
 import br.com.kyw.project_kyw.adapters.dtos.request.ProjectUpadateDTO;
-import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
-import br.com.kyw.project_kyw.adapters.dtos.response.ProjectWithMembersDTO;
+import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;
 import br.com.kyw.project_kyw.application.services.project.CreateProjectCase;
 import br.com.kyw.project_kyw.application.services.project.ProjectServiceImpl;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -34,7 +36,7 @@ public class ProjectController {
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ProjectResponseDTO> save(@Valid @ModelAttribute ProjectCreateDTO createProject) {
+    public ResponseEntity<ProjectBaseDTO> save(@Valid @ModelAttribute ProjectCreateDTO createProject) {
         var projectPersit = createProjectCase.createProject(createProject);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -45,13 +47,13 @@ public class ProjectController {
     }
 
     @GetMapping("/{projectId}")
-    public ResponseEntity<ProjectResponseDTO> getProjectById(@PathVariable UUID projectId) {
+    public ResponseEntity<ProjectBaseDTO> getProjectById(@PathVariable UUID projectId) {
         return ResponseEntity.ok(projectService.getById(projectId));
     }
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProjectResponseDTO> update(@RequestBody ProjectUpadateDTO projectUpdate, @PathVariable UUID id) {
+    public ResponseEntity<ProjectBaseDTO> update(@RequestBody ProjectUpadateDTO projectUpdate, @PathVariable UUID id) {
         var userUpdate = projectService.update(projectUpdate, id);
         return ResponseEntity.ok(userUpdate);
     }
@@ -64,12 +66,17 @@ public class ProjectController {
 
     @GetMapping
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public ResponseEntity<Page<ProjectResponseDTO>> getAllPageable(Pageable pageable) {
+    public ResponseEntity<Page<ProjectBaseDTO>> getAllPageable(Pageable pageable) {
         return ResponseEntity.ok(projectService.getAll(pageable));
     }
 
     @GetMapping("/{projectId}/members")
-    public ResponseEntity<ProjectWithMembersDTO> getAllMembersByUser(@PathVariable UUID projectId) {
+    public ResponseEntity<List<UserIncludeDTO>> getAllMembersByUser(@PathVariable UUID projectId) {
         return ResponseEntity.ok(projectService.getAllMembersByUser(projectId));
+    }
+
+    @GetMapping("/{projectId}/tasks")
+    public ResponseEntity<List<TaskResponse>> getAllTasksByProject(@PathVariable UUID projectId) {
+        return ResponseEntity.ok(projectService.getAllTasksByUser(projectId));
     }
 }

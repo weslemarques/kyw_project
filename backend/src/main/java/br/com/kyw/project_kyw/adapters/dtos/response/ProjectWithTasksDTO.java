@@ -7,16 +7,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProjectWithMembersDTO extends ProjectBaseDTO{
+public class ProjectWithTasksDTO extends ProjectBaseDTO{
 
 
-    private Set<UserIncludeDTO> members = new HashSet<>();
+    private List<TaskResponse> members = new ArrayList<>();
 
 }

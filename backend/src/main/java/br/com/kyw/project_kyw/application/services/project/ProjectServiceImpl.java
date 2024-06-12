@@ -1,8 +1,12 @@
 package br.com.kyw.project_kyw.application.services.project;
 
+import br.com.kyw.project_kyw.adapters.dtos.UserIncludeDTO;
+import br.com.kyw.project_kyw.adapters.dtos.base.ProjectBaseDTO;
 import br.com.kyw.project_kyw.adapters.dtos.request.ProjectUpadateDTO;
-import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.ProjectWithMembersDTO;
+import br.com.kyw.project_kyw.adapters.dtos.response.ProjectWithTasksDTO;
+import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;
+import br.com.kyw.project_kyw.adapters.dtos.response.UserResponseDTO;
 import br.com.kyw.project_kyw.application.acess.AccessProjectLevel;
 import br.com.kyw.project_kyw.application.exceptions.AuthorizationException;
 import br.com.kyw.project_kyw.application.exceptions.ResourceNotFound;
@@ -13,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 @Service
 public class ProjectServiceImpl {
@@ -38,7 +43,7 @@ public class ProjectServiceImpl {
         throw new AuthorizationException("Você não tem autorização para deletar esse projeto");
     }
 
-    public ProjectResponseDTO update(ProjectUpadateDTO projectUpadateDTO, UUID projectId) {
+    public ProjectBaseDTO update(ProjectUpadateDTO projectUpadateDTO, UUID projectId) {
         if (accessProjectLevel.isCreatorOrAdmin(projectId)) {
             var project = projectRepository.findById(projectId)
                     .orElseThrow(() -> new UserNotFoundExeception("Usuario não encontrado"));
@@ -50,7 +55,7 @@ public class ProjectServiceImpl {
         throw new AuthorizationException("Você não tem autorização para atualizar esse projeto");
     }
 
-    public ProjectResponseDTO getById(UUID projectId) {
+    public ProjectBaseDTO getById(UUID projectId) {
         if (accessProjectLevel.canAcessProject(projectId)) {
             var project = projectRepository.findById(projectId)
                     .orElseThrow(() -> new ResourceNotFound("Projeto não encontrado"));
@@ -62,14 +67,19 @@ public class ProjectServiceImpl {
         throw new AuthorizationException("Você não tem autorização para acessar esse projeto");
     }
 
-    public Page<ProjectResponseDTO> getAll(Pageable pageable) {
+    public Page<ProjectBaseDTO> getAll(Pageable pageable) {
         var listProject = projectRepository.findAll(pageable);
         return listProject.map(mapper::entityForProjectResponse);
     }
 
-    public ProjectWithMembersDTO getAllMembersByUser(UUID projectId) {
-        var project = projectRepository.findMembersByProjectId(projectId);
-        return mapper.projectForResponseWithMembers(project);
+    public List<UserIncludeDTO> getAllMembersByUser(UUID projectId) {
+        var members = projectRepository.findMembersByProjectId(projectId);
+        return members.stream().map(mapper::projectForUserIncludeDTO).toList();
+    }
+
+    public List<TaskResponse> getAllTasksByUser(UUID projectId) {
+        var tasks = projectRepository.findTasksByProjectId(projectId);
+        return tasks.stream().map(mapper::taskEntityForDTO).toList();
     }
 }
 

@@ -1,5 +1,6 @@
 package br.com.kyw.project_kyw.adapters.dtos.response;
 
+import br.com.kyw.project_kyw.adapters.dtos.base.ProjectBaseDTO;
 import br.com.kyw.project_kyw.core.entities.Notification;
 import lombok.Data;
 
@@ -17,5 +18,5 @@ public class UserWithProjectsDTO implements Serializable {
     private String avatarUrl;
     private List<Notification> notification = new ArrayList<>();
 
-    private List<ProjectResponseDTO> projects = new ArrayList<>();
+    private List<ProjectBaseDTO> projects = new ArrayList<>();
 }

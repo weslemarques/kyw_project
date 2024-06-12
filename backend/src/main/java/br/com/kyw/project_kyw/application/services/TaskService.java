@@ -9,6 +9,7 @@ import br.com.kyw.project_kyw.application.repositories.UserRepository;
 import br.com.kyw.project_kyw.application.services.utils.Mapper;
 import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.entities.Task;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -31,13 +32,14 @@ public class TaskService {
         this.projectRepository = projectRepository;
         this.userRepository = userRepository;
     }
+    @Transactional
     public TaskResponse create(TaskRequest taskRequest, UUID projectId){
         Task entity = mapper.taskDTOForEntity(taskRequest);
         Project entityProject = projectRepository.findById(projectId)
                 .orElseThrow(() -> new ResourceNotFound("Projeto não encontrado"));
         Task finalEntity = entity;
-        taskRequest.getAttributedTo().forEach((user)->{
-            var userEntity = userRepository.findById(user.userId());
+        taskRequest.getAttributedTo().forEach((userId)->{
+            var userEntity = userRepository.findById(userId);
             userEntity.ifPresent(finalEntity::addUser);
         });
         entity.setProject(entityProject);

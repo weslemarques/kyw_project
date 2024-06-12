@@ -31,7 +31,7 @@ public class Project {
     private String imageUrl;
     private String linkGroup;
     private boolean pin;
-    @OneToMany(mappedBy = "project",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "project",fetch = FetchType.LAZY)
     private List<Task> tasks = new ArrayList<>();
     private Instant createAt = Instant.now();
     private boolean deleted;

@@ -1,6 +1,7 @@
 package br.com.kyw.project_kyw.application.services.user;
 
-import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
+import br.com.kyw.project_kyw.adapters.dtos.base.ProjectBaseDTO;
+import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;
 import br.com.kyw.project_kyw.adapters.dtos.response.UserResponseDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.UserWithProjectsDTO;
 import br.com.kyw.project_kyw.application.exceptions.ResourceNotFound;
@@ -66,11 +67,15 @@ public class UserService  implements UserDetailsService {
     }
 
 
-    public UserWithProjectsDTO getAllProjectsByUser() {
-        var user = userRepository.findAllProjectsByUserId(Auth.getUserAuthenticate().getId());
-        return mapper.map(user, UserWithProjectsDTO.class);
+    public List<ProjectBaseDTO> getAllProjectsByUser() {
+        var projects = userRepository.findAllProjectsByUserId(Auth.getUserAuthenticate().getId());
+        return projects.stream().map(p -> mapper.map(p, ProjectBaseDTO.class)).toList();
     }
 
 
-
+    public List<TaskResponse> getTasksByUser() {
+        var tasks = userRepository.findAllTasksByUserId(Auth.getUserAuthenticate().getId());
+        return tasks.stream().map(t -> mapper.map(t, TaskResponse.class)).toList();
+    }
 }
+
