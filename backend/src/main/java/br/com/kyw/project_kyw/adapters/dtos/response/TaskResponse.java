@@ -12,6 +12,7 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Getter@Setter
@@ -21,12 +22,17 @@ public class TaskResponse implements Serializable {
 
     private UUID id;
     private Status status;
+    private String title;
     private Criticality criticality;
     private String description;
     private String attachments;
     private Instant createAt ;
     private Date completedAt;
     private ProjectIncludeDTO project;
-    private UserIncludeDTO attributedTo;
+    private List<UserIncludeDTO> attributedTo;
     private boolean pin;
+
+    public void addAttributedTo(UserIncludeDTO userIncludeDTO) {
+        attributedTo.add(userIncludeDTO);
+    }
 }
