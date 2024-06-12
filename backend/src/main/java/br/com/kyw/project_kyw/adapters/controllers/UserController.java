@@ -1,8 +1,8 @@
 package br.com.kyw.project_kyw.adapters.controllers;
 
-import br.com.kyw.project_kyw.adapters.dtos.request.UserExitProjectDTO;
+import br.com.kyw.project_kyw.adapters.dtos.base.ProjectBaseDTO;
 import br.com.kyw.project_kyw.adapters.dtos.request.UserRegisterDTO;
-import br.com.kyw.project_kyw.adapters.dtos.response.ProjectResponseDTO;
+import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;
 import br.com.kyw.project_kyw.adapters.dtos.response.UserResponseDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.UserWithProjectsDTO;
 import br.com.kyw.project_kyw.application.services.project.ProjectServiceImpl;
@@ -68,8 +68,13 @@ public class UserController {
     }
 
     @GetMapping("/projects")
-    public ResponseEntity<UserWithProjectsDTO> getProjectByUser() {
+    public ResponseEntity<List<ProjectBaseDTO>> getProjectByUser() {
         return ResponseEntity.ok(userService.getAllProjectsByUser());
+    }
+
+    @GetMapping("/tasks")
+    public ResponseEntity<List<TaskResponse>> getTasksInProjects() {
+        return ResponseEntity.ok(userService.getTasksByUser());
     }
 
 }

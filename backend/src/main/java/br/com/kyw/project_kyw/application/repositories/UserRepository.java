@@ -2,6 +2,7 @@ package br.com.kyw.project_kyw.application.repositories;
 
 import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.entities.ProjectRole;
+import br.com.kyw.project_kyw.core.entities.Task;
 import br.com.kyw.project_kyw.core.entities.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,6 +19,9 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     boolean existsByEmail(String email);
     boolean existsByPhone(String phone);
     boolean existsByNickname(String nickname);
-    @Query("SELECT u FROM User u LEFT JOIN FETCH u.projects p WHERE u.id = :userId")
-    User findAllProjectsByUserId(UUID userId);
+    @Query("SELECT u.projects FROM User u  WHERE u.id = :userId")
+    List<Project> findAllProjectsByUserId(UUID userId);
+
+    @Query("SELECT u.assignedTasks FROM User u  WHERE u.id = :userId")
+    List<Task> findAllTasksByUserId(UUID userId);
 }
