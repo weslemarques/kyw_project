@@ -9,11 +9,13 @@ import br.com.kyw.project_kyw.application.repositories.UserRepository;
 import br.com.kyw.project_kyw.application.services.utils.Mapper;
 import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.entities.Task;
+import br.com.kyw.project_kyw.core.enums.Status;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -70,6 +72,11 @@ public class TaskService {
         return listTask.stream().map(mapper::taskEntityForDTO).toList();
     }
 
+    public List<TaskResponse> getTaskCreatedByDate(Instant startDate, Instant endDate, Status status) {
+            var listTask = taskRepository.findTasksFilterAndCreated(startDate, endDate, status);
+            return listTask.stream().map(mapper::taskEntityForDTO).toList();
+
+    }
     public void delete(UUID taskId) {
         taskRepository.deleteById(taskId);
     }
