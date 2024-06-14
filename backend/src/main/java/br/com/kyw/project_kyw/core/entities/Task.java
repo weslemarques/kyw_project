@@ -3,6 +3,7 @@ package br.com.kyw.project_kyw.core.entities;
 import br.com.kyw.project_kyw.core.enums.Criticality;
 import br.com.kyw.project_kyw.core.enums.Status;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +27,7 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private Status status;
     private Criticality criticality;
+    @Size(max = 1000)
     private String description;
     private String attachments;
     private Instant createAt = Instant.now();
@@ -66,9 +68,10 @@ public class Task {
             this.status = status;
         }
     }
-
-    public Criticality isImportant() {
-        return criticality;
+    public void setCriticality(Criticality criticality) {
+        if(criticality != null){
+            this.criticality = criticality;
+        }
     }
 
     public void setImportant(Criticality criticality) {

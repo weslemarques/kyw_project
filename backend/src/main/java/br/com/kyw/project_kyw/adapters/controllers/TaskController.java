@@ -1,8 +1,10 @@
 package br.com.kyw.project_kyw.adapters.controllers;
 
+import br.com.kyw.project_kyw.adapters.dtos.base.ProjectBaseDTO;
 import br.com.kyw.project_kyw.adapters.dtos.request.TaskRequest;
 import br.com.kyw.project_kyw.adapters.dtos.response.TaskResponse;
 import br.com.kyw.project_kyw.application.services.TaskService;
+import br.com.kyw.project_kyw.core.enums.Status;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
@@ -60,6 +63,11 @@ public class TaskController {
     public ResponseEntity<List<TaskResponse>> getTasksByDeadline(){
         var list = taskService.getTaskByDeadline();
         return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("/created")
+    public ResponseEntity<List<TaskResponse>> getProjectCreatedByUser(@RequestParam("startDate") Instant startDate, @RequestParam("endDate") Instant endDate, Status status) {
+        return ResponseEntity.ok(taskService.getTaskCreatedByDate(startDate, endDate, status));
     }
 
 }
