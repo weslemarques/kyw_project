@@ -16,6 +16,8 @@ import br.com.kyw.project_kyw.core.enums.Status;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class Mapper {
 
@@ -51,12 +53,13 @@ public class Mapper {
         return task;
 
     }
-    public TaskResponse taskEntityForDTO(Task entity) {
+    public TaskResponse taskEntityForDTO(Task entity, List<String> urlAttachements) {
         var task = mapper.map(entity, TaskResponse.class);
         entity.getAttributedTo().forEach(user -> {
             task.addAttributedTo(new UserIncludeDTO(user.getId(), user.getNickname(), user.getAvatarUrl()));
         });
         task.setProject(new ProjectIncludeDTO(entity.getProject().getId(), entity.getProject().getName()));
+        task.setAttachmentsUrls(urlAttachements);
         task.getAttributedTo().removeIf(t -> t.userId() == null);
         return task;
     }

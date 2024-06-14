@@ -13,5 +13,6 @@ public class FileStorageConfig {
 
     private String imageProject;
     private String imageUserAvatar;
+    private String attachments;
 
 }
