@@ -25,7 +25,7 @@ public class TaskResponse implements Serializable {
     private String title;
     private Criticality criticality;
     private String description;
-    private String attachments;
+    private List<String> attachmentsUrls;
     private Instant createAt ;
     private Date completedAt;
     private ProjectIncludeDTO project;

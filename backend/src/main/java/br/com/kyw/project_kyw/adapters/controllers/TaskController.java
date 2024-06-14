@@ -8,6 +8,7 @@ import br.com.kyw.project_kyw.core.enums.Status;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -28,8 +29,8 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @PostMapping
-    public ResponseEntity<TaskResponse> create(@RequestBody TaskRequest taskRequest){
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<TaskResponse> create(@RequestBody @ModelAttribute TaskRequest taskRequest){
         var taskresponse = taskService.create(taskRequest, taskRequest.getProjectId());
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()

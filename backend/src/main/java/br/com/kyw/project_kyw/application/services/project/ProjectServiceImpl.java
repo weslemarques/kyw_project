@@ -93,7 +93,7 @@ public class ProjectServiceImpl {
 
     public List<TaskResponse> getAllTasksByUser(UUID projectId) {
         var tasks = projectRepository.findTasksByProjectId(projectId);
-        return tasks.stream().map(mapper::taskEntityForDTO).toList();
+        return tasks.stream().map(t -> mapper.taskEntityForDTO(t, t.getAttachmentsUrls() )).toList();
     }
 }
 

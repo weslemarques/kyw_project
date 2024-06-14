@@ -21,7 +21,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig{
 
     private final FilterTokenJwt filterToken;
-    private static final String[] WHITE_LIST_URL = { "/auth/**", "/error", "/chat","/users/register","/connect","/js/**", "/css/**","/images/**"};
+    private static final String[] WHITE_LIST_URL = { "/auth/**", "/error", "/chat","/users/register","/connect","/js/**", "/css/**","/files/**"};
 
     public SecurityConfig(FilterTokenJwt filterToken) {
         this.filterToken = filterToken;

@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -22,10 +24,11 @@ public class TaskRequest implements Serializable {
     @NotBlank
     private String title;
     private Criticality criticality;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date deadline;
     @Size(max = 1000)
     private String description;
-    private String attachments;
+    private List<MultipartFile> attachment;
     private UUID projectId;
     private List<UUID> attributedTo;
     private Status status;
