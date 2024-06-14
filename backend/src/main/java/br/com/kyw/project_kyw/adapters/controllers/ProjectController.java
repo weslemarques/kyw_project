@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
@@ -78,5 +79,10 @@ public class ProjectController {
     @GetMapping("/{projectId}/tasks")
     public ResponseEntity<List<TaskResponse>> getAllTasksByProject(@PathVariable UUID projectId) {
         return ResponseEntity.ok(projectService.getAllTasksByUser(projectId));
+    }
+
+    @GetMapping("/created")
+    public ResponseEntity<List<ProjectBaseDTO>> getProjectCreatedByUser(@RequestParam("startDate") Instant startDate, @RequestParam("endDate") Instant endDate, boolean createdByUser) {
+        return ResponseEntity.ok(projectService.getProjectCreatedByDate(startDate, endDate, createdByUser));
     }
 }

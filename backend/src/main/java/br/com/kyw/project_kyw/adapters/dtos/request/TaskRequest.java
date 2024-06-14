@@ -1,9 +1,9 @@
 package br.com.kyw.project_kyw.adapters.dtos.request;
 
-import br.com.kyw.project_kyw.adapters.dtos.UserIncludeDTO;
 import br.com.kyw.project_kyw.core.enums.Criticality;
 import br.com.kyw.project_kyw.core.enums.Status;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,10 +23,10 @@ public class TaskRequest implements Serializable {
     private String title;
     private Criticality criticality;
     private Date deadline;
+    @Size(max = 1000)
     private String description;
     private String attachments;
     private UUID projectId;
-    private Date completedAt;
     private List<UUID> attributedTo;
     private Status status;
 

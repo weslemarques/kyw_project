@@ -13,10 +13,13 @@ import br.com.kyw.project_kyw.application.exceptions.ResourceNotFound;
 import br.com.kyw.project_kyw.application.exceptions.UserNotFoundExeception;
 import br.com.kyw.project_kyw.application.repositories.ProjectRepository;
 import br.com.kyw.project_kyw.application.services.utils.Mapper;
+import br.com.kyw.project_kyw.core.entities.Project;
+import br.com.kyw.project_kyw.infra.security.Auth;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 @Service
@@ -75,6 +78,17 @@ public class ProjectServiceImpl {
     public List<UserIncludeDTO> getAllMembersByUser(UUID projectId) {
         var members = projectRepository.findMembersByProjectId(projectId);
         return members.stream().map(mapper::projectForUserIncludeDTO).toList();
+    }
+
+    public List<ProjectBaseDTO> getProjectCreatedByDate(Instant startDate, Instant endDate, boolean createdByUser) {
+        if (createdByUser) {
+            var listProject = projectRepository.findProjectsFilterAndCreated(startDate, endDate, Auth.getUserAuthenticate().getId());
+            return listProject.stream().map(mapper::entityForProjectResponse).toList();
+        }
+
+        var listProject = projectRepository.findProjectsFilter(startDate, endDate);
+
+        return listProject.stream().map(mapper::entityForProjectResponse).toList();
     }
 
     public List<TaskResponse> getAllTasksByUser(UUID projectId) {
