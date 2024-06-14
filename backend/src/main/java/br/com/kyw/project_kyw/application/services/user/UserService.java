@@ -6,8 +6,10 @@ import br.com.kyw.project_kyw.adapters.dtos.response.UserResponseDTO;
 import br.com.kyw.project_kyw.adapters.dtos.response.UserWithProjectsDTO;
 import br.com.kyw.project_kyw.application.exceptions.ResourceNotFound;
 import br.com.kyw.project_kyw.application.exceptions.UserNotFoundExeception;
+import br.com.kyw.project_kyw.application.repositories.ProjectRepository;
 import br.com.kyw.project_kyw.application.repositories.ProjectRoleRepository;
 import br.com.kyw.project_kyw.application.repositories.UserRepository;
+import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.entities.User;
 import br.com.kyw.project_kyw.infra.security.Auth;
 import jakarta.transaction.Transactional;
@@ -28,11 +30,13 @@ public class UserService  implements UserDetailsService {
     private final UserRepository userRepository;
     private final ProjectRoleRepository projectRoleRepository;
     private final ModelMapper mapper;
+    private final ProjectRepository projectRepository;
 
-    public UserService(UserRepository userRepository, ProjectRoleRepository projectRoleRepository, ModelMapper mapper) {
+    public UserService(UserRepository userRepository, ProjectRoleRepository projectRoleRepository, ModelMapper mapper, ProjectRepository projectRepository) {
         this.userRepository = userRepository;
         this.projectRoleRepository = projectRoleRepository;
         this.mapper = mapper;
+        this.projectRepository = projectRepository;
     }
 
     @Override
@@ -43,6 +47,9 @@ public class UserService  implements UserDetailsService {
 
     @Transactional
     public void exitProject(UUID projectId){
+        var user = userRepository.findById(Auth.getUserAuthenticate().getId()).orElseThrow(()-> new ResourceNotFound("Usuário não encontrado"));
+        user.getProjects().removeIf(p -> p.getId().equals(projectId));
+        userRepository.save(user);
         projectRoleRepository.deleteProjectRole(Auth.getUserAuthenticate().getId(), projectId);
     }
 

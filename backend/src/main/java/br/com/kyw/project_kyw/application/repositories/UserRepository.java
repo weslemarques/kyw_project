@@ -24,4 +24,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     @Query("SELECT u.assignedTasks FROM User u  WHERE u.id = :userId")
     List<Task> findAllTasksByUserId(UUID userId);
+
+
+
 }
