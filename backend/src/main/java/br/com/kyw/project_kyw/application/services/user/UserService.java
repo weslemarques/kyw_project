@@ -83,7 +83,7 @@ public class UserService  implements UserDetailsService {
 
     public List<TaskResponse> getTasksByUser() {
         var tasks = userRepository.findAllTasksByUserId(Auth.getUserAuthenticate().getId());
-        return tasks.stream().map(mapper::taskEntityForDTO).toList();
+        return tasks.stream().map(t -> mapper.taskEntityForDTO(t, t.getAttachmentsUrls()) ).toList();
     }
 }
 
