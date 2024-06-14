@@ -9,6 +9,7 @@ import br.com.kyw.project_kyw.application.exceptions.UserNotFoundExeception;
 import br.com.kyw.project_kyw.application.repositories.ProjectRepository;
 import br.com.kyw.project_kyw.application.repositories.ProjectRoleRepository;
 import br.com.kyw.project_kyw.application.repositories.UserRepository;
+import br.com.kyw.project_kyw.application.services.utils.Mapper;
 import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.entities.User;
 import br.com.kyw.project_kyw.infra.security.Auth;
@@ -29,14 +30,14 @@ public class UserService  implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final ProjectRoleRepository projectRoleRepository;
-    private final ModelMapper mapper;
-    private final ProjectRepository projectRepository;
+    private final ModelMapper modelMapper;
+    private final Mapper mapper;
 
-    public UserService(UserRepository userRepository, ProjectRoleRepository projectRoleRepository, ModelMapper mapper, ProjectRepository projectRepository) {
+    public UserService(UserRepository userRepository, ProjectRoleRepository projectRoleRepository, ModelMapper modelMapper, Mapper mapper) {
         this.userRepository = userRepository;
         this.projectRoleRepository = projectRoleRepository;
+        this.modelMapper = modelMapper;
         this.mapper = mapper;
-        this.projectRepository = projectRepository;
     }
 
     @Override
@@ -56,33 +57,33 @@ public class UserService  implements UserDetailsService {
 
     public Page<UserResponseDTO> getAll(Pageable pageable){
        Page<User> user  = userRepository.findAll(pageable);
-       return user.map(u -> mapper.map(u, UserResponseDTO.class));
+       return user.map(u -> modelMapper.map(u, UserResponseDTO.class));
 
     }
 
     public UserResponseDTO getById(UUID userId) {
        var user = userRepository.findById(userId)
                .orElseThrow(() -> new UserNotFoundExeception("Usuário não encontrado"));
-       return mapper.map(user, UserResponseDTO.class);
+       return modelMapper.map(user, UserResponseDTO.class);
     }
     public UserResponseDTO updateNicknameUser(String nickname) {
         User user = userRepository.findById(Auth.getUserAuthenticate()
                 .getId()).orElseThrow(()-> new ResourceNotFound("Usuário não encontrado"));
         user.setNickname(nickname);
         user = userRepository.save(user);
-        return mapper.map(user, UserResponseDTO.class);
+        return modelMapper.map(user, UserResponseDTO.class);
     }
 
 
     public List<ProjectBaseDTO> getAllProjectsByUser() {
         var projects = userRepository.findAllProjectsByUserId(Auth.getUserAuthenticate().getId());
-        return projects.stream().map(p -> mapper.map(p, ProjectBaseDTO.class)).toList();
+        return projects.stream().map(mapper::entityForProjectResponse).toList();
     }
 
 
     public List<TaskResponse> getTasksByUser() {
         var tasks = userRepository.findAllTasksByUserId(Auth.getUserAuthenticate().getId());
-        return tasks.stream().map(t -> mapper.map(t, TaskResponse.class)).toList();
+        return tasks.stream().map(mapper::taskEntityForDTO).toList();
     }
 }
 
