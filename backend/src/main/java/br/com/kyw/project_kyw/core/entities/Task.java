@@ -4,6 +4,7 @@ import br.com.kyw.project_kyw.core.enums.Criticality;
 import br.com.kyw.project_kyw.core.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,7 +30,9 @@ public class Task {
     private Criticality criticality;
     @Size(max = 1000)
     private String description;
-    private String attachments;
+    @Setter(AccessLevel.NONE)
+    @ElementCollection
+    private List<String> attachmentsUrls = new ArrayList<>();
     private Instant createAt = Instant.now();
     private Date deadline;
     private Date completedAt;
@@ -42,11 +45,10 @@ public class Task {
     private boolean pin;
 
 
-    public Task(Status status, Criticality criticality, String description, String attachments, Instant createAt, Date completedAt, Project project, List<User> attributed) {
+    public Task(Status status, Criticality criticality, String description, Instant createAt, Date completedAt, Project project, List<User> attributed) {
         this.status = status;
         this.criticality = criticality;
         this.description = description;
-        this.attachments = attachments;
         this.createAt = createAt;
         this.completedAt = completedAt;
         this.project = project;
@@ -86,11 +88,6 @@ public class Task {
         }
     }
 
-    public void setAttachments(String attachments) {
-        if(attachments != null){
-            this.attachments = attachments;
-        }
-    }
 
     public void setCreateAt(Instant createAt) {
         if(createAt != null){
@@ -122,5 +119,12 @@ public class Task {
         user.addTask(this);
         }
     }
+
+    public void addAttachement(String attachmentUrl) {
+        if (attachmentUrl != null) {
+            this.attachmentsUrls.add(attachmentUrl);
+        }
+    }
+
 
 }
