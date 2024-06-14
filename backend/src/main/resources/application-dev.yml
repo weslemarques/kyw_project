@@ -23,8 +23,9 @@ security:
 
 
 file:
-  image-project: /images/projects
-  image-user-avatar: /images/avatars
+  image-project: /files/images/projects
+  image-user-avatar: /files/images/avatars
+  attachments: /files/attachments
 
 cors:
   originPatterns: "*"

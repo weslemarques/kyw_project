@@ -26,6 +26,7 @@ security:
 file:
   image-project: /images/projects
   image-user-avatar: /images/avatars
+  attachments: /attachments
 
 cors:
   originPatterns: ${ORIGINS}

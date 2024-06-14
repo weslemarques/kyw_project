@@ -26,6 +26,7 @@ security:
 file:
   image-project: /home/runner/work/project_kyw//images/projects
   image-user-avatar: /home/runner/work/project_kyw/images/avatars
+  attachments: /home/runner/work/project_kyw/attachments
 
 cors:
   originPatterns: "*"
