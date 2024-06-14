@@ -17,7 +17,7 @@ import java.nio.file.Paths;
 
 @RestController
 @RequestMapping("/images")
-public class ImageController {
+public class FileController {
 
     @Value("${file.image-user-avatar}")
     private String uploadDirAvatar;

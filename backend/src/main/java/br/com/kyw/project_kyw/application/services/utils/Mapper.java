@@ -11,6 +11,7 @@ import br.com.kyw.project_kyw.core.entities.Message;
 import br.com.kyw.project_kyw.core.entities.Project;
 import br.com.kyw.project_kyw.core.entities.Task;
 import br.com.kyw.project_kyw.core.entities.User;
+import br.com.kyw.project_kyw.core.enums.Criticality;
 import br.com.kyw.project_kyw.core.enums.Status;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -45,6 +46,7 @@ public class Mapper {
     }
     public Task taskDTOForEntity(TaskRequest taskRequest) {
         var task = mapper.map(taskRequest, Task.class);
+        task.setCriticality(taskRequest.getCriticality());
         task.setStatus(Status.OPEN);
         return task;
 
