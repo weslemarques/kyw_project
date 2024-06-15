@@ -33,85 +33,60 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 - Você tem uma máquina `<Windows / Linux / Mac>`.
 - Você tem o algum banco de dados ou o Docker instalado
 - (Testar endpoints enquanto não adiciono o swagger) Postman ou ferramenta similar
-## 🚀 Como criar a instancia do postgreSQL no docker
 
-# Desenvolvimento do Projeto Integrador
+- 
+# Desenvolvimento do Backend com Spring Boot, PostgreSQL e Docker
 
 ## 1. Introdução
-- Breve contextualização do projeto integrador e importância das diferentes partes (backend, mobile e web).
+Neste documento, serão detalhadas as etapas de desenvolvimento do backend utilizando Spring Boot, PostgreSQL e Docker para o projeto integrador.
 
-## 2. Desenvolvimento do Backend com Spring Boot, PostgreSQL e Docker
+## 2. Planejamento e Definição dos Requisitos
+- Identificação dos requisitos específicos do backend.
+- Especificação das funcionalidades necessárias para suportar os clientes mobile e web.
 
-### Planejamento e Definição dos Requisitos
-- Identificação dos requisitos gerais do projeto.
-- Especificação das funcionalidades necessárias para o backend.
-
-### Configuração do Ambiente de Desenvolvimento
+## 3. Configuração do Ambiente de Desenvolvimento
 - **Setup do Projeto Spring Boot**:
   - Utilização do Spring Initializr para criar o projeto.
   - Inclusão das dependências: Spring Web, Spring Data JPA, PostgreSQL Driver.
+  
 - **Configuração do PostgreSQL com Docker**:
-  - Uso de Docker para configurar e executar o PostgreSQL localmente.
-  - Definição das credenciais no arquivo `application.properties`.
+  - Utilização de Docker para configurar e executar o PostgreSQL localmente.
+  - Definição das credenciais de acesso no arquivo `application.properties`.
 
-### Desenvolvimento das Funcionalidades
+## 4. Desenvolvimento das Funcionalidades
 - **Modelagem do Banco de Dados**:
-  - Criação das entidades JPA para representar as tabelas.
+  - Criação das entidades JPA para representar as tabelas do banco de dados.
+  
 - **Implementação de Repositórios**:
-  - Desenvolvimento de interfaces de repositório para interação com o banco de dados.
+  - Desenvolvimento das interfaces de repositório para interação com o banco de dados PostgreSQL.
+  
 - **Implementação dos Serviços**:
-  - Desenvolvimento da lógica de negócio nos serviços do backend.
+  - Desenvolvimento da lógica de negócio nos serviços do backend utilizando Spring Boot.
+
 - **Desenvolvimento dos Controladores**:
-  - Criação de controladores REST para expor os endpoints da API.
+  - Criação de controladores REST para expor os endpoints da API para os clientes mobile e web.
 
-### Testes e Validação
+## 5. Testes e Validação
 - **Testes Unitários e de Integração**:
-  - Implementação de testes para validar a lógica de negócios e a interação com o banco de dados.
+  - Implementação de testes para validar a lógica de negócio e a integração com o banco de dados.
+  
 - **Documentação dos Endpoints**:
-  - Utilização de Swagger para documentar os endpoints da API.
+  - Utilização de ferramentas como Swagger para documentar os endpoints da API.
 
-### Segurança e Manutenção
+## 6. Segurança e Dockerização da Aplicação
 - **Implementação de Segurança**:
-  - Configuração de mecanismos de autenticação e autorização.
+  - Configuração de autenticação e autorização para proteger os endpoints da API.
+  
 - **Dockerização da Aplicação**:
-  - Dockerização do backend para facilitar o deploy e a escalabilidade.
+  - Dockerização do backend Spring Boot para facilitar o deploy e a escalabilidade da aplicação.
+  - Descrição do Dockerfile utilizado para empacotar a aplicação Spring Boot.
+  - Configuração de um ambiente de desenvolvimento e produção com Docker Compose, se aplicável.
 
-### Deploy e Manutenção
+## 7. Deploy e Manutenção
 - **Deploy em Ambiente de Produção**:
-  - Configuração de scripts de deploy e publicação da aplicação.
+  - Configuração de scripts de deploy e publicação da aplicação em um servidor de produção.
+  
 - **Monitoramento e Manutenção**:
-  - Estabelecimento de práticas de monitoramento e manutenção em produção.
-
-## 3. Desenvolvimento do Cliente Mobile
-
-### Planejamento e Implementação
-- Definição dos requisitos específicos para o cliente mobile.
-- Descrição das tecnologias utilizadas (por exemplo, Flutter, React Native).
-- Implementação das funcionalidades no cliente mobile.
-
-### Integração com o Backend
-- Consumo dos serviços do backend através de chamadas API.
-
-### Testes e Validação
-- Testes realizados no cliente mobile para validar as funcionalidades implementadas.
-
-## 4. Desenvolvimento do Cliente Web
-
-### Planejamento e Implementação
-- Definição dos requisitos específicos para o cliente web.
-- Descrição das tecnologias utilizadas (por exemplo, React, Angular).
-- Implementação das funcionalidades no cliente web.
-
-### Integração com o Backend
-- Consumo dos serviços do backend através de chamadas API.
-
-### Testes e Validação
-- Testes realizados no cliente web para validar as funcionalidades implementadas.
-
-## 5. Conclusão
-- Discussão sobre os resultados obtidos com a implementação do projeto.
-- Lições aprendidas durante o desenvolvimento das diferentes partes da aplicação.
-
-## 6. Considerações Finais
-- Perspectivas futuras para o projeto.
+  - Estabelecimento de práticas de monitoramento da aplicação em produção.
+  - Realização de manutenções periódicas conforme necessário.
 
